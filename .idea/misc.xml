@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/Modern_City/app/src/main/res/drawable/edite_styl.xml" value="0.2351851851851852" />
         <entry key="..\:/Modern_City/app/src/main/res/drawable/profil_circle_24.xml" value="0.21944444444444444" />
         <entry key="..\:/Modern_City/app/src/main/res/layout/activity_regester.xml" value="0.22" />
+=======
+        <entry key="..\:/Modern_City/app/src/main/res/layout/activity_login.xml" value="0.19202898550724637" />
+        <entry key="..\:/Modern_City/app/src/main/res/layout/activity_splash.xml" value="0.12771739130434784" />
+        <entry key="..\:/Modern_City/app/src/main/res/layout/activity_user_type.xml" value="0.19010416666666666" />
+>>>>>>> 5c8489f193bb87b2a22e16bc215f28bd1a9f208c
       </map>
     </option>
   </component>

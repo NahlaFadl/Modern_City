@@ -10,8 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Modern_City">
         <activity
+<<<<<<< HEAD
             android:name=".Register"
             android:exported="true" >
+=======
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UserTypeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+>>>>>>> 5c8489f193bb87b2a22e16bc215f28bd1a9f208c
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
