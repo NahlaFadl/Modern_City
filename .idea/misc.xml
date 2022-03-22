@@ -3,9 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Modern_City/app/src/main/res/layout/activity_login.xml" value="0.19202898550724637" />
+        <entry key="..\:/Modern_City/app/src/main/res/drawable/cardview_style.xml" value="0.2046875" />
+        <entry key="..\:/Modern_City/app/src/main/res/drawable/edite_styl.xml" value="0.2203125" />
+        <entry key="..\:/Modern_City/app/src/main/res/drawable/ic_arrow.xml" value="0.2203125" />
+        <entry key="..\:/Modern_City/app/src/main/res/drawable/ic_wave.xml" value="0.1425925925925926" />
+        <entry key="..\:/Modern_City/app/src/main/res/drawable/profil_circle_24.xml" value="0.2203125" />
+        <entry key="..\:/Modern_City/app/src/main/res/layout/activity_catagories.xml" value="0.33" />
+        <entry key="..\:/Modern_City/app/src/main/res/layout/activity_login.xml" value="0.21" />
+        <entry key="..\:/Modern_City/app/src/main/res/layout/activity_regester.xml" value="0.20199275362318841" />
         <entry key="..\:/Modern_City/app/src/main/res/layout/activity_splash.xml" value="0.12771739130434784" />
         <entry key="..\:/Modern_City/app/src/main/res/layout/activity_user_type.xml" value="0.19010416666666666" />
+        <entry key="..\:/Modern_City/app/src/main/res/layout/place_catagory.xml" value="0.18854166666666666" />
+        <entry key="..\:/Modern_City/app/src/main/res/layout/place_categery.xml" value="0.22019464720194648" />
       </map>
     </option>
   </component>
