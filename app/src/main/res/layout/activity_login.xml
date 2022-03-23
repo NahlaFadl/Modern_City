@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5">
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/edt_crafts_rfgistr_Lname"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"

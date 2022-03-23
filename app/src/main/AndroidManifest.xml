@@ -10,10 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Modern_City">
         <activity
-<<<<<<< HEAD
-            android:name=".Register"
+            android:name=".CategoryDetailsActibvity"
             android:exported="true" >
-=======
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".CraftsmanRegisterActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
@@ -24,20 +40,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
->>>>>>> 5c8489f193bb87b2a22e16bc215f28bd1a9f208c
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
