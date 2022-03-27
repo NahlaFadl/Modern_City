@@ -11,15 +11,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Modern_City">
         <activity
-            android:name=".CategoryDetailsActivity"
+            android:name=".HomeActivity"
             android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
+        </activity>
+        <activity
+            android:name=".CategoryDetailsActivity"
+            android:exported="true">
+            android:name=".CraftsmanRegisterActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true">
 
         </activity>
         <activity
@@ -27,9 +36,7 @@
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".UserTypeActivity"
             android:exported="true" />
@@ -38,9 +45,6 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Register"
             android:exported="true" />
     </application>
 
