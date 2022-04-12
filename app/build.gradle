@@ -46,4 +46,6 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     //dependency for all matrial design
     implementation 'com.google.android.material:material:1.2.1'
+    //kotlin
+    apply plugin: 'kotlin-android-extensions'
 }
