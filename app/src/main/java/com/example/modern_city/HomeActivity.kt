@@ -9,20 +9,19 @@ import com.example.modern_city.Fragment.FavoriteFragment
 import com.example.modern_city.Fragment.HomeFagment
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
     private val homeFragment=HomeFagment()
     private val favoriteFragment=FavoriteFragment()
     private val aboutUsFragment=AboutUsFragment()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         replaceFragment(homeFragment)
 
-
-       /* btn .setOnNavigationItemReselectedListener { item ->
+        btn_bottomNavigation .setOnNavigationItemReselectedListener { item ->
             when(item.itemId) {
                 R.id.favorite -> {
                     replaceFragment(favoriteFragment)
@@ -40,10 +39,10 @@ class HomeActivity : AppCompatActivity() {
 
                 else -> false
             }
-        }*/
+        }
     }
 
-    public fun replaceFragment(fragment:Fragment){
+     fun replaceFragment(fragment:Fragment){
         if (fragment!=null){
             val transaction=supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragmentContainer,fragment)

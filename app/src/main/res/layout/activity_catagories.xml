@@ -23,8 +23,6 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-
         android:layout_marginTop="32dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/ic_arrow_forward"
@@ -50,7 +48,6 @@
             android:id="@+id/edt_login_username"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-
             android:background="@null"
             android:drawableRight="@drawable/ic_search"
             android:hint="بحث"
