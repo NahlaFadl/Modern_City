@@ -36,12 +36,12 @@ class HomeFagment : Fragment() {
 
 
 
-        /////////////////////////////
-        // getting the recyclerview by its id
+          /////////////////////////////
+         // getting the recyclerview by its id
         val rcy_mainservice =view.findViewById<RecyclerView>(R.id.rcy_mainService)
 
-//        // this creates a vertical layout Manager
-//        rcy_mainservice.layoutManager = LinearLayoutManager(activity)
+        // this creates a vertical layout Manager
+       //    rcy_mainservice.layoutManager = LinearLayoutManager(activity)
         rcy_mainservice.apply {
             layoutManager = GridLayoutManager(activity, 2)
         }
@@ -49,7 +49,7 @@ class HomeFagment : Fragment() {
         // ArrayList of class ItemsViewModel
         val data_mainservice = ArrayList<model_home_main_service>()
 
-        // This loop will create 20 Views containing
+         // This loop will create 20 Views containing
         // the image with the count of view
         for (i in 1..20) {
             data_mainservice.add(model_home_main_service(R.drawable.ic_favorite,"jj"))
@@ -86,9 +86,7 @@ class HomeFagment : Fragment() {
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
 
-
-////////////////////////////////
-
+         ////////////////////////////////
 
 
         return view

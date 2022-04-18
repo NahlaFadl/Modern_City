@@ -46,10 +46,12 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     //dependency for all matrial design
     implementation 'com.google.android.material:material:1.2.1'
+
     //SLIDER
     implementation 'com.github.smarteist:autoimageslider:1.4.0'
     //picture
     implementation 'com.squareup.picasso:picasso:2.71828'
+
 
     //kotlin
     apply plugin: 'kotlin-android-extensions'

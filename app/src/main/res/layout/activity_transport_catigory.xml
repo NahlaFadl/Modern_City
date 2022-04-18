@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TransportCatigoryActivity"
+    android:background="#FFFEFE">
+
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="الفئه"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="@dimen/_280sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/round_edit"
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        app:srcCompat="@drawable/ic_bus" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="خطوط السير"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+        app:layout_constraintEnd_toStartOf="@+id/imageView11"
+        app:layout_constraintTop_toTopOf="@+id/imageView11" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
+        android:text="اضغط علي اسم السرفيس الدي تريده"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <Button
+        android:id="@+id/btn_3zba"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:text="عزبه"
+        android:textSize="20sp"
+        android:background="@drawable/round_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <Button
+        android:id="@+id/btn_abuHlal"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/round_button"
+        android:text="ابو هلال"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <Button
+        android:id="@+id/btn_shorta"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/round_button"
+        android:text="شرطة"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_3zba" />
+
+    <Button
+        android:id="@+id/btn_gama"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/round_button"
+        android:text="جامعة"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_abuHlal" />
+
+    <Button
+        android:id="@+id/btn_e5sas"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="50dp"
+        android:text="الاخصاص"
+        android:textSize="20sp"
+        android:background="@drawable/round_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_shorta" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:text="الكوبري العالي"
+        android:background="@drawable/round_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_gama" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity"
+    android:background="#F5F5F5">
+
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="الحساب"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/photo_profile"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:srcCompat="@drawable/ic_camera_alt_24" />
+
+    <TextView
+        android:id="@+id/txt_name_prof"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Nahla Fadl"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photo_profile" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginTop="70dp"
+        android:background="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_name_prof" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:text="اعدادات الحساب"
+        android:textColor="#6B46C1"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintTop_toTopOf="@+id/view3" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view3"
+        app:srcCompat="@drawable/profil_circle_24" />
+
+    <TextView
+        android:id="@+id/txt_edit_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:text="تعيديل الحساب"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <ImageView
+        android:id="@+id/phot_back_editAccount"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_edit_account"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txt_edit_account"
+        app:srcCompat="@drawable/ic_arrow_back" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:srcCompat="@drawable/ic_location" />
+
+    <TextView
+        android:id="@+id/txt_titile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:text="العنوان"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+        app:layout_constraintEnd_toStartOf="@+id/imageView9"
+        app:layout_constraintTop_toTopOf="@+id/imageView9" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_titile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txt_titile"
+        app:srcCompat="@drawable/ic_arrow_back" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9"
+        app:srcCompat="@drawable/sign_out" />
+
+    <TextView
+        android:id="@+id/txt_sinOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:text="حروج"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_sinOut"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txt_sinOut"
+        app:srcCompat="@drawable/ic_arrow_back" />
+</androidx.constraintlayout.widget.ConstraintLayout>
