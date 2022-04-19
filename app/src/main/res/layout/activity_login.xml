@@ -8,6 +8,8 @@
     tools:context=".LoginActivity">
 
     <ScrollView
+
+
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -135,7 +137,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/txt_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
@@ -157,11 +159,13 @@
                 android:background="@drawable/ic_arrow"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                app:layout_constraintEnd_toStartOf="@+id/textView8"
+                app:layout_constraintEnd_toStartOf="@+id/txt_login"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView7"
                 tools:ignore="SpeakableTextPresentCheck" />
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -172,6 +176,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+
         android:layout_marginTop="160dp"
         android:text="لاتمتلك حساب "
         android:textColor="#48151313"
@@ -200,4 +205,44 @@
         app:layout_constraintEnd_toStartOf="@+id/textView20"
         app:layout_constraintStart_toStartOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
+=======
+        android:layout_marginBottom="36dp"
+        android:text="لا تمتلك حسابا"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_register" />
+
+    <TextView
+        android:id="@+id/txt_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:text="تسجيل الان"
+        android:textSize="16sp"
+        android:textColor="#6B46C1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="3dp"
+        android:background="#6B46C1"
+        app:layout_constraintEnd_toEndOf="@+id/txt_register"
+        app:layout_constraintStart_toStartOf="@+id/txt_register"
+        app:layout_constraintTop_toBottomOf="@+id/txt_register" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+>>>>>>> dd6fe233e2daee0cac72d828b154c5b47a49a5d9
 </androidx.constraintlayout.widget.ConstraintLayout>

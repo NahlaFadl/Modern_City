@@ -32,7 +32,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
@@ -46,13 +45,13 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     //dependency for all matrial design
     implementation 'com.google.android.material:material:1.2.1'
-
     //SLIDER
     implementation 'com.github.smarteist:autoimageslider:1.4.0'
     //picture
     implementation 'com.squareup.picasso:picasso:2.71828'
-
-
     //kotlin
     apply plugin: 'kotlin-android-extensions'
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
 }

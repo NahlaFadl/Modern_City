@@ -1,5 +1,6 @@
 package com.example.modern_city
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,14 @@ class Adapter_rcy_mainService(private val mList: List<model_home_main_service>):
 
     override fun onBindViewHolder(holder: viewholder, position: Int) {
         val ItemsViewModel = mList[position]
+        holder.itemView.setOnClickListener {
+
+            val context=holder.textView.context
+
+            var intent= Intent(context,Categories::class.java)
+
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

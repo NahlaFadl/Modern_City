@@ -1,5 +1,6 @@
 package com.example.modern_city.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,13 +9,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.modern_city.Adapter_rcy_mainService
-import com.example.modern_city.Adapter_rcy_mostFamiller
-import com.example.modern_city.Adapter_slider
+import com.example.modern_city.*
 import com.example.modern_city.Models.model_home_main_service
 import com.example.modern_city.Models.model_home_mostFamalier
-import com.example.modern_city.R
 import com.smarteist.autoimageslider.SliderView
+import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.fragment_home_fagment.*
+import kotlinx.android.synthetic.main.fragment_home_fagment.user_imageProf
 
 
 class HomeFagment : Fragment() {
@@ -88,11 +89,17 @@ class HomeFagment : Fragment() {
 
          ////////////////////////////////
 
-
         return view
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
+        user_imageProf.setOnClickListener {
+            val intent= Intent(activity,ProfileActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
 
     private fun setImageInSlider(images: ArrayList<String>, imageSlider: SliderView) {
