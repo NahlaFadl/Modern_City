@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -67,25 +68,34 @@ class HomeFagment : Fragment() {
       //   val adapter_mainservice = Adapter_rcy_mainService(data_mainservice)
 
         var call=ApiClient.instance?.getMyApi()
-        ?.gitCategory("6MI5ObBwbEzaaDSTsldh2022-04-23 17:38:41PwOJNa3dbfBGJD8m5X0OG")
+        ?.gitCategory(sharedPreferences.getString("token",null).toString())
 
 
         if (call!=null){
 
-            call.enqueue(object : Callback<Categoryresponse>{
+            call.enqueue(object : Callback<CategoriesRespon>{
                 override fun onResponse(
-                    call: Call<Categoryresponse>?,
-                    response: Response<Categoryresponse>?
+                    call: Call<CategoriesRespon>?,
+                    response: Response<CategoriesRespon>?
                 ) {
                     Toast.makeText(activity,response?.body()?.All_Places_Types.toString(),Toast.LENGTH_LONG).show()
 
-                    var data_mainservice = ArrayList<All_Places_Types>()
-                    data_mainservice= response?.body()?.All_Places_Types as ArrayList<All_Places_Types>
-                    val adapter_mainservice = Adapter_rcy_mainService(data_mainservice)
-                    rcy_mainservice.adapter = adapter_mainservice
+//                    var data_mainservice = ArrayList<CategoriesRespon>()
+//                    data_mainservice= response?.body()?.All_Places_Types as ArrayList<CategoriesRespon>
+//                    val adapter_mainservice = Adapter_rcy_mainService(data_mainservice)
+//                    rcy_mainservice.adapter = adapter_mainservice
+
+                    var listSize: Int? = response?.body()?.All_Places_Types?.size
+                    var placeArray: ArrayList<CategoriesRespon> = ArrayList()
+
+                    for (i in 1..listSize!!) {
+                        placeArray.add(response?.body()!!)
+                    }
+                    val adapter = Adapter_rcy_mainService(placeArray!!)
+                    rcy_mainservice.adapter = adapter
                 }
 
-                override fun onFailure(call: Call<Categoryresponse>?, t: Throwable?) {
+                override fun onFailure(call: Call<CategoriesRespon>?, t: Throwable?) {
                     TODO("Not yet implemented")
                 }
             })
@@ -155,6 +165,8 @@ class HomeFagment : Fragment() {
         user_imageProf.setOnClickListener {
             val intent= Intent(activity, ProfileActivity::class.java)
             startActivity(intent)
+
+          //  rcy_mainservice.layoutManager= LinearLayoutManager(this, LinearLayout.VERTICAL,false)
         }
     }
 

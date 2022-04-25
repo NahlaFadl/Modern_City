@@ -7,9 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.modern_city.API_SERVIECS.API
-import com.example.modern_city.API_SERVIECS.RegisterResponse
+//import com.example.modern_city.API_SERVIECS.RegisterResponse
+import com.example.modern_city.API_SERVIECS.UserRegister
 import com.example.modern_city.Fragment.HomeFagment
 import com.example.modern_city.R
+import com.example.modern_city.ui.HomeActivity
 import kotlinx.android.synthetic.main.activity_regester.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,15 +22,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RegisterActivity : AppCompatActivity() {
     val url="https://btmteamwork.com/sys/mass3ood/new_modern_city/public/"
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_regester)
 
         register_txtAct.setOnClickListener {
 
-          var redisterinfo:SharedPreferences=getSharedPreferences("userInfo",Context.MODE_PRIVATE)
+          var redisterinfo:SharedPreferences=getSharedPreferences("userInfo_login",Context.MODE_PRIVATE)
             val editor:SharedPreferences.Editor=redisterinfo.edit()
 
 
@@ -41,15 +41,21 @@ class RegisterActivity : AppCompatActivity() {
             val call=api.register(1,edt_register_Fname.text.toString().trim()
                 ,edt_register_Lname.text.toString().trim(),edt_register_email.text.toString().trim()
                 ,"mail",edt_register_password.text.toString().trim()
-                ,"minia",12345678922)
+                ,"minia",23245676687)
 
-            call.enqueue(object :Callback<RegisterResponse>{
+            call.enqueue(object :Callback<UserRegister>{
                 override fun onResponse(
-                    call: Call<RegisterResponse>?,
-                    response: Response<RegisterResponse>?)
+                    call: Call<UserRegister>?,
+                    response: Response<UserRegister>?)
                 {
 
-                   Toast.makeText(this@RegisterActivity,response?.body()?.msg.toString(),Toast.LENGTH_LONG).show()
+                    try {
+                        Toast.makeText(this@RegisterActivity,response?.body()?.data?.phone.toString(),Toast.LENGTH_LONG).show()
+
+                    }catch (ex:Exception){
+                        Toast.makeText(this@RegisterActivity,ex.message,Toast.LENGTH_LONG).show()
+
+                    }
                       editor.apply{
                           putString("userName",response?.body()?.data?.first_name)
                           putString("email",response?.body()?.data?.email)
@@ -60,13 +66,15 @@ class RegisterActivity : AppCompatActivity() {
                           response?.body()?.data?.user_id?.let { it1 -> putInt("city_id", it1) }
                           response?.body()?.data?.user_id?.let { it1 -> putInt("user_id", it1) }
                           response?.body()?.data?.user_group_id?.let { it1 -> putInt("user_group__id", it1) }
-                      }
-                    val intenthome=Intent(this@RegisterActivity,HomeFagment::class.java)
+                      }.commit()
+
+
+                    val intenthome=Intent(this@RegisterActivity,HomeActivity::class.java)
                     startActivity(intenthome)
 
                 }
 
-                override fun onFailure(call: Call<RegisterResponse>?, t: Throwable?) {
+                override fun onFailure(call: Call<UserRegister>?, t: Throwable?) {
                     Toast.makeText(this@RegisterActivity,"Failer",Toast.LENGTH_LONG).show()
 
                 }

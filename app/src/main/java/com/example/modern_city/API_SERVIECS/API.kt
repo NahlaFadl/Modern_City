@@ -1,8 +1,8 @@
 package com.example.modern_city.API_SERVIECS
 
 
-import com.example.modern_city.Models.Categoryresponse
-import com.example.modern_city.Models.Loginresponse
+import com.example.modern_city.Models.CategoriesRespon
+//import com.example.modern_city.Models.Loginresponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -24,17 +24,17 @@ interface API {
         @Field("password")password:String,
         @Field("address")address:String,
         @Field("phone")phone:Long
-        ): Call<RegisterResponse>
+        ): Call<UserRegister>
 
      //login
     @FormUrlEncoded
-    @POST("api/login_user")
+    @POST("api/login")
     @Headers("Accept: application/json")
      fun login(
          @Field("email") email:String,
          @Field("password") password:String,
-
-     ):Call<Loginresponse>
+         @Field("login_type") login_type:String,
+     ):Call<LoginRespons>
 
      //git category
      @FormUrlEncoded
@@ -44,7 +44,7 @@ interface API {
          @Field("token") token:String
 
 
-         ):Call<Categoryresponse>
+         ):Call<CategoriesRespon>
 
 
 }
