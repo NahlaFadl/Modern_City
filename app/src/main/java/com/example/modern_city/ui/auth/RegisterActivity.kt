@@ -1,12 +1,15 @@
-package com.example.modern_city
+package com.example.modern_city.ui.auth
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.modern_city.API_SERVIECS.API
 import com.example.modern_city.API_SERVIECS.RegisterResponse
 import com.example.modern_city.Fragment.HomeFagment
+import com.example.modern_city.R
 import kotlinx.android.synthetic.main.activity_regester.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,6 +28,8 @@ class RegisterActivity : AppCompatActivity() {
 
         register_txtAct.setOnClickListener {
 
+          var redisterinfo:SharedPreferences=getSharedPreferences("userInfo",Context.MODE_PRIVATE)
+            val editor:SharedPreferences.Editor=redisterinfo.edit()
 
 
 
@@ -36,7 +41,7 @@ class RegisterActivity : AppCompatActivity() {
             val call=api.register(1,edt_register_Fname.text.toString().trim()
                 ,edt_register_Lname.text.toString().trim(),edt_register_email.text.toString().trim()
                 ,"mail",edt_register_password.text.toString().trim()
-                ,"minia","01254005")
+                ,"minia",12345678922)
 
             call.enqueue(object :Callback<RegisterResponse>{
                 override fun onResponse(
@@ -44,7 +49,18 @@ class RegisterActivity : AppCompatActivity() {
                     response: Response<RegisterResponse>?)
                 {
 
-                    Toast.makeText(this@RegisterActivity,response?.body()?.status.toString(),Toast.LENGTH_LONG).show()
+                   Toast.makeText(this@RegisterActivity,response?.body()?.msg.toString(),Toast.LENGTH_LONG).show()
+                      editor.apply{
+                          putString("userName",response?.body()?.data?.first_name)
+                          putString("email",response?.body()?.data?.email)
+                          putString("gender",response?.body()?.data?.gender)
+                          putString("token",response?.body()?.data?.token)
+                          putString("phone",response?.body()?.data?.phone.toString())
+                          putString("adress",response?.body()?.data?.address)
+                          response?.body()?.data?.user_id?.let { it1 -> putInt("city_id", it1) }
+                          response?.body()?.data?.user_id?.let { it1 -> putInt("user_id", it1) }
+                          response?.body()?.data?.user_group_id?.let { it1 -> putInt("user_group__id", it1) }
+                      }
                     val intenthome=Intent(this@RegisterActivity,HomeFagment::class.java)
                     startActivity(intenthome)
 

@@ -1,10 +1,12 @@
-package com.example.modern_city
+package com.example.modern_city.ui.categories
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.modern_city.R
+import com.example.modern_city.Models.adapters.RecyclerCHB_Adapter
 import kotlinx.android.synthetic.main.activity_categories_chb.*
 import java.util.ArrayList
 

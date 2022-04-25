@@ -11,12 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Modern_City">
         <activity
-            android:name=".Categories_CHB"
+            android:name=".ui.categories.Categories_CHB"
             android:exported="true" >
 
         </activity>
         <activity
-            android:name=".CraftsmanProfilActivity"
+            android:name=".ui.profiles.CraftsmanProfilActivity"
             android:exported="true" >
 
         </activity>
@@ -27,36 +27,38 @@
             android:name=".TransportCatigoryActivity"
             android:exported="true" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".ui.HomeActivity"
             android:exported="true">
+
+
         </activity>
         <activity
-            android:name=".CategoryDetailsActivity"
+            android:name=".ui.categories.CategoryDetailsActivity"
             android:exported="true" />
         <activity
-            android:name=".CraftsmanRegisterActivity"
+            android:name=".ui.auth.CraftsmanRegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ui.auth.RegisterActivity"
             android:exported="true" >
 
 
         </activity>
         <activity
-            android:name=".ProfileActivity"
+            android:name=".ui.profiles.ProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".Categories"
+            android:name=".ui.categories.Categories"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.auth.LoginActivity"
             android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
 
 
         </activity>
@@ -69,6 +71,7 @@
         <activity android:name=".SplashActivity"
             android:exported="true"
             tools:ignore="DuplicateActivity">
+
 
 
         </activity>

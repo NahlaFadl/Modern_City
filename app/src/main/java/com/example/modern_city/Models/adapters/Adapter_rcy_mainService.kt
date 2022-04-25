@@ -1,4 +1,4 @@
-package com.example.modern_city
+package com.example.modern_city.Models.adapters
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.modern_city.Models.model_home_main_service
-import com.example.modern_city.Models.model_home_mostFamalier
+import com.example.modern_city.Models.All_Places_Types
+import com.example.modern_city.R
+import com.example.modern_city.ui.categories.Categories
 
-class Adapter_rcy_mainService(private val mList: List<model_home_main_service>): RecyclerView.Adapter<Adapter_rcy_mainService.viewholder>() {
+class Adapter_rcy_mainService(private val mList: List<All_Places_Types>): RecyclerView.Adapter<Adapter_rcy_mainService.viewholder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewholder {
@@ -19,7 +20,7 @@ class Adapter_rcy_mainService(private val mList: List<model_home_main_service>):
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.rcyitem_mainservices, parent, false)
 
-        return Adapter_rcy_mainService.viewholder(view)
+        return viewholder(view)
     }
 
     override fun onBindViewHolder(holder: viewholder, position: Int) {
@@ -28,7 +29,7 @@ class Adapter_rcy_mainService(private val mList: List<model_home_main_service>):
 
             val context=holder.textView.context
 
-            var intent= Intent(context,Categories::class.java)
+            var intent= Intent(context, Categories::class.java)
 
             context.startActivity(intent)
         }

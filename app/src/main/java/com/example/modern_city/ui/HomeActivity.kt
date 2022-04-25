@@ -1,20 +1,18 @@
-package com.example.modern_city
+package com.example.modern_city.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import com.example.modern_city.Fragment.AboutUsFragment
-import com.example.modern_city.Fragment.FavoriteFragment
 import com.example.modern_city.Fragment.HomeFagment
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.modern_city.R
+import com.example.modern_city.ui.fragment.AboutUsFragment
+import com.example.modern_city.ui.fragment.FavoriteFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
     private val homeFragment=HomeFagment()
-    private val favoriteFragment=FavoriteFragment()
-    private val aboutUsFragment=AboutUsFragment()
+    private val favoriteFragment= FavoriteFragment()
+    private val aboutUsFragment= AboutUsFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

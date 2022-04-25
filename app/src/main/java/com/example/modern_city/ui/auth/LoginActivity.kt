@@ -1,18 +1,20 @@
-package com.example.modern_city
+package com.example.modern_city.ui.auth
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
-import com.example.modern_city.API_SERVIECS.API
 import com.example.modern_city.API_SERVIECS.ApiClient
 import com.example.modern_city.Models.Loginresponse
+import com.example.modern_city.R
+import com.example.modern_city.ui.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +24,10 @@ class LoginActivity : AppCompatActivity() {
 
 
         txt_login.setOnClickListener {
-            login(edt_login_username.text.toString().trim()
-                ,edt_login_userPassword.text.toString().trim())
+            var email=edt_login_username.text.toString().trim()
+            var pass=edt_login_userPassword.text.toString().trim()
+
+            login(email,pass)
         }
 
 //        txt_register.setOnClickListener {
@@ -35,6 +39,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun login(email:String,password:String){
+        var redisterinfo: SharedPreferences =getSharedPreferences("userInfo_login", Context.MODE_PRIVATE)
+        val editor =redisterinfo.edit()
 
         var call= ApiClient.instance?.getMyApi()?.login(email,password)
 
@@ -46,9 +52,24 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<Loginresponse>?
                 ) {
 
-                    Toast.makeText(this@LoginActivity,response?.body()?.user?.email
+                   editor.apply{
+
+                       putString("userName",response?.body()?.data?.first_name)
+                       putString("email",response?.body()?.data?.email)
+                       putString("gender",response?.body()?.data?.gender)
+                       putString("token",response?.body()?.data?.token)
+                       putString("phone",response?.body()?.data?.phone.toString())
+                       putString("adress",response?.body()?.data?.address)
+                       response?.body()?.data?.user_id?.let { it1 -> putInt("city_id", it1) }
+                       response?.body()?.data?.user_id?.let { it1 -> putInt("user_id", it1) }
+                       response?.body()?.data?.user_group_id?.let { it1 -> putInt("user_group__id", it1)}
+
+                   }
+
+                    Toast.makeText(this@LoginActivity,response?.body()?.data?.email
                     ,Toast.LENGTH_LONG).show()
-                    val intent= Intent(this@LoginActivity,HomeActivity::class.java)
+
+                    val intent= Intent(this@LoginActivity, HomeActivity::class.java)
                     startActivity(intent)
 
 

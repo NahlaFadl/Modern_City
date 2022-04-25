@@ -1,10 +1,12 @@
-package com.example.modern_city
+package com.example.modern_city.ui.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import com.example.modern_city.R
+import com.example.modern_city.ui.HomeActivity
 import kotlinx.android.synthetic.main.activity_craftsman_register.*
 
 class CraftsmanRegisterActivity : AppCompatActivity() {
@@ -13,12 +15,12 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_craftsman_register)
 
         registerCraft_txtAct.setOnClickListener {
-            val intent= Intent(this,HomeActivity::class.java)
+            val intent= Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
 
         val spinner: Spinner = findViewById(R.id.planets_spinner)
-// Create an ArrayAdapter using the string array and a default spinner layout
+    // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter.createFromResource(
             this,
             R.array.planets_array,

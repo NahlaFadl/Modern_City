@@ -1,14 +1,12 @@
-package com.example.modern_city
+package com.example.modern_city.Models.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.constraintlayout.widget.Placeholder
 import androidx.recyclerview.widget.RecyclerView
-import com.example.modern_city.Adapter_rcy_mostFamiller.*
 import com.example.modern_city.Models.model_home_mostFamalier
+import com.example.modern_city.R
 
 class Adapter_rcy_mostFamiller(private val mList: List<model_home_mostFamalier>)
     : RecyclerView.Adapter<Adapter_rcy_mostFamiller.ViewHolder>() {

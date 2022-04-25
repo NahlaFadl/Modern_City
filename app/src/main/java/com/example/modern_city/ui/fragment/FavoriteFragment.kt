@@ -1,4 +1,4 @@
-package com.example.modern_city.Fragment
+package com.example.modern_city.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
