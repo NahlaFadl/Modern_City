@@ -80,10 +80,7 @@ class HomeFagment : Fragment() {
                 ) {
                     Toast.makeText(activity,response?.body()?.All_Places_Types.toString(),Toast.LENGTH_LONG).show()
 
-//                    var data_mainservice = ArrayList<CategoriesRespon>()
-//                    data_mainservice= response?.body()?.All_Places_Types as ArrayList<CategoriesRespon>
-//                    val adapter_mainservice = Adapter_rcy_mainService(data_mainservice)
-//                    rcy_mainservice.adapter = adapter_mainservice
+
 
                     var listSize: Int? = response?.body()?.All_Places_Types?.size
                     var placeArray: ArrayList<CategoriesRespon> = ArrayList()
@@ -132,27 +129,27 @@ class HomeFagment : Fragment() {
 
 
 ////////////////////////////////////
-
-        val recyclerview =view.findViewById<RecyclerView>(R.id.rcy_mostFamilyer)
-
-        // this creates a vertical layout Manager
-        recyclerview.layoutManager = LinearLayoutManager(activity,LinearLayoutManager
-            .HORIZONTAL, false)
-
-        // ArrayList of class ItemsViewModel
-        val data = ArrayList<model_home_mostFamalier>()
-
-        // This loop will create 20 Views containing
-        // the image with the count of view
-        for (i in 1..20) {
-            data.add(model_home_mostFamalier(R.drawable.dog))
-        }
-
-        // This will pass the ArrayList to our Adapter
-        val adapter = Adapter_rcy_mostFamiller(data)
-
-        // Setting the Adapter with the recyclerview
-        recyclerview.adapter = adapter
+//
+//        val recyclerview =view.findViewById<RecyclerView>(R.id.rcy_mostFamilyer)
+//
+//        // this creates a vertical layout Manager
+//        recyclerview.layoutManager = LinearLayoutManager(activity,LinearLayoutManager
+//            .HORIZONTAL, false)
+//
+//        // ArrayList of class ItemsViewModel
+//        val data = ArrayList<model_home_mostFamalier>()
+//
+//        // This loop will create 20 Views containing
+//        // the image with the count of view
+//        for (i in 1..20) {
+//            data.add(model_home_mostFamalier(R.drawable.dog))
+//        }
+//
+//        // This will pass the ArrayList to our Adapter
+//        val adapter = Adapter_rcy_mostFamiller(data)
+//
+//        // Setting the Adapter with the recyclerview
+//        recyclerview.adapter = adapter
 
          ////////////////////////////////
 

@@ -41,7 +41,7 @@ class RegisterActivity : AppCompatActivity() {
             val call=api.register(1,edt_register_Fname.text.toString().trim()
                 ,edt_register_Lname.text.toString().trim(),edt_register_email.text.toString().trim()
                 ,"mail",edt_register_password.text.toString().trim()
-                ,"minia",23245676687)
+                ,"minia",23245670087)
 
             call.enqueue(object :Callback<UserRegister>{
                 override fun onResponse(

@@ -26,7 +26,7 @@
 
 
             <TextView
-                android:id="@+id/txt_maiService"
+                android:id="@+id/txt_station"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -35,11 +35,11 @@
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold"
                 card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintEnd_toStartOf="@+id/img_mainService"
+                card_view:layout_constraintEnd_toStartOf="@+id/img_station"
                 card_view:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/img_mainService"
+                android:id="@+id/img_station"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_50sdp"
                 android:layout_marginEnd="25dp"

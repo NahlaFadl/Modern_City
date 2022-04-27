@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.modern_city.Models.All_Places_Types
+
 import com.example.modern_city.Models.CategoriesRespon
 import com.example.modern_city.R
-import com.example.modern_city.ui.categories.Categories
+import com.example.modern_city.ui.categories.Categories_CHB
 
 class Adapter_rcy_mainService(private val mList: List<CategoriesRespon>): RecyclerView.Adapter<Adapter_rcy_mainService.viewholder>() {
 
@@ -31,7 +31,8 @@ class Adapter_rcy_mainService(private val mList: List<CategoriesRespon>): Recycl
 
             val context=holder.textView.context
 
-            var intent= Intent(context, Categories::class.java)
+            var intent= Intent(context, Categories_CHB::class.java)
+            intent.putExtra("typeId",ItemsViewModel.All_Places_Types[position].place_type_id)
 
             context.startActivity(intent)
         }
@@ -44,8 +45,9 @@ class Adapter_rcy_mainService(private val mList: List<CategoriesRespon>): Recycl
 
 
     class viewholder (itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.img_mainService)
-        val textView: TextView = itemView.findViewById(R.id.txt_maiService)
+        val imageView: ImageView = itemView.findViewById(R.id.img_station)
+        val textView: TextView = itemView.findViewById(R.id.txt_station)
+
 
 
     }

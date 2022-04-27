@@ -25,12 +25,20 @@ class LoginActivity : AppCompatActivity() {
 
 
         txt_login.setOnClickListener {
+
             var email=edt_login_username.text.toString().trim()
             var pass=edt_login_userPassword.text.toString().trim()
+            if (email.equals(null)||pass.equals(null)){
+            Toast.makeText(this@LoginActivity,"enter all data",Toast.LENGTH_LONG).show()
 
-            login(email,pass)
+            }
+            else{
+                login(email,pass)
+
+            }
+
         }
-
+//
 //        txt_register.setOnClickListener {
 //            val intent= Intent(this,RegisterActivity::class.java)
 //            startActivity(intent)

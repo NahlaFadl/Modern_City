@@ -46,5 +46,24 @@ interface API {
 
          ):Call<CategoriesRespon>
 
+///gitPlaceByPlaceType
+    @FormUrlEncoded
+    @POST("api/auth/places/show_places_by_place_type")
+    @Headers("Accept: application/json")
+    fun gitPlaceByPlaceType(
+        @Field("token") token:String,
+        @Field("place_type_id") place_type_id:Int
+
+    ):Call<ListOfPlaceType>
+//////placeDetails
+    @FormUrlEncoded
+    @POST("api/auth/places/show_details_of_place")
+    @Headers("Accept: application/json")
+    fun getPlaceDetails(
+        @Field("token") token:String,
+        @Field("place_type_id") place_id:Int
+
+    ):Call<PlaceDetailsResponse>
+
 
 }
