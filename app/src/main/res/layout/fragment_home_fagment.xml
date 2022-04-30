@@ -216,7 +216,7 @@
 
 
                     <TextView
-                        android:id="@+id/txt_station"
+                        android:id="@+id/txt_station_home"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
@@ -226,11 +226,11 @@
                         android:textSize="@dimen/_12sdp"
                         android:textStyle="bold"
                         android:layout_marginLeft="@dimen/_20sdp"
-                        app:layout_constraintEnd_toStartOf="@+id/img_station"
-                        app:layout_constraintTop_toTopOf="@+id/img_station" />
+                        app:layout_constraintEnd_toStartOf="@+id/img_station_home"
+                        app:layout_constraintTop_toTopOf="@+id/img_station_home" />
 
                     <ImageView
-                        android:id="@+id/img_station"
+                        android:id="@+id/img_station_home"
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_50sdp"
                         android:layout_marginTop="10dp"

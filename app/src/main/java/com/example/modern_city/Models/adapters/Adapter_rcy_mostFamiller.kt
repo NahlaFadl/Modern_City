@@ -5,9 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.modern_city.API_SERVIECS.LoginRespons
 import com.example.modern_city.R
+import com.example.modern_city.ui.categories.Categories
 
-class Adapter_rcy_mostFamiller(private val mList: List<model_home_mostFamalier>)
+class Adapter_rcy_mostFamiller(private val mList: List<LoginRespons>)
     : RecyclerView.Adapter<Adapter_rcy_mostFamiller.ViewHolder>() {
 
     // create new views

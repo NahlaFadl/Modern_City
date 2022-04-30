@@ -25,7 +25,6 @@ class RecyclerCHB_Adapter(var places: List<ListOfPlaceType>):RecyclerView.Adapte
 
 
         holder.CHB_Txt.text=itemviewmodel.Places_By_Place_Type[position].place_name
-        holder.CHB_Txt2.text=itemviewmodel.Places_By_Place_Type[position].place_name
         val context=holder.CHB_Txt.context
         var intent= Intent(context, CategoryDetailsActivity::class.java)
         intent.putExtra("place_id",itemviewmodel.Places_By_Place_Type[position].place_id)
@@ -45,6 +44,6 @@ class RecyclerCHB_Adapter(var places: List<ListOfPlaceType>):RecyclerView.Adapte
 
         val CHB_Photo=itemView.CHB_Image as ImageView
         val CHB_Txt: TextView = itemView.CHB_Txt
-        val CHB_Txt2: TextView = itemView.CHB_Txt2
+
     }
 }

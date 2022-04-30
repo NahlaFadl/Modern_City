@@ -41,7 +41,7 @@ class CategoryDetailsActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<PlaceDetailsResponse>?, t: Throwable?) {
-                    TODO("Not yet implemented")
+
                 }
             })
 

@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,9 +20,10 @@ import com.example.modern_city.Models.*
 import com.example.modern_city.Models.adapters.Adapter_rcy_mainService
 import com.example.modern_city.Models.adapters.Adapter_rcy_mostFamiller
 import com.example.modern_city.Models.adapters.Adapter_slider
+import com.example.modern_city.ui.categories.Categories
 import com.example.modern_city.ui.profiles.ProfileActivity
 import com.smarteist.autoimageslider.SliderView
-import kotlinx.android.synthetic.main.fragment_home_fagment.user_imageProf
+import kotlinx.android.synthetic.main.fragment_home_fagment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,6 +37,14 @@ class HomeFagment : Fragment() {
     ): View? {
         var view:View
         view=inflater.inflate(R.layout.fragment_home_fagment, container, false)
+
+        var tx_crafs =view.findViewById<TextView>(R.id.txt_crafs)
+
+        tx_crafs.setOnClickListener {
+            val intto:Intent= Intent(activity,Categories::class.java)
+            startActivity(intto)
+        }
+
 
         val sharedPreferences = requireActivity().applicationContext
             .getSharedPreferences("userInfo_login",Context.MODE_PRIVATE)

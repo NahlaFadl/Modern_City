@@ -65,5 +65,38 @@ interface API {
 
     ):Call<PlaceDetailsResponse>
 
+    //git crafsType
+    @FormUrlEncoded
+    @POST("api/auth/craftsman_type/show_all_crafts_types")
+    @Headers("Accept: application/json")
+    fun gitCrafsTypes(
+        @Field("token") token:String
+
+
+    ):Call<CrafsTypes_Response>
+
+
+
+    //////getCrafsByType
+    @FormUrlEncoded
+    @POST("api/auth/craftsman/show_crafts_by_craftsman_type")
+    @Headers("Accept: application/json")
+    fun getCrafsByType(
+        @Field("token") token:String,
+        @Field("craftsman_type_id") craftsman_type_id:Int
+
+    ):Call<ListOfCrafs_Response>
+
+    //////crafdetails
+    @FormUrlEncoded
+    @POST("api/auth/craftsman/show_details_of_craftsman")
+    @Headers("Accept: application/json")
+    fun getCrafsDetails(
+
+        @Field("token") token:String,
+        @Field("craftsman_id") craftsman_id:Int
+
+    ):Call<Crafs_Details_Responce>
+
 
 }
