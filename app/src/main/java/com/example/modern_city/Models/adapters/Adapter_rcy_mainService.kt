@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.modern_city.Models.CategoriesRespon
@@ -30,11 +31,14 @@ class Adapter_rcy_mainService(private val mList: List<CategoriesRespon>): Recycl
         holder.itemView.setOnClickListener {
 
             val context=holder.textView.context
+            holder.textView.setOnClickListener {
+                var intent= Intent(context, Categories_CHB::class.java)
+                intent.putExtra("typeId",ItemsViewModel.All_Places_Types[position].place_type_id)
+                Toast.makeText(context,ItemsViewModel.All_Places_Types[position].place_type_name,
+                    Toast.LENGTH_SHORT).show()
+                context.startActivity(intent)
+            }
 
-            var intent= Intent(context, Categories_CHB::class.java)
-            intent.putExtra("typeId",ItemsViewModel.All_Places_Types[position].place_type_id)
-
-            context.startActivity(intent)
         }
     }
 

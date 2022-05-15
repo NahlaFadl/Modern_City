@@ -23,7 +23,7 @@ interface API {
         @Field("gender")gender:String,
         @Field("password")password:String,
         @Field("address")address:String,
-        @Field("phone")phone:Long
+        @Field("phone")phone:String
         ): Call<UserRegister>
 
      //login
@@ -99,4 +99,20 @@ interface API {
     ):Call<Crafs_Details_Responce>
 
 
+    //showFavourite
+    @FormUrlEncoded
+    @POST("api/auth/favourite_places_list/show_favorite")
+    @Headers("Accept: application/json")
+    fun showFavourite(
+        @Field("token") token:String
+    ):Call<ShowFavouriteResponse>
+
+    //addFavourites
+    @FormUrlEncoded
+    @POST("api/auth/favourite_places_list/add_to_favorite")
+    @Headers("Accept: application/json")
+    fun addFavourites(
+        @Field("token") token:String,
+        @Field("place_id") place_id:Int
+    ):Call<AddFavourite>
 }
