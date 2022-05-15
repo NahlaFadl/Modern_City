@@ -53,7 +53,7 @@ class Categories_CHB : AppCompatActivity() {
                     ) {
                         Toast.makeText(this@Categories_CHB,response?.body()?.msg.toString(),
                             Toast.LENGTH_LONG).show()
-                        var listSize:Int?=response?.body()?.Places_By_Place_Type?.size
+                        var listSize:Int?=response?.body()?.places_by_place_type?.size
                         var placeArray:ArrayList<ListOfPlaceType> = ArrayList()
                         for (i in  1..listSize!!){
 

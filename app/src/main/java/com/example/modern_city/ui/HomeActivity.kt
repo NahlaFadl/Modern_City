@@ -6,12 +6,12 @@ import androidx.fragment.app.Fragment
 import com.example.modern_city.Fragment.HomeFagment
 import com.example.modern_city.R
 import com.example.modern_city.ui.fragment.AboutUsFragment
-import com.example.modern_city.ui.fragment.FavoriteFragment
+import com.example.modern_city.ui.fragment.FavoritesFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
     private val homeFragment=HomeFagment()
-    private val favoriteFragment= FavoriteFragment()
+    private val favoritesFragment= FavoritesFragment()
     private val aboutUsFragment= AboutUsFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
         btn_bottomNavigation .setOnNavigationItemReselectedListener { item ->
             when(item.itemId) {
                 R.id.favorite -> {
-                    replaceFragment(favoriteFragment)
+                    replaceFragment(favoritesFragment)
                     true
                 }
                 R.id.home -> {

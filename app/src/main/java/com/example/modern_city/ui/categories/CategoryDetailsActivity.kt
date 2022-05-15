@@ -4,9 +4,12 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.modern_city.API_SERVIECS.AddFavourite
 import com.example.modern_city.API_SERVIECS.ApiClient
 import com.example.modern_city.API_SERVIECS.PlaceDetailsResponse
 import com.example.modern_city.R
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_category_details.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,13 +19,18 @@ class CategoryDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category_details)
         supportActionBar?.hide()
-
+        var photo:String= intent?.extras?.get("Photo") as String
+        Picasso.get().load(photo).into(ReataurateImage)
+        var phone:String= intent.extras?.get("phone") as String
+        category_phone.text=phone
         var id:Int= intent.extras?.get("place_id") as Int
         val sharedPreferences = this.getSharedPreferences("userInfo_login", Context.MODE_PRIVATE)
         var token=sharedPreferences.getString("token",null).toString()
         if (id!=null||token!=null){
 
+            Toast.makeText(this,"id=="+id.toShort()+"\n token=="+token,Toast.LENGTH_SHORT).show()
             loadData(token,id)
+            addFavorite(token,id)
         }
     }
 
@@ -50,5 +58,36 @@ class CategoryDetailsActivity : AppCompatActivity() {
             Toast.makeText(this@CategoryDetailsActivity,"call eqal null",Toast.LENGTH_LONG).show()
 
         }
+    }
+
+    fun addFavorite(token:String,place_id:Int){
+
+        favorite_categories.setOnClickListener {
+            val call=ApiClient.instance?.getMyApi()?.addFavourites(token,place_id)
+            if (call!=null) {
+
+                call?.enqueue(object : Callback<AddFavourite> {
+                    override fun onResponse(
+                        call: Call<AddFavourite>?,
+                        response: Response<AddFavourite>?
+                    ) {
+
+                        Toast.makeText(this@CategoryDetailsActivity,response?.body()?.msg,Toast.LENGTH_SHORT).show()
+
+                    }
+
+                    override fun onFailure(call: Call<AddFavourite>?, t: Throwable?) {
+
+                    }
+                })
+
+            }
+            else{
+                Toast.makeText(this@CategoryDetailsActivity,"call eqal null",Toast.LENGTH_LONG).show()
+
+            }
+
+        }
+
     }
 }

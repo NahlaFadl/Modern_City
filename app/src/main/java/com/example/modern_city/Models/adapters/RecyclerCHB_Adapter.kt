@@ -11,6 +11,7 @@ import com.example.modern_city.API_SERVIECS.ListOfPlaceType
 import com.example.modern_city.R
 import com.example.modern_city.ui.categories.Categories_CHB
 import com.example.modern_city.ui.categories.CategoryDetailsActivity
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_recycler_chb.view.*
 
 class RecyclerCHB_Adapter(var places: List<ListOfPlaceType>):RecyclerView.Adapter<RecyclerCHB_Adapter.ViewHolder>() {
@@ -22,14 +23,18 @@ class RecyclerCHB_Adapter(var places: List<ListOfPlaceType>):RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val itemviewmodel=places[position]
-
-
-        holder.CHB_Txt.text=itemviewmodel.Places_By_Place_Type[position].place_name
+        holder.CHB_Txt.text=itemviewmodel.places_by_place_type[position].place_name
+        Picasso.get().load(itemviewmodel.places_by_place_type[position].big_img).into(holder.CHB_Photo)
         val context=holder.CHB_Txt.context
-        var intent= Intent(context, CategoryDetailsActivity::class.java)
-        intent.putExtra("place_id",itemviewmodel.Places_By_Place_Type[position].place_id)
 
-        context.startActivity(intent)
+        holder.CHB_Txt.setOnClickListener {
+            var intent= Intent(context, CategoryDetailsActivity::class.java)
+            intent.putExtra("place_id",itemviewmodel.places_by_place_type[position].place_id)
+            intent.putExtra("phone",itemviewmodel.places_by_place_type[position].phone)
+            intent.putExtra("Photo",itemviewmodel.places_by_place_type[position].big_img)
+            context.startActivity(intent)
+        }
+
 
 //        holder.CHB_Txt.setText(places.get(position).title)
 //

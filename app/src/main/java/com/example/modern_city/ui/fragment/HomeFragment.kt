@@ -88,7 +88,7 @@ class HomeFagment : Fragment() {
                     call: Call<CategoriesRespon>?,
                     response: Response<CategoriesRespon>?
                 ) {
-                    Toast.makeText(activity,response?.body()?.All_Places_Types.toString(),Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity,response?.body()?.msg,Toast.LENGTH_LONG).show()
 
 
 
