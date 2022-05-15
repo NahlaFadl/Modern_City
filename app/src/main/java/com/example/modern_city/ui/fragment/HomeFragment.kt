@@ -187,6 +187,11 @@ class HomeFagment : Fragment() {
     }
 
 
+    fun loaddata(){
+
+        
+    }
+
 
 
 
