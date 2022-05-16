@@ -125,7 +125,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/slider" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcy_mostFamilyer"
+                android:id="@+id/rcy_famousPlaces"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_80sdp"
                 android:layout_marginTop="@dimen/_20sdp"
@@ -140,7 +140,7 @@
                 android:layout_marginEnd="25dp"
                 android:background="@drawable/ic_notation"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rcy_mostFamilyer" />
+                app:layout_constraintTop_toBottomOf="@+id/rcy_famousPlaces" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -153,7 +153,7 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/textView15"
-                app:layout_constraintTop_toBottomOf="@+id/rcy_mostFamilyer" />
+                app:layout_constraintTop_toBottomOf="@+id/rcy_famousPlaces" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/crafs_cardview"

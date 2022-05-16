@@ -5,11 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.modern_city.API_SERVIECS.FamousPlacesResponse
 import com.example.modern_city.API_SERVIECS.LoginRespons
 import com.example.modern_city.R
 import com.example.modern_city.ui.categories.Categories
+import com.squareup.picasso.Picasso
 
-class Adapter_rcy_mostFamiller(private val mList: List<LoginRespons>)
+class Adapter_rcy_mostFamiller(private val mList: List<FamousPlacesResponse>)
     : RecyclerView.Adapter<Adapter_rcy_mostFamiller.ViewHolder>() {
 
     // create new views
@@ -26,13 +28,7 @@ class Adapter_rcy_mostFamiller(private val mList: List<LoginRespons>)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val ItemsViewModel = mList[position]
-
-        // sets the image to the imageview from our itemHolder class
-      //  holder.imageView.setImageResource(ItemsViewModel.image)
-
-        // sets the text to the textview from our itemHolder class
-     //   holder.textView.text = ItemsViewModel.text
-
+        Picasso.get().load(ItemsViewModel.famous_places[position].small_img).into(holder.imageView)
     }
 
     // return the number of the items in the list

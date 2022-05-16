@@ -115,4 +115,21 @@ interface API {
         @Field("token") token:String,
         @Field("place_id") place_id:Int
     ):Call<AddFavourite>
+
+    //deleteFavourites
+    @FormUrlEncoded
+    @POST("api/auth/favourite_places_list/delete_from_favorite")
+    @Headers("Accept: application/json")
+    fun deleteFavourites(
+        @Field("token") token:String,
+        @Field("place_id") place_id:Int
+    ):Call<DeleteFavourite>
+
+    //FamousPlace
+    @FormUrlEncoded
+    @POST("api/auth/places/show_famous_places")
+    @Headers("Accept: application/json")
+    fun getFamousPlace(
+        @Field("token") token:String
+    ):Call<FamousPlacesResponse>
 }
