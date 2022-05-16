@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.modern_city.*
 import com.example.modern_city.API_SERVIECS.ApiClient
+import com.example.modern_city.API_SERVIECS.FamousPlacesResponse
 import com.example.modern_city.Models.*
 import com.example.modern_city.Models.adapters.Adapter_rcy_mainService
 import com.example.modern_city.Models.adapters.Adapter_rcy_mostFamiller
@@ -30,6 +31,10 @@ import retrofit2.Response
 
 
 class HomeFagment : Fragment() {
+    //inti Recycler famous places
+    lateinit var recyclerFamousPlaces:RecyclerView
+    // inti Recycler Main Service
+    lateinit var rcy_mainservice:RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,20 +70,60 @@ class HomeFagment : Fragment() {
         setImageInSlider(imageList, imageSlider)
 
 //////////////////////////////////////////////////
-        // getting the recyclerview by its id
-        val rcy_mainservice =view.findViewById<RecyclerView>(R.id.rcy_mainService)
+        /** famous places */
+         recyclerFamousPlaces=view.findViewById<RecyclerView>(R.id.rcy_famousPlaces)
+        recyclerFamousPlaces.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.HORIZONTAL, false)
+        famousPlaces(sharedPreferences.getString("token",null).toString())
 
-         // this creates a vertical layout Manager
-        //    rcy_mainservice.layoutManager = LinearLayoutManager(activity)
+        /** main service */
+         rcy_mainservice =view.findViewById<RecyclerView>(R.id.rcy_mainService)
+        // this creates a vertical layout Manager
         rcy_mainservice.apply {
-            layoutManager = GridLayoutManager(activity, 2)
-        }
+            layoutManager = GridLayoutManager(activity, 2) }
+        mainServices(sharedPreferences.getString("token",null).toString())
 
+        return view
+    }
 
-      //   val adapter_mainservice = Adapter_rcy_mainService(data_mainservice)
-
+    // function to get famous places
+    fun famousPlaces(token:String){
         var call=ApiClient.instance?.getMyApi()
-        ?.gitCategory(sharedPreferences.getString("token",null).toString())
+            ?.getFamousPlace(token)
+
+
+        if (call!=null){
+
+            call.enqueue(object : Callback<FamousPlacesResponse>{
+                override fun onResponse(
+                    call: Call<FamousPlacesResponse>?,
+                    response: Response<FamousPlacesResponse>?
+                ) {
+                    Toast.makeText(activity,response?.body()?.status.toString()+"\nfffffffffff",Toast.LENGTH_LONG).show()
+
+
+
+                    var listSize: Int? = response?.body()?.famous_places?.size
+                    var famousPlaceArray: ArrayList<FamousPlacesResponse> = ArrayList()
+
+                    for (i in 1..listSize!!) {
+                        famousPlaceArray.add(response?.body()!!)
+                    }
+                    val adapter = Adapter_rcy_mostFamiller(famousPlaceArray!!)
+                    recyclerFamousPlaces.adapter = adapter
+                }
+
+                override fun onFailure(call: Call<FamousPlacesResponse>?, t: Throwable?) {
+                    TODO("Not yet implemented")
+                }
+            })
+
+        }
+    }
+
+    // function to get main service
+    fun mainServices(token:String){
+        var call=ApiClient.instance?.getMyApi()
+            ?.gitCategory(token)
 
 
         if (call!=null){
@@ -108,62 +153,6 @@ class HomeFagment : Fragment() {
             })
 
         }
-/////////////////////////////////////////////////////
-//        val retrofit: Retrofit =
-//            Retrofit.Builder().baseUrl("https://btmteamwork.com/sys/mass3ood/new_modern_city/public/")
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build()
-//       val myApi:API = retrofit.create(API::class.java)
-//        val cal=myApi.gitCategory("6qdRKiPGJjkzbMBhuMyj2022-04-17 23:14:57cY662dMTps6WfRV6pfAFe")
-
-
-
-        //////////////////////////////
-
-
-//        // ArrayList of class ItemsViewModel
-//     //   val data_mainservice = ArrayList<model_home_main_service>()
-//
-//         // This loop will create 20 Views containing
-//        // the image with the count of view
-//        for (i in 1..20) {
-//           // data_mainservice.add(model_home_main_service(R.drawable.ic_favorite,"jj"))
-//
-//        }
-//
-//        // This will pass the ArrayList to our Adapter
-//        val adapter_mainservice = Adapter_rcy_mainService(data_mainservice)
-//
-//        // Setting the Adapter with the recyclerview
-//        rcy_mainservice.adapter = adapter_mainservice
-
-
-////////////////////////////////////
-//
-//        val recyclerview =view.findViewById<RecyclerView>(R.id.rcy_mostFamilyer)
-//
-//        // this creates a vertical layout Manager
-//        recyclerview.layoutManager = LinearLayoutManager(activity,LinearLayoutManager
-//            .HORIZONTAL, false)
-//
-//        // ArrayList of class ItemsViewModel
-//        val data = ArrayList<model_home_mostFamalier>()
-//
-//        // This loop will create 20 Views containing
-//        // the image with the count of view
-//        for (i in 1..20) {
-//            data.add(model_home_mostFamalier(R.drawable.dog))
-//        }
-//
-//        // This will pass the ArrayList to our Adapter
-//        val adapter = Adapter_rcy_mostFamiller(data)
-//
-//        // Setting the Adapter with the recyclerview
-//        recyclerview.adapter = adapter
-
-         ////////////////////////////////
-
-        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -173,10 +162,8 @@ class HomeFagment : Fragment() {
             val intent= Intent(activity, ProfileActivity::class.java)
             startActivity(intent)
 
-          //  rcy_mainservice.layoutManager= LinearLayoutManager(this, LinearLayout.VERTICAL,false)
         }
     }
-
 
     private fun setImageInSlider(images: ArrayList<String>, imageSlider: SliderView) {
         val adapter = Adapter_slider()

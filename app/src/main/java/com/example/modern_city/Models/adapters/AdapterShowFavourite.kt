@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.item_recycler_favourite.view.*
 class AdapterShowFavourite (var favouritePlaces: List<ShowFavouriteResponse>): RecyclerView.Adapter<AdapterShowFavourite.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v= LayoutInflater.from(parent.context).inflate(R.layout.item_recycler_favourite,parent,false)
+        val v= LayoutInflater.from(parent.context).inflate(R.layout.item_recycler_chb,parent,false)
         return ViewHolder(v)
     }
 
@@ -48,8 +48,8 @@ class AdapterShowFavourite (var favouritePlaces: List<ShowFavouriteResponse>): R
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-        val CHB_Photo=itemView.CHB_ImageF as ImageView
-        val CHB_Txt: TextView = itemView.CHB_TxtF
+        val CHB_Photo=itemView.CHB_Image as ImageView
+        val CHB_Txt: TextView = itemView.CHB_Txt
 
     }
 }

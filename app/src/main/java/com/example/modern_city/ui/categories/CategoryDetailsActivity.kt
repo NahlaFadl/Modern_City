@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.modern_city.API_SERVIECS.AddFavourite
 import com.example.modern_city.API_SERVIECS.ApiClient
+import com.example.modern_city.API_SERVIECS.DeleteFavourite
 import com.example.modern_city.API_SERVIECS.PlaceDetailsResponse
 import com.example.modern_city.R
 import com.squareup.picasso.Picasso
@@ -15,6 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class CategoryDetailsActivity : AppCompatActivity() {
+    var c:Int?=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category_details)
@@ -30,7 +32,20 @@ class CategoryDetailsActivity : AppCompatActivity() {
 
             Toast.makeText(this,"id=="+id.toShort()+"\n token=="+token,Toast.LENGTH_SHORT).show()
             loadData(token,id)
-            addFavorite(token,id)
+
+            favorite_categories.setOnClickListener {
+
+
+                if (c==0){
+                    addFavorite(token,id)
+                    c=1
+                }
+                else if(c==1){
+                    deletedFavorite(token,id)
+                    c=0
+                }
+            }
+
         }
     }
 
@@ -60,9 +75,10 @@ class CategoryDetailsActivity : AppCompatActivity() {
         }
     }
 
+    // function add favourite
     fun addFavorite(token:String,place_id:Int){
 
-        favorite_categories.setOnClickListener {
+      //  favorite_categories.setOnClickListener {
             val call=ApiClient.instance?.getMyApi()?.addFavourites(token,place_id)
             if (call!=null) {
 
@@ -87,7 +103,39 @@ class CategoryDetailsActivity : AppCompatActivity() {
 
             }
 
-        }
+        //}
+
+    }
+
+    // delete favourite
+    fun deletedFavorite(token:String,place_id:Int){
+
+      //  favorite_categories.setOnClickListener {
+            val call=ApiClient.instance?.getMyApi()?.deleteFavourites(token,place_id)
+            if (call!=null) {
+
+                call?.enqueue(object : Callback<DeleteFavourite> {
+                    override fun onResponse(
+                        call: Call<DeleteFavourite>?,
+                        response: Response<DeleteFavourite>?
+                    ) {
+
+                        Toast.makeText(this@CategoryDetailsActivity,response?.body()?.msg,Toast.LENGTH_SHORT).show()
+
+                    }
+
+                    override fun onFailure(call: Call<DeleteFavourite>?, t: Throwable?) {
+
+                    }
+                })
+
+            }
+            else{
+                Toast.makeText(this@CategoryDetailsActivity,"call eqal null",Toast.LENGTH_LONG).show()
+
+            }
+
+        //}
 
     }
 }
