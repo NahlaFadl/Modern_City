@@ -12,7 +12,10 @@ import com.example.modern_city.API_SERVIECS.ApiClient
 import com.example.modern_city.API_SERVIECS.ListOfPlaceType
 import com.example.modern_city.R
 import com.example.modern_city.Models.adapters.RecyclerCHB_Adapter
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_catagories.*
 import kotlinx.android.synthetic.main.activity_categories_chb.*
+import kotlinx.android.synthetic.main.activity_category_details.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,7 +24,12 @@ import java.util.ArrayList
 class Categories_CHB : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_categories_chb)
+        setContentView(R.layout.activity_catagories)
+
+        var photo:String= intent?.extras?.get("photo") as String
+        Picasso.get().load(photo).into(photoType)
+        var name:String= intent.extras?.get("name") as String
+        type_name.text=name
        loadData()
 
 
@@ -60,12 +68,12 @@ class Categories_CHB : AppCompatActivity() {
                             placeArray.add(response?.body()!!)
                             val adapter = RecyclerCHB_Adapter(placeArray)
                             val layoutManager: RecyclerView.LayoutManager = StaggeredGridLayoutManager(
-                                2,
+                                1,
                                 StaggeredGridLayoutManager.VERTICAL
                             )
-                            recycler_categoriesCHB.setLayoutManager(layoutManager)
-                            recycler_categoriesCHB.setItemAnimator(DefaultItemAnimator())
-                            recycler_categoriesCHB.setAdapter(adapter)
+                            recycler_categories.setLayoutManager(layoutManager)
+                            recycler_categories.setItemAnimator(DefaultItemAnimator())
+                            recycler_categories.setAdapter(adapter)
                         }
 
                     }

@@ -72,10 +72,10 @@ class Categories : AppCompatActivity() {
                                     2,
                                     StaggeredGridLayoutManager.VERTICAL
                                 )
-                                rcy_crafstype.setLayoutManager(layoutManager)
-                                rcy_crafstype.setItemAnimator(DefaultItemAnimator())
-                                val adapter = Adapter_rcy_craftsTypes(crafsArray!!)
-                                rcy_crafstype.adapter = adapter
+//                                rcy_crafstype.setLayoutManager(layoutManager)
+//                                rcy_crafstype.setItemAnimator(DefaultItemAnimator())
+//                                val adapter = Adapter_rcy_craftsTypes(crafsArray!!)
+//                                rcy_crafstype.adapter = adapter
 
                             }
 

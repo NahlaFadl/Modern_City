@@ -22,12 +22,12 @@
             android:layout_height="match_parent"
             tools:context=".Fragment.HomeFagment">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/user_imageProf"
                 android:layout_width="51dp"
                 android:layout_height="57dp"
                 android:layout_marginStart="5dp"
-                android:src="@drawable/profil_circle_24"
+                android:src="@drawable/avatar_user"
                 app:layout_constraintBottom_toTopOf="@+id/slider"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView13" />
