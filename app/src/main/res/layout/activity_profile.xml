@@ -23,13 +23,13 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/photo_profile"
-        android:layout_width="@dimen/_50sdp"
-        android:layout_height="@dimen/_50sdp"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12"
-        android:background="@drawable/ic_camera_alt_24" />
+        android:src="@drawable/avatar_user" />
 
     <TextView
         android:id="@+id/txt_name_prof"
@@ -177,4 +177,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_addProfilePhoto"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_name_prof"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.577"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_btn_photo_camera" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

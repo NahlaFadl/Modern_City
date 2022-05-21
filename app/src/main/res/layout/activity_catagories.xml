@@ -12,22 +12,23 @@
         android:id="@+id/register_txtAct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
         android:layout_marginEnd="140dp"
+        android:layout_marginTop="10dp"
         android:text="الفئة"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/ic_arrow_forward"
+        app:layout_constraintBottom_toBottomOf="@+id/register_txtAct"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/register_txtAct" />
 
 
     <androidx.cardview.widget.CardView
@@ -35,7 +36,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="3dp"
@@ -61,24 +62,25 @@
         android:id="@+id/type_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="10dp"
         android:text="الصيدليات"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/photoType"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/photoType"
         android:layout_width="@dimen/_25sdp"
         android:layout_height="@dimen/_25sdp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
         android:src="@drawable/ic_camera_alt_24"
+        app:layout_constraintBottom_toBottomOf="@+id/type_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toTopOf="@+id/type_name" />
 
 
     <ProgressBar
@@ -93,14 +95,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcy_crafstype"
-        android:layout_width="409dp"
-        android:layout_height="525dp"
-        android:layout_marginTop="20dp"
+        android:id="@+id/recycler_categories"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/type_name" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

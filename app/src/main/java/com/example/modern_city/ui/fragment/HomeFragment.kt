@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.modern_city.*
 import com.example.modern_city.API_SERVIECS.ApiClient
+import com.example.modern_city.API_SERVIECS.DetailsUserResponse
 import com.example.modern_city.API_SERVIECS.FamousPlacesResponse
 import com.example.modern_city.Models.*
 import com.example.modern_city.Models.adapters.Adapter_rcy_mainService
@@ -23,7 +24,10 @@ import com.example.modern_city.Models.adapters.Adapter_slider
 import com.example.modern_city.ui.categories.CrafsType
 import com.example.modern_city.ui.profiles.ProfileActivity
 import com.smarteist.autoimageslider.SliderView
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.fragment_home_fagment.*
+import kotlinx.android.synthetic.main.fragment_home_fagment.user_imageProf
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -82,7 +86,36 @@ class HomeFagment : Fragment() {
             layoutManager = GridLayoutManager(activity, 2) }
         mainServices(sharedPreferences.getString("token",null).toString())
 
+        /** getUserProfile */
+        getUserProfile(sharedPreferences.getString("token",null).toString(),sharedPreferences.getInt("user_id",0))
         return view
+    }
+
+    fun getUserProfile(Token:String,ID:Int){
+        var call= ApiClient.instance?.getMyApi()?.showUserDetails(Token,ID)
+
+        if (call != null){
+
+            call.enqueue(object : Callback<DetailsUserResponse> {
+                override fun onResponse(
+                    call: Call<DetailsUserResponse>?,
+                    response: Response<DetailsUserResponse>?
+                ) {
+
+                    Toast.makeText(activity,response?.body()?.details_of_user?.email, Toast.LENGTH_LONG).show()
+
+                    Picasso.get().load(response?.body()?.details_of_user?.user_img).into(user_imageProf)
+
+                }
+
+                override fun onFailure(call: Call<DetailsUserResponse>?, t: Throwable?) {
+                    Toast.makeText(activity,"Faliar"
+                        , Toast.LENGTH_LONG).show()
+                }
+
+            } )
+        }else
+            Toast.makeText(activity,"Faliar222", Toast.LENGTH_LONG).show()
     }
 
     // function to get famous places

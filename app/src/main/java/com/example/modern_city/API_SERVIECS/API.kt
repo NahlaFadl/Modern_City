@@ -132,4 +132,13 @@ interface API {
     fun getFamousPlace(
         @Field("token") token:String
     ):Call<FamousPlacesResponse>
+
+    //showUserDetails
+    @FormUrlEncoded
+    @POST("api/show_details_of_user")
+    @Headers("Accept: application/json")
+    fun showUserDetails(
+        @Field("token") token:String,
+        @Field("user_id") place_id:Int
+    ):Call<DetailsUserResponse>
 }
