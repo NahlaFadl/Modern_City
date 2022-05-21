@@ -12,6 +12,7 @@ data class ListOfCrafs_Response(
 data class CraftsmansByCraftsmanType(
     val craftsman_id: Int,
     val craftsman_img: String,
+    val craftsman_rate: Int,
     val craftsman_type_name: String,
     val description: String,
     val first_name: String,

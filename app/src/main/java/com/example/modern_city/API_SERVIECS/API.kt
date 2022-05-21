@@ -61,7 +61,7 @@ interface API {
     @Headers("Accept: application/json")
     fun getPlaceDetails(
         @Field("token") token:String,
-        @Field("place_type_id") place_id:Int
+        @Field("place_id") place_id:Int
 
     ):Call<PlaceDetailsResponse>
 

@@ -1,28 +1,26 @@
 package com.example.modern_city.ui.categories
 
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import android.widget.Toast
+import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.modern_city.API_SERVIECS.ApiClient
 import com.example.modern_city.API_SERVIECS.CrafsTypes_Response
-import com.example.modern_city.Models.CategoriesRespon
 import com.example.modern_city.Models.adapters.Adapter_rcy_craftsTypes
-import com.example.modern_city.Models.adapters.Adapter_rcy_mainService
 import com.example.modern_city.R
 import kotlinx.android.synthetic.main.activity_catagories.*
 import kotlinx.android.synthetic.main.activity_categories_chb.*
+import kotlinx.android.synthetic.main.activity_craftsman_register.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class Categories : AppCompatActivity() {
+class CrafsType : AppCompatActivity() {
     // var  rcy_crafstype =findViewById<RecyclerView>(R.id.rcy_crafstype)
 
 
@@ -30,17 +28,11 @@ class Categories : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_catagories)
         // rcy_crafstype =findViewById<RecyclerView>(R.id.rcy_crafstype)
+        prog_crafstype.visibility= View.VISIBLE
+   var name:String= intent.extras?.getString("categoryName").toString()
+        type_name.text=name
 
 
-//        ///////
-//        val layoutManager: RecyclerView.LayoutManager = StaggeredGridLayoutManager(
-//            2,
-//            StaggeredGridLayoutManager.VERTICAL
-//        )
-//        rcy_crafstype.setLayoutManager(layoutManager)
-//        rcy_crafstype.setItemAnimator(DefaultItemAnimator())
-//        /////////
-////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////
         val sharedPreferences = this.getSharedPreferences("userInfo_login", Context.MODE_PRIVATE)
@@ -78,18 +70,18 @@ class Categories : AppCompatActivity() {
                                 rcy_crafstype.adapter = adapter
 
                             }
-
+                            prog_crafstype.visibility= View.INVISIBLE
 
                         }
 
                         override fun onFailure(call: Call<CrafsTypes_Response>?, t: Throwable?) {
-                            Toast.makeText(this@Categories, "responce =0", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@CrafsType, "responce =0", Toast.LENGTH_LONG).show()
                         }
                     })
 
 
                 } else
-                    Toast.makeText(this@Categories, "call =0", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@CrafsType, "call =0", Toast.LENGTH_LONG).show()
 
 
             }catch (e:Exception){
@@ -101,7 +93,7 @@ class Categories : AppCompatActivity() {
 
         }else
         {
-            Toast.makeText(this@Categories,"tokent =0",Toast.LENGTH_LONG).show()        }
+            Toast.makeText(this@CrafsType,"tokent =0",Toast.LENGTH_LONG).show()        }
 
 
     }

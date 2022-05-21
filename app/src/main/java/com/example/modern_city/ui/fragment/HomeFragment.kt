@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
@@ -21,7 +20,7 @@ import com.example.modern_city.Models.*
 import com.example.modern_city.Models.adapters.Adapter_rcy_mainService
 import com.example.modern_city.Models.adapters.Adapter_rcy_mostFamiller
 import com.example.modern_city.Models.adapters.Adapter_slider
-import com.example.modern_city.ui.categories.Categories
+import com.example.modern_city.ui.categories.CrafsType
 import com.example.modern_city.ui.profiles.ProfileActivity
 import com.smarteist.autoimageslider.SliderView
 import kotlinx.android.synthetic.main.fragment_home_fagment.*
@@ -46,7 +45,8 @@ class HomeFagment : Fragment() {
         var tx_crafs =view.findViewById<TextView>(R.id.txt_crafs)
 
         tx_crafs.setOnClickListener {
-            val intto:Intent= Intent(activity,Categories::class.java)
+            val intto:Intent= Intent(activity,CrafsType::class.java)
+            intto.putExtra("categoryName","خدمة الصنايعي")
             startActivity(intto)
         }
 

@@ -30,36 +30,36 @@
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_80sdp"
                 android:layout_marginEnd="25dp"
-                android:src="@drawable/dog"
+                android:background="#D6D3D3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txt_crafsName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_10sdp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="25dp"
-                android:text="TextView"
+                android:background="#D6D3D3"
                 app:layout_constraintEnd_toStartOf="@+id/img_craftsman"
                 app:layout_constraintTop_toTopOf="@+id/img_craftsman" />
 
             <TextView
                 android:id="@+id/txt_crafs_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_10sdp"
                 android:layout_marginTop="15dp"
-                android:text="TextView"
+                android:background="#D6D3D3"
                 app:layout_constraintEnd_toEndOf="@+id/txt_crafsName"
                 app:layout_constraintTop_toBottomOf="@+id/txt_crafsName" />
 
             <TextView
                 android:id="@+id/star"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_10sdp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/ic_star"
+                android:background="#D6D3D3"
                 app:layout_constraintEnd_toEndOf="@+id/txt_crafs_desc"
                 app:layout_constraintTop_toBottomOf="@+id/txt_crafs_desc" />
 
@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:text="TextView"
+                android:background="#D6D3D3"
                 app:layout_constraintEnd_toStartOf="@+id/star"
                 app:layout_constraintTop_toTopOf="@+id/star" />
 

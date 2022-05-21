@@ -3,11 +3,13 @@ package com.example.modern_city.ui.categories
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
-import com.example.modern_city.API_SERVIECS.AddFavourite
-import com.example.modern_city.API_SERVIECS.ApiClient
-import com.example.modern_city.API_SERVIECS.DeleteFavourite
-import com.example.modern_city.API_SERVIECS.PlaceDetailsResponse
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.modern_city.API_SERVIECS.*
+import com.example.modern_city.Models.adapters.Adapter_detailsOfPlace
+import com.example.modern_city.Models.adapters.Adapter_rcy_mostFamiller
 import com.example.modern_city.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_category_details.*
@@ -20,34 +22,50 @@ class CategoryDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category_details)
-        supportActionBar?.hide()
-        var photo:String= intent?.extras?.get("Photo") as String
-        Picasso.get().load(photo).into(ReataurateImage)
-        var phone:String= intent.extras?.get("phone") as String
-        category_phone.text=phone
-        var id:Int= intent.extras?.get("place_id") as Int
-        val sharedPreferences = this.getSharedPreferences("userInfo_login", Context.MODE_PRIVATE)
-        var token=sharedPreferences.getString("token",null).toString()
-        if (id!=null||token!=null){
-
-            Toast.makeText(this,"id=="+id.toShort()+"\n token=="+token,Toast.LENGTH_SHORT).show()
-            loadData(token,id)
-
-            favorite_categories.setOnClickListener {
 
 
-                if (c==0){
-                    addFavorite(token,id)
-                    c=1
+
+        try {
+            supportActionBar?.hide()
+            var photo:String= intent?.extras?.get("Photo") as String
+            Picasso.get().load(photo).into(ReataurateImage)
+            var phone:String= intent.extras?.get("phone") as String
+            category_phone.text=phone
+            var id:Int= intent.extras?.get("place_id") as Int
+
+
+
+            val sharedPreferences = this.getSharedPreferences("userInfo_login", Context.MODE_PRIVATE)
+            var token=sharedPreferences.getString("token",null).toString()
+
+            if (id!=null&&token!=null){
+
+                loadData(token,id)
+
+
+
+                favorite_categories.setOnClickListener {
+
+
+                    if (c==0){
+                        addFavorite(token,id)
+                        c=1
+                    }
+                    else if(c==1){
+                        deletedFavorite(token,id)
+                        c=0
+                    }
                 }
-                else if(c==1){
-                    deletedFavorite(token,id)
-                    c=0
-                }
+
             }
-
+        }catch (e:Exception){
+            throw e
         }
+
     }
+
+
+
 
 
     fun loadData(token:String,place_id:Int){
@@ -61,9 +79,26 @@ class CategoryDetailsActivity : AppCompatActivity() {
                     response: Response<PlaceDetailsResponse>?
                 ) {
 
+
+               var list: List<String>? =response?.body()?.details_of_place?.slider_img
+                    Log.d("rr",response?.body()?.msg.toString())
+                   // Toast.makeText(this,response?.body()?.details_of_place?.slider_img.toString(),Toast.LENGTH_SHORT).show()
+
+
+                  rcy_menuslider.layoutManager = LinearLayoutManager(this@CategoryDetailsActivity,
+                       LinearLayoutManager.HORIZONTAL, false)
+
+//
+//
+                   val adapter = list?.let { Adapter_detailsOfPlace(it,this@CategoryDetailsActivity) }
+                    rcy_menuslider.adapter = adapter
+
+
+
                 }
 
                 override fun onFailure(call: Call<PlaceDetailsResponse>?, t: Throwable?) {
+
 
                 }
             })
@@ -138,4 +173,8 @@ class CategoryDetailsActivity : AppCompatActivity() {
         //}
 
     }
+
+
+
+
 }

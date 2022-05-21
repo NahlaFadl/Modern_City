@@ -133,6 +133,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/category_phone" />
 
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcy_menuslider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/favorite_categories" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

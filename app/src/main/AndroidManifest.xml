@@ -46,24 +46,26 @@
         <activity
             android:name=".ui.auth.RegisterActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
             android:name=".ui.profiles.ProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.categories.Categories"
+            android:name=".ui.categories.CrafsType"
             android:exported="true">
 
         </activity>
         <activity
             android:name=".ui.auth.LoginActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
         <activity
             android:name=".UserTypeActivity"
@@ -75,6 +77,7 @@
             android:name=".SplashActivity"
             android:exported="true"
             tools:ignore="DuplicateActivity">
+
 
         </activity>
     </application>
