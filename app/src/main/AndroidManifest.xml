@@ -12,6 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Modern_City">
+
+<!--        map-->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <activity
             android:name=".UploadPhoto.MainUploadPhotoActivity"
             android:exported="true" >
@@ -58,7 +64,7 @@
             android:name=".ui.profiles.ProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.categories.Categories"
+            android:name=".ui.categories.CrafsType"
             android:exported="true">
         </activity>
         <activity
@@ -81,6 +87,7 @@
             android:name=".SplashActivity"
             android:exported="true"
             tools:ignore="DuplicateActivity">
+
 
         </activity>
     </application>

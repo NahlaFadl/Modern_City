@@ -61,7 +61,7 @@ interface API {
     @Headers("Accept: application/json")
     fun getPlaceDetails(
         @Field("token") token:String,
-        @Field("place_type_id") place_id:Int
+        @Field("place_id") place_id:Int
 
     ):Call<PlaceDetailsResponse>
 
@@ -141,4 +141,12 @@ interface API {
         @Field("token") token:String,
         @Field("user_id") place_id:Int
     ):Call<DetailsUserResponse>
+
+    //////userLogOut
+    @FormUrlEncoded
+    @POST("api/logout_user")
+    @Headers("Accept: application/json")
+    fun userLogOut(
+        @Field("token") token:String
+    ):Call<LogoutResponse>
 }

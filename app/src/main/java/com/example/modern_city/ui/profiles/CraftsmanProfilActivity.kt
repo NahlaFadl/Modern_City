@@ -40,7 +40,7 @@ class CraftsmanProfilActivity : AppCompatActivity() {
 
              txt_crafsprofile_username.text= response?.body()?.details_of_craftsman?.first_name+" "+
                      response?.body()?.details_of_craftsman?.last_name
-                        
+
            txt_profile_crafs_description.text=response?.body()?.details_of_craftsman?.description.toString()
 
 

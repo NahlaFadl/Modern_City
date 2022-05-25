@@ -23,9 +23,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         supportActionBar?.hide()
 
-
+        //to login
         txt_login.setOnClickListener {
-
             var email=edt_login_username.text.toString().trim()
             var pass=edt_login_userPassword.text.toString().trim()
             if (email.equals(null)||pass.equals(null)){
@@ -36,17 +35,16 @@ class LoginActivity : AppCompatActivity() {
                 login(email,pass)
 
             }
-
         }
-//
-//        txt_register.setOnClickListener {
-//            val intent= Intent(this,RegisterActivity::class.java)
-//            startActivity(intent)
-//        }
 
-
+        // to go to register
+        txt_toRegister.setOnClickListener {
+            val intent= Intent(this,RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 
+    // login function
     fun login(email:String,password:String){
         var redisterinfo: SharedPreferences =getSharedPreferences("userInfo_login", Context.MODE_PRIVATE)
         val editor =redisterinfo.edit()
@@ -89,16 +87,9 @@ class LoginActivity : AppCompatActivity() {
                 }
 
             } )
-
-
-
         }else
             Toast.makeText(this@LoginActivity,"Faliar222"
                 ,Toast.LENGTH_LONG).show()
-
-
-
-
     }
 
 

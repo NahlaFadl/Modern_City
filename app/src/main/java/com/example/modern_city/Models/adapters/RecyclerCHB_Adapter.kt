@@ -34,6 +34,7 @@ class RecyclerCHB_Adapter(var places: List<ListOfPlaceType>):RecyclerView.Adapte
             intent.putExtra("place_id",itemviewmodel.places_by_place_type[position].place_id)
             intent.putExtra("phone",itemviewmodel.places_by_place_type[position].phone)
             intent.putExtra("Photo",itemviewmodel.places_by_place_type[position].big_img)
+            intent.putExtra("place_name",itemviewmodel.places_by_place_type[position].place_name)
             context.startActivity(intent)
         }
 

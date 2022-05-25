@@ -10,7 +10,7 @@ data class CrafsTypes_Response(
 
 data class AllCraftsmanType(
     val craftsman_type_id: Int,
-    val craftsman_type_img: Any,
+    val craftsman_type_img: String,
     val craftsman_type_name: String,
     val created_at: Any,
     val updated_at: String
