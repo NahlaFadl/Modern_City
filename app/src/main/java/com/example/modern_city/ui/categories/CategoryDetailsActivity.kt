@@ -45,6 +45,10 @@ class CategoryDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
             category_phone.text=phone
             var id:Int= intent.extras?.get("place_id") as Int
 
+            // get lat by extra from RecyclerCHP_Adapter
+            latitude= intent.extras?.getDouble("lat")
+            // get long by extra from RecyclerCHP_Adapter
+            longtuide= intent.extras?.getDouble("long")
             val sharedPreferences = this.getSharedPreferences("userInfo_login", Context.MODE_PRIVATE)
             var token=sharedPreferences.getString("token",null).toString()
 
@@ -202,6 +206,6 @@ class CategoryDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add a marker in Sydney and move the camera
         val placeLocation = LatLng(latitude!!, longtuide!!)
         mMap.addMarker(MarkerOptions().position(placeLocation).title(""+placeName))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(placeLocation,10f))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(placeLocation,19f))
     }
 }

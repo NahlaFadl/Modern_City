@@ -13,6 +13,8 @@ data class PlacesByPlaceType(
     val big_img: String,
     val description: Any,
     val phone: String,
+    val geo_location_lat: Double,
+    val geo_location_long: Double,
     val place_id: Int,
     val place_name: String,
     val place_rate: Int,
