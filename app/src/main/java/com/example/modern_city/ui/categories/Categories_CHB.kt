@@ -71,9 +71,9 @@ class Categories_CHB : AppCompatActivity() {
                                 1,
                                 StaggeredGridLayoutManager.VERTICAL
                             )
-                            recycler_categories.setLayoutManager(layoutManager)
-                            recycler_categories.setItemAnimator(DefaultItemAnimator())
-                            recycler_categories.setAdapter(adapter)
+                            rcy_crafstype.setLayoutManager(layoutManager)
+                            rcy_crafstype.setItemAnimator(DefaultItemAnimator())
+                            rcy_crafstype.setAdapter(adapter)
                         }
 
                     }

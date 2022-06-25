@@ -4,12 +4,17 @@ package com.example.modern_city.API_SERVIECS
 import com.example.modern_city.Models.CategoriesRespon
 //import com.example.modern_city.Models.Loginresponse
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface API {
+
+    //register
+
+    @GET("/api/get_crafts_type")
+    fun spinerList_crafs():Call<List<Spiner_list_responce>>
+
+
+
 
     //register
     @FormUrlEncoded
@@ -25,6 +30,22 @@ interface API {
         @Field("address")address:String,
         @Field("phone")phone:String
         ): Call<UserRegister>
+
+    //registercrafs
+    @FormUrlEncoded
+    @POST("api/store_crafts")
+    @Headers("Accept: application/json")
+    fun registerCrafts(
+        @Field("craftsman_type_id")craftsman_type_id:Int,
+        @Field("city_id")city_id:Int,
+        @Field("first_name")first_name:String,
+        @Field("last_name")last_name:String,
+        @Field("email")email:String,
+        @Field("gender")gender:String,
+        @Field("password")password:String,
+       @Field("address")address:String,
+    //    @Field("phone")phone:String
+    ): Call<Crafs_Register_Responces>
 
      //login
     @FormUrlEncoded
@@ -141,4 +162,12 @@ interface API {
         @Field("token") token:String,
         @Field("user_id") place_id:Int
     ):Call<DetailsUserResponse>
+
+    //////userLogOut
+    @FormUrlEncoded
+    @POST("api/logout_user")
+    @Headers("Accept: application/json")
+    fun userLogOut(
+        @Field("token") token:String
+    ):Call<LogoutResponse>
 }

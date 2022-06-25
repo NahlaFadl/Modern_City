@@ -135,7 +135,7 @@
         app:srcCompat="@drawable/ic_arrow_back" />
 
     <ImageView
-        android:id="@+id/user_imageProf"
+        android:id="@+id/user_LogoutImage"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="50dp"
@@ -153,9 +153,9 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/user_imageProf"
-        app:layout_constraintEnd_toStartOf="@+id/user_imageProf"
-        app:layout_constraintTop_toTopOf="@+id/user_imageProf" />
+        app:layout_constraintBottom_toBottomOf="@+id/user_LogoutImage"
+        app:layout_constraintEnd_toStartOf="@+id/user_LogoutImage"
+        app:layout_constraintTop_toTopOf="@+id/user_LogoutImage" />
 
     <ImageView
         android:id="@+id/imageView8"
