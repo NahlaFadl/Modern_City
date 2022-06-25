@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.modern_city.*
+import com.example.modern_city.API_SERVIECS.Adds_Responces
 import com.example.modern_city.API_SERVIECS.ApiClient
 import com.example.modern_city.API_SERVIECS.DetailsUserResponse
 import com.example.modern_city.API_SERVIECS.FamousPlacesResponse
@@ -58,6 +59,10 @@ class HomeFagment : Fragment() {
         val sharedPreferences = requireActivity().applicationContext
             .getSharedPreferences("userInfo_login",Context.MODE_PRIVATE)
 
+        loadAdds(sharedPreferences.getString("token",null).toString())
+
+
+
        Toast.makeText(activity,sharedPreferences.getString("email",null),Toast.LENGTH_LONG).show()
         Log.d("gerges",sharedPreferences.getString("email",null).toString())
        // var redisterinfo:SharedPreferences= activity!!.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
@@ -66,12 +71,12 @@ class HomeFagment : Fragment() {
 
 
 
-        val imageSlider =view.findViewById<SliderView>(R.id.imageSlider)
-        val imageList: ArrayList<String> = ArrayList()
-        imageList.add("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg")
-        imageList.add("https://images.ctfassets.net/hrltx12pl8hq/4plHDVeTkWuFMihxQnzBSb/aea2f06d675c3d710d095306e377382f/shutterstock_554314555_copy.jpg")
-        imageList.add("https://media.istockphoto.com/photos/child-hands-formig-heart-shape-picture-id951945718?k=6&m=951945718&s=612x612&w=0&h=ih-N7RytxrTfhDyvyTQCA5q5xKoJToKSYgdsJ_mHrv0=")
-        setImageInSlider(imageList, imageSlider)
+//        val imageSlider =view.findViewById<SliderView>(R.id.imageSlider)
+//        val imageList: ArrayList<String> = ArrayList()
+//        imageList.add("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg")
+//        imageList.add("https://images.ctfassets.net/hrltx12pl8hq/4plHDVeTkWuFMihxQnzBSb/aea2f06d675c3d710d095306e377382f/shutterstock_554314555_copy.jpg")
+//        imageList.add("https://media.istockphoto.com/photos/child-hands-formig-heart-shape-picture-id951945718?k=6&m=951945718&s=612x612&w=0&h=ih-N7RytxrTfhDyvyTQCA5q5xKoJToKSYgdsJ_mHrv0=")
+//        setImageInSlider(imageList, imageSlider)
 
 //////////////////////////////////////////////////
         /** famous places */
@@ -207,9 +212,36 @@ class HomeFagment : Fragment() {
     }
 
 
-    fun loaddata(){
+    fun loadAdds(token:String){
 
-        
+        var call=ApiClient.instance?.getMyApi()
+
+            ?.gitAdds(token)
+        if (call != null) {
+            call.enqueue(object :Callback<Adds_Responces>{
+                override fun onResponse(
+
+                    call: Call<Adds_Responces>?,
+                    response: Response<Adds_Responces>?
+                ) {
+
+                    var list:ArrayList<String> =ArrayList()
+
+                    for (i in 1..5){
+                        response?.body()?.show_advertisement?.get(i)?.small_img?.let { list.add(it) }
+
+
+
+                    setImageInSlider(list,imageSlider)
+                        Log.v("fcf", response?.body()?.show_advertisement?.get(i)?.small_img.toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<Adds_Responces>?, t: Throwable?) {
+                    TODO("Not yet implemented")
+                }
+            })
+        }
     }
 
 

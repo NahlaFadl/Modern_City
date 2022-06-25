@@ -64,7 +64,6 @@ class Categories_CHB : AppCompatActivity() {
                         var listSize:Int?=response?.body()?.places_by_place_type?.size
                         var placeArray:ArrayList<ListOfPlaceType> = ArrayList()
                         for (i in  1..listSize!!){
-
                             placeArray.add(response?.body()!!)
                             val adapter = RecyclerCHB_Adapter(placeArray)
                             val layoutManager: RecyclerView.LayoutManager = StaggeredGridLayoutManager(
@@ -75,7 +74,6 @@ class Categories_CHB : AppCompatActivity() {
                             rcy_crafstype.setItemAnimator(DefaultItemAnimator())
                             rcy_crafstype.setAdapter(adapter)
                         }
-
                     }
 
                     override fun onFailure(call: Call<ListOfPlaceType>?, t: Throwable?) {

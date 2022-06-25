@@ -23,16 +23,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.ArrayList
 
 class CraftsmanRegisterActivity : AppCompatActivity() {
+
+    val spinerList = ArrayList<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_craftsman_register)
-        planets_spinner
+
+
 
         loadcrafstype()
         loaddata()
 
-        val spinerList = arrayOf("كهربائي ", "مكانيكي", "نجار", "سباك")
-
+        spinerList.add("fff")
+        spinerList.add("fff")
+        spinerList.add("fff")
 
 
         val adapter = ArrayAdapter(this,
@@ -40,33 +44,33 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
         planets_spinner.adapter = adapter
 
 
-//        val spinner: Spinner = findViewById(R.id.planets_spinner)
-//    // Create an ArrayAdapter using the string array and a default spinner layout
-//        ArrayAdapter.createFromResource(
-//            this,
-//            R.array.planets_array,
-//            android.R.layout.simple_spinner_item
-//        ).also { adapter ->
-//            // Specify the layout to use when the list of choices appears
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            // Apply the adapter to the spinner
-//            spinner.adapter = adapter
-//        }
+
+
     }
 
     fun loadcrafstype(){
         val call= ApiClient.instance?.getMyApi()?.spinerList_crafs()
         if (call != null) {
-            call.enqueue(object :Callback<List<Spiner_list_responce>>{
+            call.enqueue(object :Callback<Spiner_list_responce>{
                 override fun onResponse(
-                    call: Call<List<Spiner_list_responce>>?,
-                    response: Response<List<Spiner_list_responce>>?
-                ) {
+                    call: Call<Spiner_list_responce>?,
+                    response: Response<Spiner_list_responce>?
 
-                  //  Log.v("ddd",placeArray.toString())
+                ) {
+                    var size=response?.body()?.get_crafts_type?.size
+                    var list:ArrayList<String> = ArrayList()
+//                    for (i in 1..size!!){
+//                  //  var ll= response?.body()?.get_crafts_type?.get(i)?.let { list.add(it.craftsman_type_name) as ArrayList()
+//
+//
+//                        }
+
+
+
+
                 }
 
-                override fun onFailure(call: Call<List<Spiner_list_responce>>?, t: Throwable?) {
+                override fun onFailure(call: Call<Spiner_list_responce>?, t: Throwable?) {
                     TODO("Not yet implemented")
                 }
             })

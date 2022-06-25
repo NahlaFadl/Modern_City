@@ -8,10 +8,6 @@ import retrofit2.http.*
 
 interface API {
 
-    //register
-
-    @GET("/api/get_crafts_type")
-    fun spinerList_crafs():Call<List<Spiner_list_responce>>
 
 
 
@@ -170,4 +166,33 @@ interface API {
     fun userLogOut(
         @Field("token") token:String
     ):Call<LogoutResponse>
+
+
+
+
+    //get_crafts_Spinner
+
+    @GET("/api/get_crafts_type")
+    fun spinerList_crafs():Call<Spiner_list_responce>
+
+    //   Adds
+    @FormUrlEncoded
+    @POST("api/auth/places/show_advertisement")
+    @Headers("Accept: application/json")
+    fun gitAdds(
+        @Field("token") token:String
+    ):Call<Adds_Responces>
+
+    //givePlace_Rating
+    @FormUrlEncoded
+    @POST("api/auth/rate/add_rate_place")
+    @Headers("Accept: application/json")
+    fun givePlace_Rating(
+        @Field("token") token:String,
+        @Field("place_id") place_id:Int,
+        @Field("rate") rate:Int
+    ):Call<Base_Responce>
+
+
+
 }
