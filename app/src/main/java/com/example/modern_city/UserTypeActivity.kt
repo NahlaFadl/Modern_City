@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.modern_city.ui.auth.CraftsmanRegisterActivity
+import com.example.modern_city.ui.auth.LoginActivity
 import com.example.modern_city.ui.auth.RegisterActivity
 import kotlinx.android.synthetic.main.activity_user_type.*
 
@@ -13,7 +14,7 @@ class UserTypeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_type)
 
         user_btn.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 

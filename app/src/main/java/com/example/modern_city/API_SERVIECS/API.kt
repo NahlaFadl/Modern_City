@@ -1,6 +1,7 @@
 package com.example.modern_city.API_SERVIECS
 
 
+import android.text.Editable
 import com.example.modern_city.Models.CategoriesRespon
 //import com.example.modern_city.Models.Loginresponse
 import retrofit2.Call
@@ -170,4 +171,27 @@ interface API {
     fun userLogOut(
         @Field("token") token:String
     ):Call<LogoutResponse>
+
+    //////Edit User
+    @FormUrlEncoded
+    @POST("api/edit_user")
+    @Headers("Accept: application/json")
+    fun editUser(
+        @Field("token") token:String,
+        @Field("first_name") first_name: Editable,
+        @Field("last_name") last_name: Editable,
+        @Field("password") password: Editable,
+        @Field("address") address: Editable,
+        @Field("phone") phone:Editable
+    ):Call<EditUserResponse>
+
+    //////Craft Status Response
+    @FormUrlEncoded
+    @POST("api/authenticate/edit_craftsman_status")
+    @Headers("Accept: application/json")
+    fun craftStatus(
+        @Field("token") token:String,
+        @Field("status") status:Int
+
+    ):Call<CrafStatusResponse>
 }
