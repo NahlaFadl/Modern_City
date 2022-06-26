@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.modern_city.API_SERVIECS.*
 import com.example.modern_city.Models.adapters.Adapter_rcy_craftsTypes
 import com.example.modern_city.R
+import com.example.modern_city.ui.auth.LoginActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_catagories.*
 import kotlinx.android.synthetic.main.activity_craftsman_profil.*
@@ -19,6 +20,10 @@ import kotlinx.android.synthetic.main.activity_user_edit_profile.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.content.SharedPreferences
+
+
+
 
 class CraftsmanProfilActivity : AppCompatActivity() {
     var count:Int=0
@@ -26,10 +31,14 @@ class CraftsmanProfilActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_craftsman_profil)
 
-        var id= intent.extras?.getString("craftsman_id")
-        val sharedPreferences = this.getSharedPreferences("userInfo_login", Context.MODE_PRIVATE)
+        val sharedPreferences = this.getSharedPreferences("crafs_userinf", Context.MODE_PRIVATE)
         var token=  sharedPreferences.getString("token",null)
+        var id=  sharedPreferences.getInt("user_id",0)
 
+        //to craft logout
+        txt_logout.setOnClickListener {
+            craftLogout(token.toString())
+        }
         //to intent to edit craft activty
         txt_CraftEdit_account.setOnClickListener {
             val intent=Intent(this,CraftEditProfile::class.java)
@@ -37,26 +46,32 @@ class CraftsmanProfilActivity : AppCompatActivity() {
         }
         //to edit status
         switch1.setOnClickListener {
-            if (switch1.isChecked && count==0){
+            if (switch1.isChecked){
                 // main.setBackgroundColor(Color.DKGRAY)
+                val editor = getSharedPreferences("crafs_userinf", MODE_PRIVATE).edit()
+                editor.putBoolean("NameOfThingToSave", true)
+                editor.commit()
+                craftEditStatus(token.toString(),1)
                 switch1.setTextColor(Color.WHITE)
-                switch1.text="ON"
-                count++
-                Toast.makeText(this,""+count,Toast.LENGTH_SHORT).show()
+                craftStatus.text="متاح"
+                Toast.makeText(this,"1",Toast.LENGTH_SHORT).show()
             }
             else{
                 //main.setBackgroundColor(Color.WHITE)
+                val editor = getSharedPreferences("crafs_userinf", MODE_PRIVATE).edit()
+                editor.putBoolean("NameOfThingToSave", false)
+                editor.commit()
                 switch1.setTextColor(Color.BLACK)
-                switch1.text="OFF"
-                if (count==1)
-                {
-                    count--
-                    Toast.makeText(this,""+count,Toast.LENGTH_SHORT).show()
-                }
+                craftEditStatus(token.toString(),0)
+                craftStatus.text="غير متاح"
+                Toast.makeText(this,"0",Toast.LENGTH_SHORT).show()
+
             }
         }
 
-        craftEditStatus(token.toString(),count)
+
+        loadData(token.toString(),id!!)
+
     }
 
     fun loadData(token:String,id:Int){
@@ -73,10 +88,6 @@ class CraftsmanProfilActivity : AppCompatActivity() {
                      response?.body()?.details_of_craftsman?.last_name
 
            txt_profile_crafs_description.text=response?.body()?.details_of_craftsman?.description.toString()
-
-
-
-
                     }
 
                     override fun onFailure(call: Call<Crafs_Details_Responce>?, t: Throwable?) {
@@ -84,20 +95,15 @@ class CraftsmanProfilActivity : AppCompatActivity() {
                     }
                 })
 
-
             }else{
 
                 Toast.makeText(this@CraftsmanProfilActivity,"call=null",Toast.LENGTH_LONG).show()
             }
 
-
-
         }catch (e:Exception){
         throw e
 
         }
-
-
     }
 
     fun craftEditStatus(token:String, stats:Int){
@@ -125,7 +131,41 @@ class CraftsmanProfilActivity : AppCompatActivity() {
         }else
             Toast.makeText(this,"Faliar222", Toast.LENGTH_LONG).show()
     }
+
+    //to craft logout
+    fun craftLogout(Token:String){
+
+        var call= ApiClient.instance?.getMyApi()?.craftLogOut(Token)
+
+        if (call != null){
+
+            call.enqueue(object : Callback<CraftLogotResonse> {
+                override fun onResponse(
+                    call: Call<CraftLogotResonse>?,response: Response<CraftLogotResonse>?) {
+
+                    Toast.makeText(this@CraftsmanProfilActivity,response?.body()?.msg, Toast.LENGTH_LONG).show()
+
+                    val intent = Intent(this@CraftsmanProfilActivity, LoginActivity::class.java)
+                    intent.putExtra("finish", true)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP // To clean up all activities
+                    startActivity(intent)
+                    finish()
+
+                }
+
+                override fun onFailure(call: Call<CraftLogotResonse>?, t: Throwable?) {
+                    Toast.makeText(this@CraftsmanProfilActivity,"Faliar"
+                        , Toast.LENGTH_LONG).show()
+                }
+
+            } )
+
+        }else
+            Toast.makeText(this,"Faliar222", Toast.LENGTH_LONG).show()
+    }
+
 }
+
 
 
 

@@ -5,12 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.modern_city.API_SERVIECS.ListOfCrafs_Response
 import com.example.modern_city.R
-import com.example.modern_city.ui.profiles.CraftsmanProfilActivity
+import com.example.modern_city.ui.profiles.DetailsOfCraftActivity
 import com.squareup.picasso.Picasso
 
 class Adapter_listOfCrafs(var listOfCrafs:List<ListOfCrafs_Response>)
@@ -35,7 +34,7 @@ class Adapter_listOfCrafs(var listOfCrafs:List<ListOfCrafs_Response>)
 
             val context=holder.textView.context
 
-            var intent= Intent(context, CraftsmanProfilActivity::class.java)
+            var intent= Intent(context, DetailsOfCraftActivity::class.java)
             intent.putExtra("craftsman_id",ItemsViewModel.Craftsmans_By_Craftsman_Type[position].craftsman_id)
 
             context.startActivity(intent)

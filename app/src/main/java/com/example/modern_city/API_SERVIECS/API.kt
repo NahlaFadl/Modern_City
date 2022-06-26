@@ -9,10 +9,6 @@ import retrofit2.http.*
 
 interface API {
 
-    //register
-
-    @GET("/api/get_crafts_type")
-    fun spinerList_crafs():Call<List<Spiner_list_responce>>
 
 
 
@@ -163,7 +159,6 @@ interface API {
         @Field("token") token:String,
         @Field("user_id") place_id:Int
     ):Call<DetailsUserResponse>
-
     //////userLogOut
     @FormUrlEncoded
     @POST("api/logout_user")
@@ -171,6 +166,14 @@ interface API {
     fun userLogOut(
         @Field("token") token:String
     ):Call<LogoutResponse>
+
+    //////craft LogOut
+    @FormUrlEncoded
+    @POST("api/logout_crafts")
+    @Headers("Accept: application/json")
+    fun craftLogOut(
+        @Field("token") token:String
+    ):Call<CraftLogotResonse>
 
     //////Edit User
     @FormUrlEncoded
@@ -185,6 +188,19 @@ interface API {
         @Field("phone") phone:Editable
     ):Call<EditUserResponse>
 
+    //////Edit Craft
+    @FormUrlEncoded
+    @POST("api/authenticate/edit_craftsman")
+    @Headers("Accept: application/json")
+    fun editCraft(
+        @Field("token") token:String,
+        @Field("first_name") first_name: Editable,
+        @Field("last_name") last_name: Editable,
+        @Field("password") password: Editable,
+        @Field("address") address: Editable,
+        @Field("phone") phone:Editable
+    ):Call<CraftEditResponse>
+
     //////Craft Status Response
     @FormUrlEncoded
     @POST("api/authenticate/edit_craftsman_status")
@@ -194,4 +210,30 @@ interface API {
         @Field("status") status:Int
 
     ):Call<CrafStatusResponse>
+
+
+
+    //get_crafts_Spinner
+
+    @GET("/api/get_crafts_type")
+    fun spinerList_crafs():Call<Spiner_list_responce>
+
+    //   Adds
+    @FormUrlEncoded
+    @POST("api/auth/places/show_advertisement")
+    @Headers("Accept: application/json")
+    fun gitAdds(
+        @Field("token") token:String
+    ):Call<Adds_Responces>
+
+    //givePlace_Rating
+    @FormUrlEncoded
+    @POST("api/auth/rate/add_rate_place")
+    @Headers("Accept: application/json")
+    fun givePlace_Rating(
+        @Field("token") token:String,
+        @Field("place_id") place_id:Int,
+        @Field("rate") rate:Int
+    ):Call<Base_Responce>
+
 }

@@ -60,7 +60,9 @@
                     app:sliderScrollTimeInSec="1"
                     app:sliderStartAutoCycle="true"
 
-                    tools:ignore="MissingClass" />
+                    tools:ignore="MissingClass" >
+
+                </com.smarteist.autoimageslider.SliderView>
             </androidx.cardview.widget.CardView>
 
 
@@ -114,15 +116,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
                 android:layout_marginEnd="6dp"
                 android:text="الاماكن الاكثر شهرة"
                 android:textColor="#6B46C1"
 
                 android:textSize="25sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textView14"
                 app:layout_constraintEnd_toStartOf="@+id/textView14"
-                app:layout_constraintTop_toBottomOf="@+id/slider" />
+                app:layout_constraintTop_toTopOf="@+id/textView14" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcy_famousPlaces"
@@ -146,117 +148,106 @@
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_marginEnd="8dp"
                 android:text="الخدمات الرئيسية"
                 android:textColor="#6B46C1"
                 android:textSize="25sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textView15"
                 app:layout_constraintEnd_toStartOf="@+id/textView15"
-                app:layout_constraintTop_toBottomOf="@+id/rcy_famousPlaces" />
+                app:layout_constraintTop_toTopOf="@+id/textView15" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/crafs_cardview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:elevation="@dimen/_15sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView16"
-                android:layout_marginRight="@dimen/_20sdp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+<!--            <ImageView-->
+<!--                android:id="@+id/crafs_cardview"-->
+<!--                android:layout_width="@dimen/_40sdp"-->
+<!--                android:layout_height="@dimen/_50sdp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:src="@drawable/ic_notation"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"/>-->
 
 
                     <TextView
                         android:id="@+id/txt_crafs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
                         android:layout_marginEnd="20dp"
                         android:text="صنايعية"
                         android:textColor="#6B46C1"
                         android:textSize="@dimen/_12sdp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_crafs"
                         app:layout_constraintEnd_toStartOf="@+id/img_crafs"
-                        app:layout_constraintTop_toTopOf="@+id/img_crafs"
-                        />
-
-                    <ImageView
-                        android:id="@+id/img_crafs"
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_50sdp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/ic_notation"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        app:layout_constraintTop_toTopOf="@+id/img_crafs" />
 
 
-            </androidx.cardview.widget.CardView>
+            <ImageView
+                android:id="@+id/img_crafs"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="12dp"
+                android:src="@drawable/craftsman"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hjkhjk" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/station_cardview"
+            <TextView
+                android:id="@+id/txt_station_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:elevation="@dimen/_15sdp"
+                android:layout_marginEnd="20dp"
+                android:text="مواقف"
+                android:textColor="#6B46C1"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/img_station_home"
+                app:layout_constraintEnd_toStartOf="@+id/img_station_home"
+                app:layout_constraintTop_toTopOf="@+id/img_station_home" />
+
+
+            <ImageView
+                android:id="@+id/img_station_home"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/bus"
+                app:layout_constraintEnd_toStartOf="@+id/txt_crafs"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView16"
-                android:layout_marginLeft="@dimen/_20sdp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <TextView
-                        android:id="@+id/txt_station_home"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:text="مواقف"
-                        android:textColor="#6B46C1"
-                        android:textSize="@dimen/_12sdp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="@dimen/_20sdp"
-                        app:layout_constraintEnd_toStartOf="@+id/img_station_home"
-                        app:layout_constraintTop_toTopOf="@+id/img_station_home" />
-
-                    <ImageView
-                        android:id="@+id/img_station_home"
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_50sdp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/ic_notation"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-
-
-
+                app:layout_constraintTop_toBottomOf="@+id/hjkhjk" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcy_mainService"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/crafs_cardview" />
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+            <TextView
+                android:id="@+id/textView56"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/ic_notation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rcy_mainService" />
+
+            <TextView
+                android:id="@+id/hjkhjk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="خدمات اخرى"
+                android:textColor="#6B46C1"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textView56"
+                app:layout_constraintEnd_toStartOf="@+id/textView56"
+                app:layout_constraintTop_toTopOf="@+id/textView56" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

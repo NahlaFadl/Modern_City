@@ -4,6 +4,7 @@
     package="com.example.modern_city">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -13,65 +14,51 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Modern_City">
         <activity
+            android:name=".ui.profiles.DetailsOfCraftActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.profiles.CraftEditProfile"
             android:exported="true" />
         <activity
             android:name=".ui.profiles.UserEditProfile"
-            android:exported="true">
-
-        </activity> <!-- map -->
+            android:exported="true"></activity> <!-- map -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
             android:name=".UploadPhoto.MainUploadPhotoActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.ListOfCrafts"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.categories.Categories_CHB"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.profiles.CraftsmanProfilActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".TransportCatigoryActivity"
             android:exported="true" />
         <activity
             android:name=".ui.HomeActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.categories.CategoryDetailsActivity"
             android:exported="true" />
         <activity
             android:name=".ui.auth.CraftsmanRegisterActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.auth.RegisterActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.profiles.ProfileActivity"
             android:exported="true" />
         <activity
             android:name=".ui.categories.CrafsType"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.auth.LoginActivity"
             android:exported="true">
@@ -80,7 +67,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".UserTypeActivity"
@@ -89,11 +75,12 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
+            android:name=".CraftsUploadPhoto.MainUploadCraftPhotoActivity"
+            android:exported="true" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true"
-            tools:ignore="DuplicateActivity">
-
-        </activity>
+            tools:ignore="DuplicateActivity"></activity>
     </application>
 
 </manifest>
