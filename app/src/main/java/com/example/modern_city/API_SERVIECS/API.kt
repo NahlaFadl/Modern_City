@@ -8,11 +8,6 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface API {
-
-
-
-
-
     //register
     @FormUrlEncoded
     @POST("api/store_user")
@@ -60,8 +55,6 @@ interface API {
      @Headers("Accept: application/json")
      fun gitCategory(
          @Field("token") token:String
-
-
          ):Call<CategoriesRespon>
 
 ///gitPlaceByPlaceType
@@ -71,8 +64,8 @@ interface API {
     fun gitPlaceByPlaceType(
         @Field("token") token:String,
         @Field("place_type_id") place_type_id:Int
-
     ):Call<ListOfPlaceType>
+
 //////placeDetails
     @FormUrlEncoded
     @POST("api/auth/places/show_details_of_place")
@@ -80,7 +73,6 @@ interface API {
     fun getPlaceDetails(
         @Field("token") token:String,
         @Field("place_id") place_id:Int
-
     ):Call<PlaceDetailsResponse>
 
     //git crafsType

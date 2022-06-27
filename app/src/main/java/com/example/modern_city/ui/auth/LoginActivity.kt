@@ -5,7 +5,9 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.example.modern_city.API_SERVIECS.ApiClient
 import com.example.modern_city.API_SERVIECS.LoginRespons
@@ -13,26 +15,35 @@ import com.example.modern_city.API_SERVIECS.LoginRespons
 import com.example.modern_city.R
 import com.example.modern_city.ui.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_regester.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
+
+    lateinit var masege:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         supportActionBar?.hide()
+        prog_login.visibility = View.INVISIBLE
 
         //to login
-        txt_login.setOnClickListener {
+        lay_loginComponent.setOnClickListener {
+            prog_login.visibility = View.INVISIBLE
+            constraint_login.visibility = View.VISIBLE
+
             var email=edt_login_username.text.toString().trim()
             var pass=edt_login_userPassword.text.toString().trim()
-            if (email.equals(null)||pass.equals(null)){
-            Toast.makeText(this@LoginActivity,"enter all data",Toast.LENGTH_LONG).show()
-
+            edt_login_userPassword.inputType = InputType.TYPE_CLASS_NUMBER
+            if (!email.isEmpty()&&!pass.isEmpty()){
+                login(email,pass)
             }
             else{
-                login(email,pass)
+                Toast.makeText(this@LoginActivity,"ادخل جميع البيانات",Toast.LENGTH_LONG).show()
+                constraint_login.visibility = View.VISIBLE
+                prog_login.visibility = View.INVISIBLE
 
             }
         }
@@ -51,16 +62,18 @@ class LoginActivity : AppCompatActivity() {
 
         var call= ApiClient.instance?.getMyApi()?.login(email,password,"user")
 
-        if (call != null){
 
+        if (call != null){
             call.enqueue(object :Callback<LoginRespons>{
                 override fun onResponse(
                     call: Call<LoginRespons>?,
                     response: Response<LoginRespons>?
                 ) {
+                    if (response!=null){
+                    masege=response?.body()?.msg.toString()
 
-                   editor.apply{
 
+                    editor.apply{
                        putString("userName",response?.body()?.User?.first_name)
                        putString("email",response?.body()?.User?.email)
                        putString("gender",response?.body()?.User?.gender)
@@ -72,24 +85,33 @@ class LoginActivity : AppCompatActivity() {
                        response?.body()?.User?.user_group_id?.let { it1 -> putInt("user_group__id", it1)}
 
                    }.commit()
-
                     Toast.makeText(this@LoginActivity,response?.body()?.User?.email,Toast.LENGTH_LONG).show()
-
+                    constraint_login.visibility = View.VISIBLE
+                    prog_login.visibility = View.INVISIBLE
                     val intent= Intent(this@LoginActivity, HomeActivity::class.java)
                     startActivity(intent)
 
 
+                }else{
+                        Toast.makeText(this@LoginActivity,masege,Toast.LENGTH_LONG).show()
+
+
+                    }
                 }
 
                 override fun onFailure(call: Call<LoginRespons>?, t: Throwable?) {
-                    Toast.makeText(this@LoginActivity,"Faliar"
+                    Toast.makeText(this@LoginActivity,"فشل الاتصال حاول مره اخري"
                         ,Toast.LENGTH_LONG).show()
+                    constraint_login.visibility = View.VISIBLE
+                    prog_login.visibility = View.INVISIBLE
                 }
 
             } )
         }else
-            Toast.makeText(this@LoginActivity,"Faliar222"
+            Toast.makeText(this@LoginActivity,"الطلب غير متاح الان"
                 ,Toast.LENGTH_LONG).show()
+        constraint_login.visibility = View.VISIBLE
+        prog_login.visibility = View.INVISIBLE
     }
 
 

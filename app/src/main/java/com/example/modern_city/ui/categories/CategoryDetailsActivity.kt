@@ -26,6 +26,7 @@ import retrofit2.Response
 import android.net.Uri
 
 import android.content.Intent
+import android.graphics.Color
 
 import android.view.View
 
@@ -145,6 +146,9 @@ class CategoryDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
                     call: Call<PlaceDetailsResponse>?,
                     response: Response<PlaceDetailsResponse>?
                 ) {
+                    tx_place_Name.setTitle(response?.body()?.details_of_place?.place_name)
+                    tx_place_Name.setTitleTextColor(Color.parseColor("#6B46C1"))
+
 
 
                var list: List<String>? =response?.body()?.details_of_place?.slider_img
@@ -157,9 +161,9 @@ class CategoryDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
                    val adapter = list?.let { Adapter_detailsOfPlace(it,this@CategoryDetailsActivity) }
                     rcy_menuslider.adapter = adapter
 
-                    latitude=response?.body()?.details_of_place?.geo_location_lat
-                    longtuide=response?.body()?.details_of_place?.geo_location_long
-                    placeName= response?.body()?.details_of_place?.place_name.toString()
+//                    latitude=response?.body()?.details_of_place?.geo_location_lat
+//                    longtuide=response?.body()?.details_of_place?.geo_location_long
+//                    placeName= response?.body()?.details_of_place?.place_name.toString()
 
 
                     /////////////////btn_call_action
