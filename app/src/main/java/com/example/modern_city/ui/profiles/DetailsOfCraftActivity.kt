@@ -1,6 +1,7 @@
 package com.example.modern_city.ui.profiles
 
 import android.content.Context
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -47,6 +48,16 @@ class DetailsOfCraftActivity : AppCompatActivity() {
                                 response?.body()?.details_of_craftsman?.last_name
                         txt_crafsprofile_usernameDet.text=craftNaem
                         txt_profile_craft_descriptionDet.text=response?.body()?.details_of_craftsman?.description.toString()
+                        craftPhoneDet.text=response?.body()?.details_of_craftsman?.phone
+                        if(response?.body()?.details_of_craftsman?.status==1){
+                            craftShowStatusDet.text="متاح"
+                            craftShowStatusDet.setTextColor(Color.GREEN)
+                        }
+                        else{
+                            craftShowStatusDet.text="غير متاح"
+                            craftShowStatusDet.setTextColor(Color.RED)
+                        }
+
                     }
 
                     override fun onFailure(call: Call<Crafs_Details_Responce>?, t: Throwable?) {

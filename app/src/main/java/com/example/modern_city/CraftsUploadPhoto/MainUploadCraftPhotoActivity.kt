@@ -8,7 +8,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.modern_city.R
 import com.example.modern_city.UploadPhoto.*
+import kotlinx.android.synthetic.main.activity_main_upload_craft_photo.*
 import kotlinx.android.synthetic.main.activity_main_upload_photo.*
+import kotlinx.android.synthetic.main.activity_main_upload_photo.button_upload
+import kotlinx.android.synthetic.main.activity_main_upload_photo.image_view
+import kotlinx.android.synthetic.main.activity_main_upload_photo.layout_root
+import kotlinx.android.synthetic.main.activity_main_upload_photo.progress_bar
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -25,14 +30,14 @@ class MainUploadCraftPhotoActivity : AppCompatActivity(), UploadRequestBody.Uplo
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_upload_photo)
+        setContentView(R.layout.activity_main_upload_craft_photo)
 
 
-        image_view.setOnClickListener {
+        image_viewCraft.setOnClickListener {
             openImageChooser()
         }
 
-        button_upload.setOnClickListener {
+        button_craftUpload.setOnClickListener {
             uploadImage()
         }
     }
@@ -60,7 +65,7 @@ class MainUploadCraftPhotoActivity : AppCompatActivity(), UploadRequestBody.Uplo
         val body = UploadRequestBody(file, "image", this)
         MyAPI().uploadImage(
             MultipartBody.Part.createFormData(
-                "user_img",
+                "craftsman_img",
                 file.name,
                 body
             ),
@@ -101,7 +106,7 @@ class MainUploadCraftPhotoActivity : AppCompatActivity(), UploadRequestBody.Uplo
             when (requestCode) {
                 REQUEST_CODE_PICK_IMAGE -> {
                     selectedImageUri = data?.data
-                    image_view.setImageURI(selectedImageUri)
+                    image_viewCraft.setImageURI(selectedImageUri)
                 }
             }
         }
