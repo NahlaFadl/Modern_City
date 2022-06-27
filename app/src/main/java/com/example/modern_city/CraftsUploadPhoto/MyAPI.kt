@@ -16,7 +16,7 @@ interface MyAPI {
     @Multipart
     @POST("api/authenticate/upload_image")
     fun uploadImage(
-        @Part user_img: MultipartBody.Part,
+        @Part craftsman_img: MultipartBody.Part,
         //@Part("desc") desc: RequestBody
         @Part("token") token: RequestBody
     ): Call<UploadResponse>

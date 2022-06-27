@@ -96,15 +96,15 @@
         app:layout_constraintTop_toTopOf="@+id/craftPhoneDet"
         app:srcCompat="@drawable/ic_local_phone" />
 
-    <Switch
-        android:id="@+id/switch1"
+    <TextView
+        android:id="@+id/craftShowStatusDet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:textOff="Dark"
-        android:textOn="Light"
+        android:layout_marginEnd="10dp"
+        android:text="متاح"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/craftStatusDet"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/craftStatusDet"
         app:layout_constraintTop_toTopOf="@+id/craftStatusDet"
         app:srcCompat="@drawable/profil_circle_24" />
 
@@ -114,7 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
-        android:text="الحالة"
+        android:text="الحالة : "
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
