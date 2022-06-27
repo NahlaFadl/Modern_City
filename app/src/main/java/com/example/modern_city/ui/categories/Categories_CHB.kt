@@ -44,11 +44,7 @@ class Categories_CHB : AppCompatActivity() {
 
         if (token!=null){
 
-
-
             var id:Int= intent.extras?.get("typeId") as Int
-
-
             Log.d("id",id.toString())
             var call=ApiClient.instance?.getMyApi()?.gitPlaceByPlaceType(token,id)
             if (call!=null){
