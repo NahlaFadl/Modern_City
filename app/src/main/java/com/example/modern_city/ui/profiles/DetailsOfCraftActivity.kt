@@ -1,7 +1,11 @@
 package com.example.modern_city.ui.profiles
 
+import android.Manifest
+import android.R.attr
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -17,6 +21,18 @@ import kotlinx.android.synthetic.main.activity_profile.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.content.pm.PackageManager
+
+import com.example.modern_city.MainActivity
+
+import androidx.core.app.ActivityCompat
+
+import android.view.View
+
+import android.R.attr.button
+
+
+
 
 class DetailsOfCraftActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +44,22 @@ class DetailsOfCraftActivity : AppCompatActivity() {
         var token=sharedPreferences.getString("token",null).toString()
 
         loadData(token.toString(),craftsman_id!!)
+
+        //to call
+//        callButton.setOnClickListener {
+//
+//            var number=craftPhoneDet.text.toString()
+//            val callIntent = Intent(Intent.ACTION_CALL)
+//            callIntent.data = Uri.parse("tel:"+number)
+//            if (ActivityCompat.checkSelfPermission(
+//                    this,
+//                    Manifest.permission.CALL_PHONE
+//                ) != PackageManager.PERMISSION_GRANTED
+//            ) {
+//                return@setOnClickListener
+//            }
+//            startActivity(callIntent)}
+
     }
 
     //to show profile of craft to user
