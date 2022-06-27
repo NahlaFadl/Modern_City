@@ -26,7 +26,7 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_regester)
-        prog_register.visibility = View.INVISIBLE
+
         addnewuser()
         arr_backLogin.setOnClickListener {
             val intentlogin=Intent(this@RegisterActivity,LoginActivity::class.java)
@@ -36,8 +36,8 @@ class RegisterActivity : AppCompatActivity() {
 
  fun addnewuser(){
      lay_registerComponent.setOnClickListener {
-         prog_register.visibility = View.INVISIBLE
-         constraint_prgre.visibility = View.VISIBLE
+         prog_register.visibility = View.VISIBLE
+         constraint_prgre.visibility = View.INVISIBLE
 
 
 
@@ -106,6 +106,8 @@ class RegisterActivity : AppCompatActivity() {
                      }
 
                  })
+
+
              }else{
                  Toast.makeText(this@RegisterActivity,"كلمت السر غير متتطابقة",Toast.LENGTH_LONG).show()
                  constraint_prgre.visibility = View.VISIBLE

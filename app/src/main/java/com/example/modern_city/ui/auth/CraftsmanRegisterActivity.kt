@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
@@ -24,13 +25,17 @@ import java.util.ArrayList
 
 class CraftsmanRegisterActivity : AppCompatActivity() {
 
+    //lateinit var spinerdata :ArrayList<String>
+    lateinit var adapterSpin:ArrayAdapter<String>
+    var spinerdata= arrayListOf<String>("gerges","gerges","gerged")
+
     val spinerList = ArrayList<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_craftsman_register)
 
         loadcrafstype()
-        loadDataOfCraftRegister()
+    loadDataOfCraftRegister()
 
         spinerList.add("fff")
         spinerList.add("fff")
@@ -38,7 +43,15 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
 
         val adapter = ArrayAdapter(this,
             android.R.layout.simple_spinner_item, spinerList)
-        planets_spinner.adapter = adapter
+//        planets_spinner.adapter = adapter
+
+        arr_backLogin_crafs.setOnClickListener {
+            val intentlogin=Intent(this@CraftsmanRegisterActivity,Login_Crafs::class.java)
+            startActivity(intentlogin)
+
+        }
+
+
 
     }
 
@@ -69,46 +82,89 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
   fun loadDataOfCraftRegister(){
       registerCraft_txtAct.setOnClickListener {
 
+          constrainteg.visibility = View.INVISIBLE
+          prog_craf_Resg.visibility = View.VISIBLE
+
             var redisterinfo: SharedPreferences =getSharedPreferences("crafs_userinf", Context.MODE_PRIVATE)
             val editor: SharedPreferences.Editor=redisterinfo.edit()
 
+          var fname=edt_crafts_rfgistr_Fnam.text.toString().trim()
+          var lname=edt_crafts_rfgistr_Lname.text.toString().trim()
+          var email=edt_crafts_rfgistr_email.text.toString().trim()
+          var pass= edt_crafts_rfgistr_password.text.toString().trim()
+          var passconf= edt_crafts_rfgistr_comnfpass.text.toString().trim()
+          var phone=edt_crafts_rfgistr_phone.text.toString().trim()
 
-            val call= ApiClient.instance?.getMyApi()?.registerCrafts(1,2,edt_crafts_rfgistr_Fnam.text.toString().trim()
-                ,edt_crafts_rfgistr_Lname.text.toString().trim(),edt_crafts_rfgistr_email.text.toString().trim()
-                ,"mail",edt_crafts_rfgistr_password.text.toString().trim()
-                ,"minia")
-            if (call != null) {
-                call.enqueue(object : Callback<Crafs_Register_Responces>{
-                    override fun onResponse(
-                        call: Call<Crafs_Register_Responces>?,
-                        response: Response<Crafs_Register_Responces>?
-                    ) {
-                        Toast.makeText(this@CraftsmanRegisterActivity,response?.body()?.data?.first_name.toString(),Toast.LENGTH_LONG).show()
+          if (!fname.isEmpty()&&!lname.isEmpty()&&!email.isEmpty()&&!pass.isEmpty()&&!phone.isEmpty()
+              &&!passconf.isEmpty()){
 
-                        editor.apply{
-                            putString("userName",response?.body()?.data?.first_name)
-                            putString("email",response?.body()?.data?.email)
-                            putString("gender",response?.body()?.data?.gender)
-                            putString("token",response?.body()?.data?.token)
-                            putString("phone",response?.body()?.data?.phone.toString())
-                            putString("adress",response?.body()?.data?.address)
-                            response?.body()?.data?.craftsman_id?.let { it1 -> putInt("city_id", it1) }
-                            response?.body()?.data?.craftsman_id?.let { it1 -> putInt("user_id", it1) }
-                            response?.body()?.data?.craftsman_id?.let { it1 -> putInt("user_group__id", it1) }
-                        }.commit()
-                      var intr=Intent(this@CraftsmanRegisterActivity,CraftsmanProfilActivity::class.java)
-                        startActivity(intr)
-                    }
+              if (pass.equals(passconf)){
 
-                    override fun onFailure(call: Call<Crafs_Register_Responces>?, t: Throwable?) {
-                        Toast.makeText(this@CraftsmanRegisterActivity,"فشل الاتصال بالانترنت",Toast.LENGTH_SHORT).show()
+                  val call= ApiClient.instance?.getMyApi()?.registerCrafts(
+                      1, 2, fname,lname,email,"mail", pass
+                      ,"minia",phone)
 
-                    }
-                })
-            }
+                  if (call != null) {
+                      call.enqueue(object : Callback<Crafs_Register_Responces>{
+                          override fun onResponse(
+                              call: Call<Crafs_Register_Responces>?,
+                              response: Response<Crafs_Register_Responces>?
+                          ) {
+
+                              Log.v("  gergesss",response?.body()?.msg.toString())
+                              Toast.makeText(this@CraftsmanRegisterActivity,response?.body()?.data?.first_name.toString(),Toast.LENGTH_LONG).show()
+
+                              editor.apply{
+                                  putString("userName",response?.body()?.data?.first_name)
+                                  putString("email",response?.body()?.data?.email)
+                                  putString("gender",response?.body()?.data?.gender)
+                                  putString("token",response?.body()?.data?.token)
+                                  putString("phone",response?.body()?.data?.phone.toString())
+                                  putString("adress",response?.body()?.data?.address)
+                                  response?.body()?.data?.craftsman_id?.let { it1 -> putInt("city_id", it1) }
+                                  response?.body()?.data?.craftsman_id?.let { it1 -> putInt("user_id", it1) }
+                                  response?.body()?.data?.craftsman_id?.let { it1 -> putInt("user_group__id", it1) }
+                              }.commit()
+                              var intr=Intent(this@CraftsmanRegisterActivity,CraftsmanProfilActivity::class.java)
+                              startActivity(intr)
+
+                              constraint_prgre.visibility = View.VISIBLE
+                              prog_register.visibility = View.INVISIBLE
+                          }
+
+                          override fun onFailure(call: Call<Crafs_Register_Responces>?, t: Throwable?) {
+                              Toast.makeText(this@CraftsmanRegisterActivity,"فشل الاتصال بالانترنت",Toast.LENGTH_SHORT).show()
+
+                          }
+                      })
+                  }
+              }else{
+                  Toast.makeText(this@CraftsmanRegisterActivity,"كلمت السر غير متتطابقة",Toast.LENGTH_LONG).show()
+                  constrainteg.visibility = View.VISIBLE
+                  prog_craf_Resg.visibility = View.INVISIBLE
+
+              }
+
+          }
+          else{
+              Toast.makeText(this@CraftsmanRegisterActivity,"لم يتم ادخال بعض البيانات",Toast.LENGTH_LONG).show()
+              constrainteg.visibility = View.VISIBLE
+              prog_craf_Resg.visibility = View.INVISIBLE
+          }
+
+
 
         }
 
+    }
+
+
+    fun loadspiner(){
+
+        adapterSpin= ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,spinerdata )
+        adapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        spinner.adapter=adapterSpin
     }
 
 }

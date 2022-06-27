@@ -36,7 +36,7 @@ interface API {
         @Field("gender")gender:String,
         @Field("password")password:String,
        @Field("address")address:String,
-    //    @Field("phone")phone:String
+       @Field("phone")phone:String
     ): Call<Crafs_Register_Responces>
 
      //login
