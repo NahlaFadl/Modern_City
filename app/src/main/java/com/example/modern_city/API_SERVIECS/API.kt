@@ -1,6 +1,7 @@
 package com.example.modern_city.API_SERVIECS
 
 
+import android.text.Editable
 import com.example.modern_city.Models.CategoriesRespon
 //import com.example.modern_city.Models.Loginresponse
 import retrofit2.Call
@@ -158,7 +159,6 @@ interface API {
         @Field("token") token:String,
         @Field("user_id") place_id:Int
     ):Call<DetailsUserResponse>
-
     //////userLogOut
     @FormUrlEncoded
     @POST("api/logout_user")
@@ -167,6 +167,49 @@ interface API {
         @Field("token") token:String
     ):Call<LogoutResponse>
 
+    //////craft LogOut
+    @FormUrlEncoded
+    @POST("api/logout_crafts")
+    @Headers("Accept: application/json")
+    fun craftLogOut(
+        @Field("token") token:String
+    ):Call<CraftLogotResonse>
+
+    //////Edit User
+    @FormUrlEncoded
+    @POST("api/edit_user")
+    @Headers("Accept: application/json")
+    fun editUser(
+        @Field("token") token:String,
+        @Field("first_name") first_name: Editable,
+        @Field("last_name") last_name: Editable,
+        @Field("password") password: Editable,
+        @Field("address") address: Editable,
+        @Field("phone") phone:Editable
+    ):Call<EditUserResponse>
+
+    //////Edit Craft
+    @FormUrlEncoded
+    @POST("api/authenticate/edit_craftsman")
+    @Headers("Accept: application/json")
+    fun editCraft(
+        @Field("token") token:String,
+        @Field("first_name") first_name: Editable,
+        @Field("last_name") last_name: Editable,
+        @Field("password") password: Editable,
+        @Field("address") address: Editable,
+        @Field("phone") phone:Editable
+    ):Call<CraftEditResponse>
+
+    //////Craft Status Response
+    @FormUrlEncoded
+    @POST("api/authenticate/edit_craftsman_status")
+    @Headers("Accept: application/json")
+    fun craftStatus(
+        @Field("token") token:String,
+        @Field("status") status:Int
+
+    ):Call<CrafStatusResponse>
 
 
 
@@ -192,7 +235,5 @@ interface API {
         @Field("place_id") place_id:Int,
         @Field("rate") rate:Int
     ):Call<Base_Responce>
-
-
 
 }

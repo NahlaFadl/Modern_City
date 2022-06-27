@@ -30,9 +30,10 @@ class ProfileActivity : AppCompatActivity() {
         var token=  sharedPreferences.getString("token",null)
         var id=  sharedPreferences.getInt("user_id",0)
 
-        // intent to activity to change user profile photo
-        btn_addProfilePhoto.setOnClickListener {
-            val intent:Intent= Intent(this, MainUploadPhotoActivity::class.java)
+
+        // intent to activity to user info
+        txt_edit_account.setOnClickListener {
+            val intent:Intent=Intent(this,UserEditProfile::class.java)
             startActivity(intent)
         }
 

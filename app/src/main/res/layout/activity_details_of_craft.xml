@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profiles.CraftsmanProfilActivity"
-    android:background="#FFFEFE">
+    tools:context=".ui.profiles.DetailsOfCraftActivity">
 
     <View
         android:id="@+id/view4"
@@ -17,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView12"
+        android:id="@+id/imageProfileCraftDet"
         android:layout_width="@dimen/_60sdp"
         android:layout_height="@dimen/_60sdp"
         android:layout_marginTop="120dp"
@@ -29,7 +28,7 @@
 
 
     <TextView
-        android:id="@+id/txt_crafsprofile_username"
+        android:id="@+id/txt_crafsprofile_usernameDet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -39,10 +38,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+        app:layout_constraintTop_toBottomOf="@+id/imageProfileCraftDet" />
 
     <TextView
-        android:id="@+id/txt_profile_crafs_description"
+        android:id="@+id/txt_profile_craft_descriptionDet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -52,7 +51,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_crafsprofile_username" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_crafsprofile_usernameDet" />
 
     <ProgressBar
         android:id="@+id/progressBar5"
@@ -66,16 +65,16 @@
         app:layout_constraintTop_toTopOf="@+id/view4" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/craftWork_recyclerView"
+        android:id="@+id/craftWork_recyclerViewDet"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_150sdp"
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_profile_crafs_description" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_profile_craft_descriptionDet" />
 
     <TextView
-        android:id="@+id/craftPhone"
+        android:id="@+id/craftPhoneDet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -85,16 +84,16 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/craftStatus" />
+        app:layout_constraintTop_toBottomOf="@+id/craftStatusDet" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/craftPhone"
+        app:layout_constraintBottom_toBottomOf="@+id/craftPhoneDet"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/craftPhone"
+        app:layout_constraintTop_toTopOf="@+id/craftPhoneDet"
         app:srcCompat="@drawable/ic_local_phone" />
 
     <Switch
@@ -104,13 +103,13 @@
         android:layout_marginStart="30dp"
         android:textOff="Dark"
         android:textOn="Light"
-        app:layout_constraintBottom_toBottomOf="@+id/craftStatus"
+        app:layout_constraintBottom_toBottomOf="@+id/craftStatusDet"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/craftStatus"
+        app:layout_constraintTop_toTopOf="@+id/craftStatusDet"
         app:srcCompat="@drawable/profil_circle_24" />
 
     <TextView
-        android:id="@+id/craftStatus"
+        android:id="@+id/craftStatusDet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -120,53 +119,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/craftWork_recyclerView" />
-
-    <TextView
-        android:id="@+id/txt_CraftEdit_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
-        android:text="تعيديل الحساب"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/craftPhone" />
-
-    <ImageView
-        android:id="@+id/phot_back_editAccount"
-        android:layout_width="@dimen/_30sdp"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_marginStart="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_CraftEdit_account"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txt_CraftEdit_account"
-        app:srcCompat="@drawable/ic_arrow_back" />
+        app:layout_constraintTop_toBottomOf="@+id/craftWork_recyclerViewDet" />
 
 
-    <TextView
-        android:id="@+id/txt_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
-        android:text="حروج"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_CraftEdit_account" />
-
-    <ImageView
-        android:id="@+id/logout"
-        android:layout_width="@dimen/_30sdp"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_marginStart="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_logout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txt_logout"
-        app:srcCompat="@drawable/ic_arrow_back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

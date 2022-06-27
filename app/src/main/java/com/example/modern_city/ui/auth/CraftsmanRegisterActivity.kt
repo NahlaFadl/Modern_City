@@ -29,22 +29,16 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_craftsman_register)
 
-
-
         loadcrafstype()
-        loaddata()
+        loadDataOfCraftRegister()
 
         spinerList.add("fff")
         spinerList.add("fff")
         spinerList.add("fff")
-
 
         val adapter = ArrayAdapter(this,
             android.R.layout.simple_spinner_item, spinerList)
         planets_spinner.adapter = adapter
-
-
-
 
     }
 
@@ -65,24 +59,14 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
 //
 //                        }
 
-
-
-
                 }
-
                 override fun onFailure(call: Call<Spiner_list_responce>?, t: Throwable?) {
-                    TODO("Not yet implemented")
+                    Toast.makeText(this@CraftsmanRegisterActivity,"فشل الاتصال بالانترنت",Toast.LENGTH_SHORT).show()
                 }
             })
-
-
         }
     }
-
-
-
-  fun loaddata(){
-
+  fun loadDataOfCraftRegister(){
       registerCraft_txtAct.setOnClickListener {
 
             var redisterinfo: SharedPreferences =getSharedPreferences("crafs_userinf", Context.MODE_PRIVATE)
@@ -100,29 +84,30 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
                         response: Response<Crafs_Register_Responces>?
                     ) {
                         Toast.makeText(this@CraftsmanRegisterActivity,response?.body()?.data?.first_name.toString(),Toast.LENGTH_LONG).show()
+
+                        editor.apply{
+                            putString("userName",response?.body()?.data?.first_name)
+                            putString("email",response?.body()?.data?.email)
+                            putString("gender",response?.body()?.data?.gender)
+                            putString("token",response?.body()?.data?.token)
+                            putString("phone",response?.body()?.data?.phone.toString())
+                            putString("adress",response?.body()?.data?.address)
+                            response?.body()?.data?.craftsman_id?.let { it1 -> putInt("city_id", it1) }
+                            response?.body()?.data?.craftsman_id?.let { it1 -> putInt("user_id", it1) }
+                            response?.body()?.data?.craftsman_id?.let { it1 -> putInt("user_group__id", it1) }
+                        }.commit()
                       var intr=Intent(this@CraftsmanRegisterActivity,CraftsmanProfilActivity::class.java)
                         startActivity(intr)
                     }
 
                     override fun onFailure(call: Call<Crafs_Register_Responces>?, t: Throwable?) {
+                        Toast.makeText(this@CraftsmanRegisterActivity,"فشل الاتصال بالانترنت",Toast.LENGTH_SHORT).show()
 
                     }
                 })
             }
 
-
-
-
-
-
-
-
-
-
         }
-
-
-
 
     }
 
