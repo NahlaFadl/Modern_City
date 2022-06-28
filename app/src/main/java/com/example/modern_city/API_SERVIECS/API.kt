@@ -238,4 +238,42 @@ interface API {
         @Field("rate") rate:Int
     ):Call<Base_Responce>
 
+
+
+    //////getStation
+    @FormUrlEncoded
+    @POST("api/auth/bus_routes/get_bus_route_name")
+    @Headers("Accept: application/json")
+    fun getStation(
+        @Field("token") token:String,
+
+    ):Call<StationsTypesResponces>
+
+
+
+   ///////getStationRoutes
+
+    @FormUrlEncoded
+    @POST("api/auth/bus_routes/get_bus_route_station")
+    @Headers("Accept: application/json")
+    fun getStationRoutes(
+        @Field("token") token:String,
+        @Field("bus_route_id") bus_route_id:Int
+        ):Call<StationRoutsResponce>
+
+
+
+    //////////getNearstPlace
+    @FormUrlEncoded
+    @POST("api/auth/places/get_nearest_place")
+    @Headers("Accept: application/json")
+    fun getNearstPlace(
+        @Field("token") token:String,
+        @Field("place_type_id") place_type_id:Int,
+        @Field("geo_location_lat") geo_location_lat:String,
+        @Field("geo_location_long") geo_location_long:String
+    ):Call<NearestPlaceResponce>
+
+
+
 }
