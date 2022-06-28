@@ -19,11 +19,7 @@
         <activity
             android:name=".ui.search.SearchActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.Stations_types.Station_Routs"
@@ -100,6 +96,11 @@
             android:name=".SplashActivity"
             android:exported="true"
             tools:ignore="DuplicateActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
     </application>

@@ -11,15 +11,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.modern_city.API_SERVIECS.ApiClient
+import com.example.modern_city.API_SERVIECS.CrafsTypes_Response
 import com.example.modern_city.API_SERVIECS.NearestPlaceResponce
+import com.example.modern_city.Models.adapters.Adapter_nearstPlace
+import com.example.modern_city.Models.adapters.Adapter_rcy_craftsTypes
 import com.example.modern_city.R
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import kotlinx.android.synthetic.main.activity_catagories.*
+import kotlinx.android.synthetic.main.activity_login_crafs.*
 import kotlinx.android.synthetic.main.activity_search.*
 import retrofit2.Call
 import retrofit2.Response
@@ -54,6 +63,8 @@ class SearchActivity : AppCompatActivity() {
         )
         ////// ابقي شوفي الايدهات وحطيها
         btn_search.setOnClickListener {
+
+            prog_nearplace.visibility = View.VISIBLE
             var x:String =edt_SearchText.text.toString()
             if(x.equals("مطاعم")){
                 count=1
@@ -98,10 +109,30 @@ class SearchActivity : AppCompatActivity() {
                      response: Response<NearestPlaceResponce>?
                  ) {
                      Toast.makeText(this@SearchActivity, response?.body()?.msg, Toast.LENGTH_SHORT).show()
+
+                     var listSize: Int? = response?.body()?.nearest_place?.size
+                     var placearr: ArrayList<NearestPlaceResponce> = ArrayList()
+
+                     for (i in 1..listSize!!) {
+                         placearr.add(response?.body()!!)
+
+
+                         val layoutManager: RecyclerView.LayoutManager = StaggeredGridLayoutManager(
+                             1,
+                             StaggeredGridLayoutManager.VERTICAL
+                         )
+                         rcy_crafstype.setLayoutManager(layoutManager)
+                         rcy_crafstype.setItemAnimator(DefaultItemAnimator())
+                         val adapter = Adapter_nearstPlace(placearr!!)
+                         rcy_crafstype.adapter = adapter
+                         prog_nearplace.visibility = View.INVISIBLE
+
+                     }
+
                  }
 
                  override fun onFailure(call: Call<NearestPlaceResponce>?, t: Throwable?) {
-                     TODO("Not yet implemented")
+                     prog_nearplace.visibility = View.INVISIBLE
                  }
              })
 
