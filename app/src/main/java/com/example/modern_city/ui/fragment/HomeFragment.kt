@@ -22,11 +22,12 @@ import com.example.modern_city.Models.*
 import com.example.modern_city.Models.adapters.Adapter_rcy_mainService
 import com.example.modern_city.Models.adapters.Adapter_rcy_mostFamiller
 import com.example.modern_city.Models.adapters.Adapter_slider
+import com.example.modern_city.ui.Stations_types.StationsTypes
 import com.example.modern_city.ui.categories.CrafsType
 import com.example.modern_city.ui.profiles.ProfileActivity
+import com.example.modern_city.ui.search.SearchActivity
 import com.smarteist.autoimageslider.SliderView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.fragment_home_fagment.*
 import kotlinx.android.synthetic.main.fragment_home_fagment.user_imageProf
 import retrofit2.Call
@@ -54,29 +55,36 @@ class HomeFagment : Fragment() {
             intto.putExtra("categoryName","خدمة الصنايعي")
             startActivity(intto)
         }
+        var HomeSearch =view.findViewById<TextView>(R.id.edt_HomeSearch)
+
+        HomeSearch.setOnClickListener {
+            val intto:Intent= Intent(activity,SearchActivity::class.java)
+
+            startActivity(intto)
+        }
+
+
+
+////////go to station
+        var tx_station_home =view.findViewById<TextView>(R.id.txt_station_home)
+
+        tx_station_home.setOnClickListener {
+            val intto:Intent= Intent(activity,StationsTypes::class.java)
+            intto.putExtra("categoryName","خدمة المواصلات")
+            startActivity(intto)
+        }
 
 
         val sharedPreferences = requireActivity().applicationContext
             .getSharedPreferences("userInfo_login",Context.MODE_PRIVATE)
-
+////////\adds
         loadAdds(sharedPreferences.getString("token",null).toString())
 
 
 
        Toast.makeText(activity,sharedPreferences.getString("email",null),Toast.LENGTH_LONG).show()
         Log.d("gerges",sharedPreferences.getString("email",null).toString())
-       // var redisterinfo:SharedPreferences= activity!!.getSharedPreferences("userInfo", Context.MODE_PRIVATE)
-//        val editor:SharedPreferences.Editor=redisterinfo.edit()
 
-
-
-
-//        val imageSlider =view.findViewById<SliderView>(R.id.imageSlider)
-//        val imageList: ArrayList<String> = ArrayList()
-//        imageList.add("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg")
-//        imageList.add("https://images.ctfassets.net/hrltx12pl8hq/4plHDVeTkWuFMihxQnzBSb/aea2f06d675c3d710d095306e377382f/shutterstock_554314555_copy.jpg")
-//        imageList.add("https://media.istockphoto.com/photos/child-hands-formig-heart-shape-picture-id951945718?k=6&m=951945718&s=612x612&w=0&h=ih-N7RytxrTfhDyvyTQCA5q5xKoJToKSYgdsJ_mHrv0=")
-//        setImageInSlider(imageList, imageSlider)
 
 //////////////////////////////////////////////////
         /** famous places */

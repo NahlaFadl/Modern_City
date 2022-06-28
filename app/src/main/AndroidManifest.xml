@@ -5,6 +5,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -14,8 +17,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Modern_City">
         <activity
+
             android:name=".WorkUploadPhoto.MainUplaodWorkPhotoActivity"
             android:exported="true" />
+        <activity
+            android:name=".ui.search.SearchActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.Stations_types.Station_Routs"
+            android:exported="true" />
+        <activity
+            android:name=".ui.Stations_types.StationsTypes"
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".ui.auth.Login_Crafs"
             android:exported="true" />
@@ -55,10 +76,14 @@
             android:exported="true" />
         <activity
             android:name=".ui.auth.CraftsmanRegisterActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".ui.auth.RegisterActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".ui.profiles.ProfileActivity"
             android:exported="true" />
@@ -67,7 +92,9 @@
             android:exported="true" />
         <activity
             android:name=".ui.auth.LoginActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".UserTypeActivity"
             android:exported="true" />
