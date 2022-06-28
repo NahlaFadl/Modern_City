@@ -208,7 +208,8 @@ interface API {
         @Field("last_name") last_name: Editable,
         @Field("password") password: Editable,
         @Field("address") address: Editable,
-        @Field("phone") phone:Editable
+        @Field("phone") phone:Editable,
+        @Field("description") description:Editable
     ):Call<CraftEditResponse>
 
     //////Craft Status Response

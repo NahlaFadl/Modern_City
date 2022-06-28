@@ -34,7 +34,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/cons">
+            android:id="@+id/consLogin">
 
             <View
                 android:id="@+id/view2"
@@ -100,7 +100,7 @@
                 <EditText
                     android:id="@+id/edt_login_username"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/_45sdp"
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:background="@null"
                     android:drawableRight="@drawable/profil_circle_24"
@@ -133,14 +133,14 @@
 
                     android:id="@+id/edt_login_userPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/_45sdp"
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:background="@null"
                     android:drawableRight="@drawable/ic_lock"
                     android:hint="ادخل الباسورد"
+                    android:inputType="textPassword"
                     android:drawablePadding="16dp"
                     android:ems="10"
-
                     android:padding="16dp"
                     android:singleLine="true" />
 

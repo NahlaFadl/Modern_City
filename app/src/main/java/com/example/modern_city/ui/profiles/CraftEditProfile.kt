@@ -31,7 +31,8 @@ class CraftEditProfile : AppCompatActivity() {
             if (edit_CraftOldPassword.text.toString().equals(pass)) {
                 editCraftInfo(
                     token.toString(), edit_nameCraft.text, edit_CraftlastName.text,
-                    edit_CraftNewPassword.text, edit_CraftAddress.text, edit_CraftPhone.text
+                    edit_CraftNewPassword.text, edit_CraftAddress.text, edit_CraftPhone.text,
+                    edit_CraftDescription.text
                 )
             }else{
                 Toast.makeText(this,"خطا في كلمة المرور القديمه",Toast.LENGTH_LONG).show()
@@ -55,9 +56,9 @@ class CraftEditProfile : AppCompatActivity() {
     }
 
     // to upload the Craft edit
-    fun editCraftInfo(token:String, fName: Editable, lName: Editable, passwod: Editable, address: Editable, phone: Editable){
+    fun editCraftInfo(token:String, fName: Editable, lName: Editable, passwod: Editable, address: Editable, phone: Editable,description:Editable){
 
-        var call= ApiClient.instance?.getMyApi()?.editCraft(token,fName, lName,passwod, address,phone)
+        var call= ApiClient.instance?.getMyApi()?.editCraft(token,fName, lName,passwod, address,phone,description)
 
         if (call != null){
 

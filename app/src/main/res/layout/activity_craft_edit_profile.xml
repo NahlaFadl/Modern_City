@@ -16,7 +16,7 @@
         android:layout_marginEnd="57dp"
         android:layout_marginRight="57dp"
         android:gravity="center_horizontal"
-        android:text="Done"
+        android:text="تم"
         android:textColor="#000000"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -34,7 +34,7 @@
         android:layout_marginEnd="206dp"
         android:layout_marginRight="206dp"
         android:gravity="center_horizontal"
-        android:text="Cancel"
+        android:text="الغاء"
         android:textColor="#eb1010"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -70,7 +70,7 @@
         android:layout_height="19dp"
         android:layout_marginTop="30dp"
         android:gravity="center_horizontal"
-        android:text="Edit your profile"
+        android:text="تعديل الملف الشخصي"
         android:textColor="#000000"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -80,7 +80,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="253dp"
-        android:layout_height="@dimen/_230sdp"
+        android:layout_height="@dimen/_270sdp"
         android:layout_marginTop="40dp"
         android:background="@drawable/edite_styl"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,16 +91,15 @@
             android:id="@+id/edit_nameCraft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
             android:background="@null"
-            android:hint="Name"
+            android:hint="الاسم"
             android:singleLine="true"
             android:textColor="#000000"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
@@ -119,14 +118,14 @@
             android:id="@+id/edit_CraftAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
             android:background="@null"
-            android:hint="Address"
+            android:hint="العنوان"
             android:singleLine="true"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Vv" />
 
         <View
@@ -144,16 +143,15 @@
             android:id="@+id/edit_CraftOldPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
             android:background="@null"
-            android:hint="Password"
+            android:hint="كلمة المرور القديمه"
             android:inputType="textPassword"
             android:singleLine="true"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
         <View
@@ -171,16 +169,15 @@
             android:id="@+id/edit_CraftNewPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
             android:background="@null"
-            android:hint="Password"
+            android:hint="كلمة المرور الجديده"
             android:inputType="textPassword"
             android:singleLine="true"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
         <View
@@ -195,20 +192,44 @@
             app:layout_constraintTop_toBottomOf="@+id/edit_CraftNewPassword" />
 
         <EditText
+            android:id="@+id/edit_CraftDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:background="@null"
+            android:hint="اضف وصف"
+            android:singleLine="true"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLay11" />
+
+        <View
+            android:id="@+id/linearLay12"
+            android:layout_width="253dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="#CAC2C2"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_CraftDescription" />
+
+        <EditText
             android:id="@+id/edit_CraftPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
             android:background="@null"
             android:hint="012345785"
             android:inputType="phone"
             android:singleLine="true"
             android:textSize="10sp"
             android:textStyle="bold"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLay11" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLay12" />
 
         <View
             android:layout_width="253dp"
@@ -223,14 +244,14 @@
             android:id="@+id/edit_CraftlastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
             android:background="@null"
-            android:hint="last name"
+            android:hint="القب"
             android:singleLine="true"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
 
         <View

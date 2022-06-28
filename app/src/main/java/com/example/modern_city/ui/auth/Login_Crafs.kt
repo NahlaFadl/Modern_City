@@ -95,7 +95,7 @@ class Login_Crafs : AppCompatActivity() {
                             response?.body()?.Craftsman?.craftsman_type_id?.let { it1 -> putInt("user_group__id", it1)}
 
                         }.commit()
-                        Toast.makeText(this@Login_Crafs,response?.body()?.Craftsman?.email, Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@Login_Crafs,"تم الاتصال", Toast.LENGTH_LONG).show()
                         val intent= Intent(this@Login_Crafs, CraftsmanProfilActivity::class.java)
                         startActivity(intent)
 

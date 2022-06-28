@@ -69,6 +69,7 @@ class RegisterActivity : AppCompatActivity() {
                          call: Call<UserRegister>?,
                          response: Response<UserRegister>?)
                      {
+                         Toast.makeText(this@RegisterActivity,"تم التسجيل",Toast.LENGTH_LONG).show()
                         if (response!=null){
                          masege=response?.body()?.msg.toString()
 
@@ -98,7 +99,7 @@ class RegisterActivity : AppCompatActivity() {
                      }
 
                      override fun onFailure(call: Call<UserRegister>?, t: Throwable?) {
-                         Toast.makeText(this@RegisterActivity,"Failer",Toast.LENGTH_LONG).show()
+                         Toast.makeText(this@RegisterActivity,"فشل في الاتصال",Toast.LENGTH_LONG).show()
 
 
                      }

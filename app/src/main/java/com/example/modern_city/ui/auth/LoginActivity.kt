@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
 
         //to login
         lay_loginComponent.setOnClickListener {
-            cons.visibility = View.INVISIBLE
+            consLogin.visibility = View.INVISIBLE
             prog_login.visibility = View.VISIBLE
 
             var email=edt_login_username.text.toString().trim()
@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
             }
             else{
                 Toast.makeText(this@LoginActivity,"ادخل جميع البيانات",Toast.LENGTH_LONG).show()
-                cons.visibility = View.VISIBLE
+                consLogin.visibility = View.VISIBLE
                 prog_login.visibility = View.INVISIBLE
 
             }
@@ -56,8 +56,8 @@ class LoginActivity : AppCompatActivity() {
     // login function
     fun login(email:String,password:String){
 
-        cons.visibility = View.INVISIBLE
-        prog_login.visibility = View.VISIBLE
+//        cons.visibility = View.INVISIBLE
+//        prog_login.visibility = View.VISIBLE
 
         var redisterinfo: SharedPreferences =getSharedPreferences("userInfo_login", Context.MODE_PRIVATE)
         val editor =redisterinfo.edit()
@@ -70,6 +70,7 @@ class LoginActivity : AppCompatActivity() {
                     call: Call<LoginRespons>?,
                     response: Response<LoginRespons>?
                 ) {
+                    Toast.makeText(this@LoginActivity,"تم الاتصال",Toast.LENGTH_LONG).show()
                     if (response!=null){
                     masege=response?.body()?.msg.toString()
 
@@ -87,12 +88,9 @@ class LoginActivity : AppCompatActivity() {
                        response?.body()?.User?.user_group_id?.let { it1 -> putInt("user_group__id", it1)}
 
                    }.commit()
-                    Toast.makeText(this@LoginActivity,response?.body()?.User?.email,Toast.LENGTH_LONG).show()
 
                     val intent= Intent(this@LoginActivity, HomeActivity::class.java)
                     startActivity(intent)
-                        cons.visibility = View.VISIBLE
-                        prog_login.visibility = View.INVISIBLE
                 }else{
                         Toast.makeText(this@LoginActivity,masege,Toast.LENGTH_LONG).show()
 
@@ -103,7 +101,7 @@ class LoginActivity : AppCompatActivity() {
                 override fun onFailure(call: Call<LoginRespons>?, t: Throwable?) {
                     Toast.makeText(this@LoginActivity,"فشل الاتصال حاول مره اخري"
                         ,Toast.LENGTH_LONG).show()
-                    cons.visibility = View.VISIBLE
+                    consLogin.visibility = View.VISIBLE
                     prog_login.visibility = View.INVISIBLE
                 }
 
@@ -111,7 +109,7 @@ class LoginActivity : AppCompatActivity() {
         }else
             Toast.makeText(this@LoginActivity,"الطلب غير متاح الان"
                 ,Toast.LENGTH_LONG).show()
-        cons.visibility = View.VISIBLE
+        consLogin.visibility = View.VISIBLE
         prog_login.visibility = View.INVISIBLE
     }
 

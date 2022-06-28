@@ -131,7 +131,6 @@ class CraftsmanRegisterActivity : AppCompatActivity(), AdapterView.OnItemSelecte
               n=11
           }
 
-          Toast.makeText(this,textView_msg!!.text.toString()+n.toString(),Toast.LENGTH_LONG).show()
           if (!fname.isEmpty()&&!lname.isEmpty()&&!email.isEmpty()&&!pass.isEmpty()&&!phone.isEmpty()
               &&!passconf.isEmpty()){
 
@@ -150,7 +149,7 @@ class CraftsmanRegisterActivity : AppCompatActivity(), AdapterView.OnItemSelecte
 
                            //   Toast.makeText(this@CraftsmanRegisterActivity,""+textView_msg+" "+crftID,Toast.LENGTH_LONG).show()
                               Log.v("  gergesss",response?.body()?.msg.toString())
-                              Toast.makeText(this@CraftsmanRegisterActivity,response?.body()?.data?.first_name.toString(),Toast.LENGTH_LONG).show()
+                              Toast.makeText(this@CraftsmanRegisterActivity,"تم التسحجيل بنجاح",Toast.LENGTH_LONG).show()
 
                               editor.apply{
                                   putString("userName",response?.body()?.data?.first_name)

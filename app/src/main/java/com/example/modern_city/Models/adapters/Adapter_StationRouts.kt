@@ -25,7 +25,7 @@ class Adapter_StationRouts(var listOfRouts:List<StationRoutsResponce>)
         val ItemsViewModel = listOfRouts[position]
 
 
-            holder.textName.text=ItemsViewModel.bus_routes_station.bus_route_name
+            holder.textName.text=ItemsViewModel.bus_routes_station[position].bus_route_name
 
 
 
