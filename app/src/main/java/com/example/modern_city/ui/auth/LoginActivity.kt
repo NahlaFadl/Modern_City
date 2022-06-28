@@ -6,7 +6,6 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputType
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.modern_city.API_SERVIECS.ApiClient
@@ -27,12 +26,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         supportActionBar?.hide()
-        prog_login.visibility = View.INVISIBLE
 
         //to login
         lay_loginComponent.setOnClickListener {
-            prog_login.visibility = View.INVISIBLE
-            constraint_login.visibility = View.VISIBLE
+            cons.visibility = View.INVISIBLE
+            prog_login.visibility = View.VISIBLE
 
             var email=edt_login_username.text.toString().trim()
             var pass=edt_login_userPassword.text.toString().trim()
@@ -42,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
             }
             else{
                 Toast.makeText(this@LoginActivity,"ادخل جميع البيانات",Toast.LENGTH_LONG).show()
-                constraint_login.visibility = View.VISIBLE
+                cons.visibility = View.VISIBLE
                 prog_login.visibility = View.INVISIBLE
 
             }
@@ -57,11 +55,14 @@ class LoginActivity : AppCompatActivity() {
 
     // login function
     fun login(email:String,password:String){
+
+        cons.visibility = View.INVISIBLE
+        prog_login.visibility = View.VISIBLE
+
         var redisterinfo: SharedPreferences =getSharedPreferences("userInfo_login", Context.MODE_PRIVATE)
         val editor =redisterinfo.edit()
 
         var call= ApiClient.instance?.getMyApi()?.login(email,password,"user")
-
 
         if (call != null){
             call.enqueue(object :Callback<LoginRespons>{
@@ -86,12 +87,11 @@ class LoginActivity : AppCompatActivity() {
 
                    }.commit()
                     Toast.makeText(this@LoginActivity,response?.body()?.User?.email,Toast.LENGTH_LONG).show()
-                    constraint_login.visibility = View.VISIBLE
-                    prog_login.visibility = View.INVISIBLE
+
                     val intent= Intent(this@LoginActivity, HomeActivity::class.java)
                     startActivity(intent)
-
-
+                        cons.visibility = View.VISIBLE
+                        prog_login.visibility = View.INVISIBLE
                 }else{
                         Toast.makeText(this@LoginActivity,masege,Toast.LENGTH_LONG).show()
 
@@ -102,7 +102,7 @@ class LoginActivity : AppCompatActivity() {
                 override fun onFailure(call: Call<LoginRespons>?, t: Throwable?) {
                     Toast.makeText(this@LoginActivity,"فشل الاتصال حاول مره اخري"
                         ,Toast.LENGTH_LONG).show()
-                    constraint_login.visibility = View.VISIBLE
+                    cons.visibility = View.VISIBLE
                     prog_login.visibility = View.INVISIBLE
                 }
 
@@ -110,7 +110,7 @@ class LoginActivity : AppCompatActivity() {
         }else
             Toast.makeText(this@LoginActivity,"الطلب غير متاح الان"
                 ,Toast.LENGTH_LONG).show()
-        constraint_login.visibility = View.VISIBLE
+        cons.visibility = View.VISIBLE
         prog_login.visibility = View.INVISIBLE
     }
 

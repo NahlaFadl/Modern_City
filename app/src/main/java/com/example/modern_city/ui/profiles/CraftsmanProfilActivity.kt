@@ -69,8 +69,8 @@ class CraftsmanProfilActivity : AppCompatActivity() {
             }
         }
 
-
-        loadData(token.toString(),id!!)
+        // api لسه صاصا هيعمله
+       // loadData(token.toString(),id!!)
 
     }
 

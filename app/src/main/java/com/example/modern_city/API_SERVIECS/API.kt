@@ -49,6 +49,16 @@ interface API {
          @Field("login_type") login_type:String,
      ):Call<LoginRespons>
 
+    //craft login
+    @FormUrlEncoded
+    @POST("api/login")
+    @Headers("Accept: application/json")
+    fun craftLogin(
+        @Field("email") email:String,
+        @Field("password") password:String,
+        @Field("login_type") login_type:String,
+    ):Call<LoginCraftResponse>
+
      //git category
      @FormUrlEncoded
      @POST("api/auth/places_types/show_all_places_types")

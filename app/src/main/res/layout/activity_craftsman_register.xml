@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/consCraftRegister"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -103,15 +104,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_15sdp"
-                    android:hint="ادخل الاميل"
-                    android:drawableRight="@drawable/ic_email_24"
                     android:background="@null"
+                    android:drawableRight="@drawable/ic_email_24"
                     android:drawablePadding="16dp"
                     android:ems="10"
+                    android:hint="ادخل الاميل"
                     android:padding="16dp"
                     android:singleLine="true"
 
-              />
+                    />
 
             </androidx.cardview.widget.CardView>
 
@@ -136,12 +137,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:background="@null"
+                    android:drawableRight="@drawable/ic_lock"
                     android:drawablePadding="16dp"
                     android:ems="10"
+                    android:hint="ادخل الباسورد"
                     android:padding="16dp"
                     android:singleLine="true"
-                    android:hint="ادخل الباسورد"
-                    android:drawableRight="@drawable/ic_lock"
 
                     />
 
@@ -168,16 +169,16 @@
                     android:layout_height="wrap_content"
 
 
-                    android:drawableRight="@drawable/ic_lock"
-
-                    android:hint="اكد الباسورد"
-
                     android:layout_marginLeft="@dimen/_15sdp"
+
                     android:background="@null"
+
+                    android:drawableRight="@drawable/ic_lock"
                     android:drawablePadding="16dp"
                     android:ems="10"
+                    android:hint="اكد الباسورد"
                     android:padding="16dp"
-                    android:singleLine="true"/>
+                    android:singleLine="true" />
 
             </androidx.cardview.widget.CardView>
 
@@ -230,25 +231,26 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:weightSum="3"
                     android:orientation="horizontal"
-                    android:padding="@dimen/_5sdp">
+                    android:padding="@dimen/_5sdp"
+                    android:weightSum="3">
 
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="@dimen/_28sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_weight="2"
+                        android:paddingLeft="@dimen/_10sdp"
                         android:text="نوع الصنعة"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_weight="2"
-                        android:layout_height="@dimen/_28sdp"
-                        android:paddingLeft="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_5sdp"/>
+                        android:textStyle="bold" />
+
                     <Spinner
                         android:id="@+id/spinner"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="@dimen/_28sdp" />
+                        android:layout_height="@dimen/_28sdp"
+                        android:layout_weight="1" />
 
 
                 </LinearLayout>

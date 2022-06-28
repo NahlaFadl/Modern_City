@@ -36,16 +36,12 @@ class RegisterActivity : AppCompatActivity() {
 
  fun addnewuser(){
      lay_registerComponent.setOnClickListener {
+         consRegister.visibility = View.INVISIBLE
          prog_register.visibility = View.VISIBLE
-         constraint_prgre.visibility = View.INVISIBLE
 
-
-
-
+         // to create sharedPerferences
          var redisterinfo:SharedPreferences=getSharedPreferences("userInfo_login",Context.MODE_PRIVATE)
          val editor:SharedPreferences.Editor=redisterinfo.edit()
-
-
 
          val retrofit=Retrofit.Builder().baseUrl(url)
              .addConverterFactory(GsonConverterFactory.create())
@@ -89,8 +85,8 @@ class RegisterActivity : AppCompatActivity() {
                          }.commit()
                          val intenthome=Intent(this@RegisterActivity,HomeActivity::class.java)
                          startActivity(intenthome)
-                         prog_register.visibility = View.INVISIBLE
-                         constraint_prgre.visibility = View.VISIBLE
+                            prog_register.visibility = View.INVISIBLE
+                            consRegister.visibility = View.VISIBLE
 
                      }else{
                             Toast.makeText(this@RegisterActivity,masege,Toast.LENGTH_LONG).show()
@@ -110,7 +106,7 @@ class RegisterActivity : AppCompatActivity() {
 
              }else{
                  Toast.makeText(this@RegisterActivity,"كلمت السر غير متتطابقة",Toast.LENGTH_LONG).show()
-                 constraint_prgre.visibility = View.VISIBLE
+                 consRegister.visibility = View.VISIBLE
                  prog_register.visibility = View.INVISIBLE
 
              }
@@ -119,20 +115,9 @@ class RegisterActivity : AppCompatActivity() {
 
          else{
              Toast.makeText(this@RegisterActivity,"لم يتم ادخال بعض البيانات",Toast.LENGTH_LONG).show()
-             constraint_prgre.visibility = View.VISIBLE
+             consRegister.visibility = View.VISIBLE
              prog_register.visibility = View.INVISIBLE
          }
-
-
-
-
-
-
-
-
-
-
-
      }
  }
 }

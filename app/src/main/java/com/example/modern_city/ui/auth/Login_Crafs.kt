@@ -9,12 +9,11 @@ import android.text.InputType
 import android.view.View
 import android.widget.Toast
 import com.example.modern_city.API_SERVIECS.ApiClient
-import com.example.modern_city.API_SERVIECS.LoginRespons
+import com.example.modern_city.API_SERVIECS.LoginCraftResponse
 import com.example.modern_city.R
-import com.example.modern_city.ui.HomeActivity
+import com.example.modern_city.ui.profiles.CraftsmanProfilActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.lay_loginComponent
-import kotlinx.android.synthetic.main.activity_login.prog_login
+//import kotlinx.android.synthetic.main.activity_login.prog_login2
 import kotlinx.android.synthetic.main.activity_login_crafs.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,13 +27,13 @@ class Login_Crafs : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_crafs)
         supportActionBar?.hide()
-        prog_login.visibility = View.INVISIBLE
+        prog_login2.visibility = View.INVISIBLE
 
 
         //to login
         lay_crafsLogin.setOnClickListener {
-            prog_login.visibility = View.INVISIBLE
-            constraint_login.visibility = View.VISIBLE
+            prog_login2.visibility = View.INVISIBLE
+            constraint_loginCraft.visibility = View.VISIBLE
 
             var email=edt_login_crafsname.text.toString().trim()
             var pass=edt_login_crafsPassword.text.toString().trim()
@@ -47,7 +46,7 @@ class Login_Crafs : AppCompatActivity() {
             else{
                 Toast.makeText(this@Login_Crafs,"ادخل جميع البيانات",Toast.LENGTH_LONG).show()
                 constraint_login.visibility = View.VISIBLE
-                prog_login.visibility = View.INVISIBLE
+                prog_login2.visibility = View.INVISIBLE
 
             }
         }
@@ -64,38 +63,38 @@ class Login_Crafs : AppCompatActivity() {
 
 
     fun login(email:String,password:String){
-        var redisterinfo: SharedPreferences =getSharedPreferences("userInfo_login", Context.MODE_PRIVATE)
+        var redisterinfo: SharedPreferences =getSharedPreferences("crafs_userinf", Context.MODE_PRIVATE)
         val editor =redisterinfo.edit()
 
-        var call= ApiClient.instance?.getMyApi()?.login(email,password,"crafts")
+        var call= ApiClient.instance?.getMyApi()?.craftLogin(email,password,"crafts")
 
 
         if (call != null){
-            call.enqueue(object : Callback<LoginRespons> {
+            call.enqueue(object : Callback<LoginCraftResponse> {
                 override fun onResponse(
-                    call: Call<LoginRespons>?,
-                    response: Response<LoginRespons>?
+                    call: Call<LoginCraftResponse>?,
+                    response: Response<LoginCraftResponse>?
                 ) {
+                    cons2.visibility = View.INVISIBLE
+                    prog_login2.visibility = View.VISIBLE
                     if (response!=null){
                         masege=response?.body()?.msg.toString()
 
 
                         editor.apply{
-                            putString("userName",response?.body()?.User?.first_name)
-                            putString("email",response?.body()?.User?.email)
-                            putString("gender",response?.body()?.User?.gender)
-                            putString("token",response?.body()?.User?.token)
-                            putString("phone",response?.body()?.User?.phone.toString())
-                            putString("adress",response?.body()?.User?.address)
-                            response?.body()?.User?.user_id?.let { it1 -> putInt("city_id", it1) }
-                            response?.body()?.User?.user_id?.let { it1 -> putInt("user_id", it1) }
-                            response?.body()?.User?.user_group_id?.let { it1 -> putInt("user_group__id", it1)}
+                            putString("userName",response?.body()?.Craftsman?.first_name)
+                            putString("email",response?.body()?.Craftsman?.email)
+                            putString("gender",response?.body()?.Craftsman?.gender)
+                            putString("token",response?.body()?.Craftsman?.token)
+                            putString("phone",response?.body()?.Craftsman?.phone.toString())
+                            putString("adress",response?.body()?.Craftsman?.address)
+                            response?.body()?.Craftsman?.craftsman_id?.let { it1 -> putInt("city_id", it1) }
+                            response?.body()?.Craftsman?.craftsman_id?.let { it1 -> putInt("user_id", it1) }
+                            response?.body()?.Craftsman?.craftsman_type_id?.let { it1 -> putInt("user_group__id", it1)}
 
                         }.commit()
-                        Toast.makeText(this@Login_Crafs,response?.body()?.User?.email, Toast.LENGTH_LONG).show()
-                        constraint_login.visibility = View.VISIBLE
-                        prog_login.visibility = View.INVISIBLE
-                        val intent= Intent(this@Login_Crafs, HomeActivity::class.java)
+                        Toast.makeText(this@Login_Crafs,response?.body()?.Craftsman?.email, Toast.LENGTH_LONG).show()
+                        val intent= Intent(this@Login_Crafs, CraftsmanProfilActivity::class.java)
                         startActivity(intent)
 
 
@@ -106,18 +105,18 @@ class Login_Crafs : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<LoginRespons>?, t: Throwable?) {
+                override fun onFailure(call: Call<LoginCraftResponse>?, t: Throwable?) {
                     Toast.makeText(this@Login_Crafs,"فشل الاتصال حاول مره اخري"
                         , Toast.LENGTH_LONG).show()
                     constraint_login.visibility = View.VISIBLE
-                    prog_login.visibility = View.INVISIBLE
+                    prog_login2.visibility = View.INVISIBLE
                 }
 
             } )
         }else
             Toast.makeText(this@Login_Crafs,"الطلب غير متاح الان"
                 , Toast.LENGTH_LONG).show()
-        constraint_login.visibility = View.VISIBLE
-        prog_login.visibility = View.INVISIBLE
+        constraint_loginCraft.visibility = View.VISIBLE
+        prog_login2.visibility = View.INVISIBLE
     }
 }

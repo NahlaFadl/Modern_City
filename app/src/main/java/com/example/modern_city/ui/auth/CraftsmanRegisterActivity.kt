@@ -82,7 +82,7 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
   fun loadDataOfCraftRegister(){
       registerCraft_txtAct.setOnClickListener {
 
-          constrainteg.visibility = View.INVISIBLE
+          consCraftRegister.visibility = View.INVISIBLE
           prog_craf_Resg.visibility = View.VISIBLE
 
             var redisterinfo: SharedPreferences =getSharedPreferences("crafs_userinf", Context.MODE_PRIVATE)
@@ -128,8 +128,8 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
                               var intr=Intent(this@CraftsmanRegisterActivity,CraftsmanProfilActivity::class.java)
                               startActivity(intr)
 
-                              constraint_prgre.visibility = View.VISIBLE
-                              prog_register.visibility = View.INVISIBLE
+                              consCraftRegister.visibility = View.VISIBLE
+                              prog_craf_Resg.visibility = View.INVISIBLE
                           }
 
                           override fun onFailure(call: Call<Crafs_Register_Responces>?, t: Throwable?) {
@@ -140,7 +140,7 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
                   }
               }else{
                   Toast.makeText(this@CraftsmanRegisterActivity,"كلمت السر غير متتطابقة",Toast.LENGTH_LONG).show()
-                  constrainteg.visibility = View.VISIBLE
+                  consCraftRegister.visibility = View.VISIBLE
                   prog_craf_Resg.visibility = View.INVISIBLE
 
               }
@@ -148,7 +148,7 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
           }
           else{
               Toast.makeText(this@CraftsmanRegisterActivity,"لم يتم ادخال بعض البيانات",Toast.LENGTH_LONG).show()
-              constrainteg.visibility = View.VISIBLE
+              consCraftRegister.visibility = View.VISIBLE
               prog_craf_Resg.visibility = View.INVISIBLE
           }
 
