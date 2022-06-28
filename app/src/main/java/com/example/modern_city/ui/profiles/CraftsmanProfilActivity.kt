@@ -21,8 +21,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.content.SharedPreferences
-
-
+import com.example.modern_city.WorkUploadPhoto.MainUplaodWorkPhotoActivity
+import kotlinx.android.synthetic.main.activity_details_of_craft.*
 
 
 class CraftsmanProfilActivity : AppCompatActivity() {
@@ -34,7 +34,13 @@ class CraftsmanProfilActivity : AppCompatActivity() {
         val sharedPreferences = this.getSharedPreferences("crafs_userinf", Context.MODE_PRIVATE)
         var token=  sharedPreferences.getString("token",null)
         var id=  sharedPreferences.getInt("user_id",0)
+        var testStatus=  sharedPreferences.getBoolean("NameOfThingToSave",false)
+        //Toast.makeText(this,testStatus.toString(),Toast.LENGTH_SHORT).show()
 
+        addCraftWork.setOnClickListener {
+            var intent =Intent(this,MainUplaodWorkPhotoActivity::class.java)
+            startActivity(intent)
+        }
         //to craft logout
         txt_logout.setOnClickListener {
             craftLogout(token.toString())
@@ -44,6 +50,8 @@ class CraftsmanProfilActivity : AppCompatActivity() {
             val intent=Intent(this,CraftEditProfile::class.java)
             startActivity(intent)
         }
+        // to testStat
+        testStat()
         //to edit status
         switch1.setOnClickListener {
             if (switch1.isChecked){
@@ -69,29 +77,32 @@ class CraftsmanProfilActivity : AppCompatActivity() {
             }
         }
 
-        // api لسه صاصا هيعمله
-       // loadData(token.toString(),id!!)
+        loadData(token.toString(),id!!)
 
     }
 
     fun loadData(token:String,id:Int){
         try {
-          val call=ApiClient.instance?.getMyApi()?.getCrafsDetails(token,id)
+          val call=ApiClient.instance?.getMyApi()?.showCraftDetailsToCrafts(token,id)
             if (call!=null){
-                call.enqueue(object :Callback<Crafs_Details_Responce>{
+                call.enqueue(object :Callback<ShowDetailsOfCraftToCraftResponsr>{
                     override fun onResponse(
-                        call: Call<Crafs_Details_Responce>?,
-                        response: Response<Crafs_Details_Responce>?
+                        call: Call<ShowDetailsOfCraftToCraftResponsr>?,
+                        response: Response<ShowDetailsOfCraftToCraftResponsr>?
                     ) {
 
-             txt_crafsprofile_username.text= response?.body()?.details_of_craftsman?.first_name+" "+
-                     response?.body()?.details_of_craftsman?.last_name
-
-           txt_profile_crafs_description.text=response?.body()?.details_of_craftsman?.description.toString()
+                        //to load user profile photo
+                        Picasso.get().load(response?.body()?.details_of_craftsman?.craftsman_img).into(CraftProfilePhoto)
+                        Picasso.get().load(response!!.body()!!.details_of_craftsman?.craftsman_slider[0]).into(craftWork_Image)
+                        var craftName= response?.body()?.details_of_craftsman?.first_name+" "+
+                        response?.body()?.details_of_craftsman?.last_name
+                        txt_crafsprofile_username.text=craftName
+                        craftPhone.text=response?.body()?.details_of_craftsman?.phone
+                        txt_profile_crafs_description.text=response?.body()?.details_of_craftsman?.description.toString()
                     }
 
-                    override fun onFailure(call: Call<Crafs_Details_Responce>?, t: Throwable?) {
-                        TODO("Not yet implemented")
+                    override fun onFailure(call: Call<ShowDetailsOfCraftToCraftResponsr>?, t: Throwable?) {
+                        Toast.makeText(this@CraftsmanProfilActivity,"اضف صوره للعمل اولا",Toast.LENGTH_SHORT).show()
                     }
                 })
 
@@ -164,6 +175,18 @@ class CraftsmanProfilActivity : AppCompatActivity() {
             Toast.makeText(this,"Faliar222", Toast.LENGTH_LONG).show()
     }
 
+    fun testStat(){
+        val sharedPreferences = this.getSharedPreferences("crafs_userinf", Context.MODE_PRIVATE)
+        var testStatus=  sharedPreferences.getBoolean("NameOfThingToSave",false)
+        if(testStatus==true){
+            craftStatus.text="متاح"
+            craftStatus.setTextColor(Color.GREEN)
+        }
+        else{
+            craftStatus.text="غير متاح"
+            craftStatus.setTextColor(Color.RED)
+        }
+    }
 }
 
 

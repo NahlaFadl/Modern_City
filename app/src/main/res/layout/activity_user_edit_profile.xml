@@ -80,7 +80,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="253dp"
-        android:layout_height="@dimen/_188sdp"
+        android:layout_height="@dimen/_230sdp"
         android:layout_marginTop="40dp"
         android:background="@drawable/edite_styl"
         app:layout_constraintEnd_toEndOf="parent"
@@ -141,14 +141,14 @@
             app:layout_constraintTop_toBottomOf="@+id/edit_address" />
 
         <EditText
-            android:id="@+id/edit_password"
+            android:id="@+id/edit_oldPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:background="@null"
-            android:hint="Password"
+            android:hint="Enter Old Password"
             android:inputType="textPassword"
             android:singleLine="true"
             android:textSize="12sp"
@@ -165,7 +165,35 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_password" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_oldPassword" />
+
+        <EditText
+            android:id="@+id/edit_newPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@null"
+            android:hint="Enter New Password"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+        <View
+            android:id="@+id/linearLayout7"
+            android:layout_width="253dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:background="#CAC2C2"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_newPassword" />
+
 
         <EditText
             android:id="@+id/edit_phone"
@@ -181,7 +209,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
 
         <View
             android:layout_width="253dp"

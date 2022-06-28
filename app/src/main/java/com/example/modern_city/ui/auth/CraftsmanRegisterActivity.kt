@@ -7,14 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import com.example.modern_city.API_SERVIECS.*
 import com.example.modern_city.R
 import com.example.modern_city.ui.HomeActivity
 import com.example.modern_city.ui.profiles.CraftsmanProfilActivity
 import kotlinx.android.synthetic.main.activity_craftsman_register.*
+import kotlinx.android.synthetic.main.activity_login_crafs.*
 import kotlinx.android.synthetic.main.activity_regester.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,8 +22,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.ArrayList
 
-class CraftsmanRegisterActivity : AppCompatActivity() {
+class CraftsmanRegisterActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
+    //for spinner
+    var languages = arrayOf("سباك", "نجار", "حلاق", "كهربائي", "نقاش", "ترزي", "مقاول", "حداد", "منجد")
+    var spinner: Spinner? = null
+    var textView_msg: TextView? = null
+    var crftID:Int = 0
     //lateinit var spinerdata :ArrayList<String>
     lateinit var adapterSpin:ArrayAdapter<String>
     var spinerdata= arrayListOf<String>("gerges","gerges","gerged")
@@ -33,6 +37,8 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_craftsman_register)
+
+        spener()
 
         loadcrafstype()
     loadDataOfCraftRegister()
@@ -95,13 +101,44 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
           var passconf= edt_crafts_rfgistr_comnfpass.text.toString().trim()
           var phone=edt_crafts_rfgistr_phone.text.toString().trim()
 
+
+          var n:Int=0
+          if (textView_msg!!.text.toString().equals("سباك")){
+              n=1
+          }else if (textView_msg!!.text.toString().equals("نجار"))
+          {
+              n=2
+          }else if (textView_msg!!.text.toString().equals("حلاق"))
+          {
+              n=3
+          }else if (textView_msg!!.text.toString().equals("كهربائي"))
+          {
+              n=4
+          }else if (textView_msg!!.text.toString().equals("نقاش"))
+          {
+              n=5
+          }else if (textView_msg!!.text.toString().equals("ترزي"))
+          {
+              n=8
+          }else if (textView_msg!!.text.toString().equals("مقاول"))
+          {
+              n=9
+          }else if (textView_msg!!.text.toString().equals("حداد"))
+          {
+              n=10
+          }else if (textView_msg!!.text.toString().equals("منجد"))
+          {
+              n=11
+          }
+
+          Toast.makeText(this,textView_msg!!.text.toString()+n.toString(),Toast.LENGTH_LONG).show()
           if (!fname.isEmpty()&&!lname.isEmpty()&&!email.isEmpty()&&!pass.isEmpty()&&!phone.isEmpty()
               &&!passconf.isEmpty()){
 
               if (pass.equals(passconf)){
 
                   val call= ApiClient.instance?.getMyApi()?.registerCrafts(
-                      1, 2, fname,lname,email,"mail", pass
+                      n, 2, fname,lname,email,"mail", pass
                       ,"minia",phone)
 
                   if (call != null) {
@@ -111,6 +148,7 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
                               response: Response<Crafs_Register_Responces>?
                           ) {
 
+                           //   Toast.makeText(this@CraftsmanRegisterActivity,""+textView_msg+" "+crftID,Toast.LENGTH_LONG).show()
                               Log.v("  gergesss",response?.body()?.msg.toString())
                               Toast.makeText(this@CraftsmanRegisterActivity,response?.body()?.data?.first_name.toString(),Toast.LENGTH_LONG).show()
 
@@ -121,6 +159,7 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
                                   putString("token",response?.body()?.data?.token)
                                   putString("phone",response?.body()?.data?.phone.toString())
                                   putString("adress",response?.body()?.data?.address)
+                                  putString("password",edt_crafts_rfgistr_password.text.toString())
                                   response?.body()?.data?.craftsman_id?.let { it1 -> putInt("city_id", it1) }
                                   response?.body()?.data?.craftsman_id?.let { it1 -> putInt("user_id", it1) }
                                   response?.body()?.data?.craftsman_id?.let { it1 -> putInt("user_group__id", it1) }
@@ -159,12 +198,35 @@ class CraftsmanRegisterActivity : AppCompatActivity() {
     }
 
 
-    fun loadspiner(){
+//    fun loadspiner(){
+//
+//        adapterSpin= ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,spinerdata )
+//        adapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//
+//        spinner.adapter=adapterSpin
+//    }
 
-        adapterSpin= ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,spinerdata )
-        adapterSpin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        spinner.adapter=adapterSpin
+    fun spener()
+    {
+
+        textView_msg = this.msg
+        spinner = this.spinner_sample
+        spinner!!.setOnItemSelectedListener(this)
+
+        // Create an ArrayAdapter using a simple spinner layout and languages array
+        val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, languages)
+        // Set layout to use when the list of choices appear
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        // Set Adapter to Spinner
+        spinner!!.setAdapter(aa)
+    }
+    override fun onItemSelected(arg0: AdapterView<*>, arg1: View, position: Int, id: Long) {
+        textView_msg!!.text = languages[position]
+    }
+
+    override fun onNothingSelected(arg0: AdapterView<*>) {
+
     }
 
 }

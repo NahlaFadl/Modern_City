@@ -75,6 +75,7 @@ class DetailsOfCraftActivity : AppCompatActivity() {
 
                         //to load user profile photo
                         Picasso.get().load(response?.body()?.details_of_craftsman?.craftsman_img).into(imageProfileCraftDet)
+                        Picasso.get().load(response!!.body()!!.details_of_craftsman?.craftsman_slider[0]).into(craftWork_recyclerViewDet)
 
                         var craftNaem=response?.body()?.details_of_craftsman?.first_name+" "+
                                 response?.body()?.details_of_craftsman?.last_name
@@ -93,7 +94,7 @@ class DetailsOfCraftActivity : AppCompatActivity() {
                     }
 
                     override fun onFailure(call: Call<Crafs_Details_Responce>?, t: Throwable?) {
-                        Toast.makeText(this@DetailsOfCraftActivity,"not connect",Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@DetailsOfCraftActivity,"اضف صوره للعمل اولا",Toast.LENGTH_LONG).show()
                     }
                 })
 

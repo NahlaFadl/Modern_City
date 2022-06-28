@@ -81,6 +81,7 @@ class LoginActivity : AppCompatActivity() {
                        putString("token",response?.body()?.User?.token)
                        putString("phone",response?.body()?.User?.phone.toString())
                        putString("adress",response?.body()?.User?.address)
+                        putString("Password",edt_login_userPassword.text.toString())
                        response?.body()?.User?.user_id?.let { it1 -> putInt("city_id", it1) }
                        response?.body()?.User?.user_id?.let { it1 -> putInt("user_id", it1) }
                        response?.body()?.User?.user_group_id?.let { it1 -> putInt("user_group__id", it1)}
