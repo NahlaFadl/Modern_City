@@ -71,7 +71,7 @@
 
                     android:id="@+id/edt_crafts_rfgistr_Lname"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:background="@null"
                     android:drawableRight="@drawable/profil_circle_24"
@@ -109,6 +109,7 @@
                     android:drawablePadding="16dp"
                     android:ems="10"
                     android:hint="ادخل الاميل"
+                    android:inputType="textEmailAddress"
                     android:padding="16dp"
                     android:singleLine="true"
 
@@ -141,6 +142,7 @@
                     android:drawablePadding="16dp"
                     android:ems="10"
                     android:hint="ادخل الباسورد"
+                    android:inputType="textPassword"
                     android:padding="16dp"
                     android:singleLine="true"
 
@@ -167,16 +169,13 @@
                     android:id="@+id/edt_crafts_rfgistr_comnfpass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-
                     android:layout_marginLeft="@dimen/_15sdp"
-
                     android:background="@null"
-
                     android:drawableRight="@drawable/ic_lock"
                     android:drawablePadding="16dp"
                     android:ems="10"
                     android:hint="اكد الباسورد"
+                    android:inputType="textPassword"
                     android:padding="16dp"
                     android:singleLine="true" />
 
@@ -208,7 +207,7 @@
                     android:drawablePadding="16dp"
                     android:ems="10"
                     android:hint="ادخل رقم التلفون"
-
+                    android:inputType="phone"
                     android:padding="16dp"
                     android:singleLine="true" />
 
@@ -237,7 +236,8 @@
 
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:id="@+id/msg"
+                        android:layout_width="@dimen/_160sdp"
                         android:layout_height="@dimen/_28sdp"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_weight="2"
@@ -247,10 +247,10 @@
                         android:textStyle="bold" />
 
                     <Spinner
-                        android:id="@+id/spinner"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/_28sdp"
-                        android:layout_weight="1" />
+                        android:id="@+id/spinner_sample"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        />
 
 
                 </LinearLayout>

@@ -115,20 +115,19 @@ class HomeFagment : Fragment() {
                     response: Response<DetailsUserResponse>?
                 ) {
 
-                    Toast.makeText(activity,response?.body()?.details_of_user?.email, Toast.LENGTH_LONG).show()
 
                     Picasso.get().load(response?.body()?.details_of_user?.user_img).into(user_imageProf)
 
                 }
 
                 override fun onFailure(call: Call<DetailsUserResponse>?, t: Throwable?) {
-                    Toast.makeText(activity,"Faliar"
+                    Toast.makeText(activity,"حدث خطأ"
                         , Toast.LENGTH_LONG).show()
                 }
 
             } )
         }else
-            Toast.makeText(activity,"Faliar222", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity,"حدث خطأ10", Toast.LENGTH_LONG).show()
     }
 
     // function to get famous places
@@ -144,7 +143,6 @@ class HomeFagment : Fragment() {
                     call: Call<FamousPlacesResponse>?,
                     response: Response<FamousPlacesResponse>?
                 ) {
-                    Toast.makeText(activity,response?.body()?.status.toString()+"\nfffffffffff",Toast.LENGTH_LONG).show()
 
 
 
@@ -179,7 +177,6 @@ class HomeFagment : Fragment() {
                     call: Call<CategoriesRespon>?,
                     response: Response<CategoriesRespon>?
                 ) {
-                    Toast.makeText(activity,response?.body()?.msg,Toast.LENGTH_LONG).show()
 
 
 
@@ -191,6 +188,8 @@ class HomeFagment : Fragment() {
                     }
                     val adapter = Adapter_rcy_mainService(placeArray!!)
                     rcy_mainservice.adapter = adapter
+                    prog_Home.visibility= View.INVISIBLE
+                    cinstHome.visibility= View.VISIBLE
                 }
 
                 override fun onFailure(call: Call<CategoriesRespon>?, t: Throwable?) {

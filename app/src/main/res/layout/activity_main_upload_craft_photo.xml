@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:layout_margin="24dp"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            app:srcCompat="@drawable/ic_btn_photo_camera" />
 
         <TextView
             android:id="@+id/textView"

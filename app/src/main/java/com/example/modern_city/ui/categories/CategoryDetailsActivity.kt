@@ -137,33 +137,33 @@ class CategoryDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     fun loadData(token:String,place_id:Int){
-
+        prog_detailsPlace.visibility= View.VISIBLE
         val call=ApiClient.instance?.getMyApi()?.getPlaceDetails(token,place_id)
         if (call!=null) {
 
             call?.enqueue(object : Callback<PlaceDetailsResponse> {
+
+
                 override fun onResponse(
                     call: Call<PlaceDetailsResponse>?,
                     response: Response<PlaceDetailsResponse>?
                 ) {
+
                     tx_place_Name.setTitle(response?.body()?.details_of_place?.place_name)
                     tx_place_Name.setTitleTextColor(Color.parseColor("#6B46C1"))
-
+                    txt_placedescription.text=response?.body()?.details_of_place?.description.toString()
 
 
                var list: List<String>? =response?.body()?.details_of_place?.slider_img
                     Log.d("rr",response?.body()?.msg.toString())
-                   // Toast.makeText(this,response?.body()?.details_of_place?.slider_img.toString(),Toast.LENGTH_SHORT).show()
 
                   rcy_menuslider.layoutManager = LinearLayoutManager(this@CategoryDetailsActivity,
                        LinearLayoutManager.HORIZONTAL, false)
 
                    val adapter = list?.let { Adapter_detailsOfPlace(it,this@CategoryDetailsActivity) }
                     rcy_menuslider.adapter = adapter
+                    prog_detailsPlace.visibility= View.INVISIBLE
 
-//                    latitude=response?.body()?.details_of_place?.geo_location_lat
-//                    longtuide=response?.body()?.details_of_place?.geo_location_long
-//                    placeName= response?.body()?.details_of_place?.place_name.toString()
 
 
                     /////////////////btn_call_action
@@ -185,19 +185,18 @@ class CategoryDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
                     )
 
 
-                    Toast.makeText(this@CategoryDetailsActivity,"pplat:"+latitude+", pplon"+longtuide,Toast.LENGTH_SHORT).show()
 
                 }
 
                 override fun onFailure(call: Call<PlaceDetailsResponse>?, t: Throwable?) {
-
+                    prog_detailsPlace.visibility= View.INVISIBLE
 
                 }
             })
 
         }
         else{
-            Toast.makeText(this@CategoryDetailsActivity,"call eqal null",Toast.LENGTH_LONG).show()
+            Toast.makeText(this@CategoryDetailsActivity,"خطا في الاتصال",Toast.LENGTH_LONG).show()
 
         }
     }

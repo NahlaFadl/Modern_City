@@ -17,6 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Modern_City">
         <activity
+
+            android:name=".WorkUploadPhoto.MainUplaodWorkPhotoActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.search.SearchActivity"
             android:exported="true">
 
@@ -68,10 +72,14 @@
             android:exported="true" />
         <activity
             android:name=".ui.auth.CraftsmanRegisterActivity"
-            android:exported="true" />
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".ui.auth.RegisterActivity"
-            android:exported="true" />
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".ui.profiles.ProfileActivity"
             android:exported="true" />
@@ -99,9 +107,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

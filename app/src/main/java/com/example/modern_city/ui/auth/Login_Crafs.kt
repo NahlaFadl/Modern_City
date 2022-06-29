@@ -15,6 +15,7 @@ import com.example.modern_city.ui.profiles.CraftsmanProfilActivity
 import kotlinx.android.synthetic.main.activity_login.*
 //import kotlinx.android.synthetic.main.activity_login.prog_login2
 import kotlinx.android.synthetic.main.activity_login_crafs.*
+import kotlinx.android.synthetic.main.activity_regester.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -88,14 +89,16 @@ class Login_Crafs : AppCompatActivity() {
                             putString("token",response?.body()?.Craftsman?.token)
                             putString("phone",response?.body()?.Craftsman?.phone.toString())
                             putString("adress",response?.body()?.Craftsman?.address)
+                            putString("password",edt_login_crafsPassword.text.toString())
                             response?.body()?.Craftsman?.craftsman_id?.let { it1 -> putInt("city_id", it1) }
                             response?.body()?.Craftsman?.craftsman_id?.let { it1 -> putInt("user_id", it1) }
                             response?.body()?.Craftsman?.craftsman_type_id?.let { it1 -> putInt("user_group__id", it1)}
 
                         }.commit()
-                        Toast.makeText(this@Login_Crafs,response?.body()?.Craftsman?.email, Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@Login_Crafs,"تم الاتصال", Toast.LENGTH_LONG).show()
                         val intent= Intent(this@Login_Crafs, CraftsmanProfilActivity::class.java)
                         startActivity(intent)
+                        finish()
 
 
                     }else{

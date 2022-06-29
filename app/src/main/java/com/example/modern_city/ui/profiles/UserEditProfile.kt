@@ -27,15 +27,21 @@ class UserEditProfile : AppCompatActivity() {
         val sharedPreferences = this.getSharedPreferences("userInfo_login", Context.MODE_PRIVATE)
         var token=  sharedPreferences.getString("token",null)
         var id=  sharedPreferences.getInt("user_id",0)
-
+        var pass=  sharedPreferences.getString("Password",null)
         // to get Details of user
         showUserDetails(token.toString(),id)
 
         // to upload the user edit
         done.setOnClickListener {
 
-            editUserInfo(token.toString(),edit_name.text,edit_lastName.text,
-                edit_password.text, edit_address.text,edit_phone.text)
+            if (edit_oldPassword.text.toString().equals(pass)) {
+                editUserInfo(
+                    token.toString(), edit_name.text, edit_lastName.text,
+                    edit_newPassword.text, edit_address.text, edit_phone.text
+                )
+            }else{
+                Toast.makeText(this,"خطا في كلمة المرور القديمه",Toast.LENGTH_LONG).show()
+            }
         }
 
         // to cancel user edit

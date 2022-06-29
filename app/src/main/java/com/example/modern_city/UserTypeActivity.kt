@@ -16,11 +16,13 @@ class UserTypeActivity : AppCompatActivity() {
         user_btn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         craft_btn.setOnClickListener {
             val intent = Intent(this, CraftsmanRegisterActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

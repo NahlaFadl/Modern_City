@@ -6,11 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.widget.Toast
-import com.example.modern_city.API_SERVIECS.ApiClient
-import com.example.modern_city.API_SERVIECS.CraftEditResponse
-import com.example.modern_city.API_SERVIECS.EditUserResponse
+import com.example.modern_city.API_SERVIECS.*
 import com.example.modern_city.CraftsUploadPhoto.MainUploadCraftPhotoActivity
 import com.example.modern_city.R
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_craft_edit_profile.*
 import kotlinx.android.synthetic.main.activity_user_edit_profile.*
 import retrofit2.Call
@@ -24,11 +23,20 @@ class CraftEditProfile : AppCompatActivity() {
 
         val sharedPreferences = this.getSharedPreferences("crafs_userinf", Context.MODE_PRIVATE)
         var token=  sharedPreferences.getString("token",null)
+        var id=  sharedPreferences.getInt("user_id",0)
+        var pass=  sharedPreferences.getString("password",null)
 
         // to upload the Craft edit
         Craft_done.setOnClickListener {
-            editCraftInfo(token.toString(),edit_nameCraft.text,edit_CraftlastName.text,
-                edit_CraftPassword.text, edit_CraftAddress.text,edit_CraftPhone.text)
+            if (edit_CraftOldPassword.text.toString().equals(pass)) {
+                editCraftInfo(
+                    token.toString(), edit_nameCraft.text, edit_CraftlastName.text,
+                    edit_CraftNewPassword.text, edit_CraftAddress.text, edit_CraftPhone.text,
+                    edit_CraftDescription.text
+                )
+            }else{
+                Toast.makeText(this,"خطا في كلمة المرور القديمه",Toast.LENGTH_LONG).show()
+            }
         }
         // to craft edit photo of profile
         btn_addCraftProfilePhoto.setOnClickListener {
@@ -43,12 +51,14 @@ class CraftEditProfile : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        // to get Details of craft
+        showCraftDetailsToCrafts(token.toString(),id)
     }
 
     // to upload the Craft edit
-    fun editCraftInfo(token:String, fName: Editable, lName: Editable, passwod: Editable, address: Editable, phone: Editable){
+    fun editCraftInfo(token:String, fName: Editable, lName: Editable, passwod: Editable, address: Editable, phone: Editable,description:Editable){
 
-        var call= ApiClient.instance?.getMyApi()?.editCraft(token,fName, lName,passwod, address,phone)
+        var call= ApiClient.instance?.getMyApi()?.editCraft(token,fName, lName,passwod, address,phone,description)
 
         if (call != null){
 
@@ -63,6 +73,41 @@ class CraftEditProfile : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<CraftEditResponse>?, t: Throwable?) {
+                    Toast.makeText(this@CraftEditProfile,"Faliar"
+                        , Toast.LENGTH_LONG).show()
+                }
+
+            } )
+
+        }else
+            Toast.makeText(this,"Faliar222", Toast.LENGTH_LONG).show()
+    }
+
+    // to get Details of craft
+    fun showCraftDetailsToCrafts(Token:String,ID:Int){
+        var call= ApiClient.instance?.getMyApi()?.showCraftDetailsToCrafts(Token,ID)
+
+        if (call != null){
+
+            call.enqueue(object : Callback<ShowDetailsOfCraftToCraftResponsr> {
+                override fun onResponse(
+                    call: Call<ShowDetailsOfCraftToCraftResponsr>?,
+                    response: Response<ShowDetailsOfCraftToCraftResponsr>?
+                ) {
+
+                    Toast.makeText(this@CraftEditProfile,response?.body()?.details_of_craftsman?.email, Toast.LENGTH_LONG).show()
+
+                    //to load user profile photo
+                    Picasso.get().load(response?.body()?.details_of_craftsman?.craftsman_img).into(craftEditProfile_image)
+
+                    // to get user name
+                    edit_nameCraft.setText(response?.body()?.details_of_craftsman?.first_name)
+                    edit_CraftlastName.setText(response?.body()?.details_of_craftsman?.last_name)
+                    edit_CraftAddress.setText(response?.body()?.details_of_craftsman?.address.toString())
+                    edit_CraftPhone.setText(response?.body()?.details_of_craftsman?.phone.toString())
+                }
+
+                override fun onFailure(call: Call<ShowDetailsOfCraftToCraftResponsr>?, t: Throwable?) {
                     Toast.makeText(this@CraftEditProfile,"Faliar"
                         , Toast.LENGTH_LONG).show()
                 }

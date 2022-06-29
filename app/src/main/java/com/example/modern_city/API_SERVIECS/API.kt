@@ -161,6 +161,14 @@ interface API {
         @Field("token") token:String,
         @Field("user_id") place_id:Int
     ):Call<DetailsUserResponse>
+    //showCraftDetailsToCrafts
+    @FormUrlEncoded
+    @POST("api/authenticate/show_details_of_craftsman")
+    @Headers("Accept: application/json")
+    fun showCraftDetailsToCrafts(
+        @Field("token") token:String,
+        @Field("craftsman_id") craftsman_id:Int
+    ):Call<ShowDetailsOfCraftToCraftResponsr>
     //////userLogOut
     @FormUrlEncoded
     @POST("api/logout_user")
@@ -200,7 +208,8 @@ interface API {
         @Field("last_name") last_name: Editable,
         @Field("password") password: Editable,
         @Field("address") address: Editable,
-        @Field("phone") phone:Editable
+        @Field("phone") phone:Editable,
+        @Field("description") description:Editable
     ):Call<CraftEditResponse>
 
     //////Craft Status Response

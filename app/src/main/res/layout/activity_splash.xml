@@ -8,9 +8,9 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/splash_photo"
-        android:layout_width="@dimen/_250sdp"
-        android:layout_height="@dimen/_250sdp"
-        android:background="@drawable/splash"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:background="@drawable/app_icon"
         android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

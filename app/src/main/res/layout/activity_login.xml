@@ -8,16 +8,17 @@
     tools:context=".ui.auth.LoginActivity"
     android:id="@+id/constraint_login">
 
+
     <ProgressBar
         android:id="@+id/prog_login"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"
+        android:layout_marginTop="350dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/scrollView2" />
 
     <ScrollView
 
@@ -34,7 +35,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/cons">
+            android:id="@+id/consLogin">
 
             <View
                 android:id="@+id/view2"
@@ -59,12 +60,13 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="56dp"
                 android:text="مرحبا"
                 android:textColor="#ffffff"
                 android:textSize="45sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.439"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -100,7 +102,7 @@
                 <EditText
                     android:id="@+id/edt_login_username"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/_45sdp"
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:background="@null"
                     android:drawableRight="@drawable/profil_circle_24"
@@ -133,14 +135,14 @@
 
                     android:id="@+id/edt_login_userPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/_45sdp"
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:background="@null"
                     android:drawableRight="@drawable/ic_lock"
                     android:hint="ادخل الباسورد"
+                    android:inputType="textPassword"
                     android:drawablePadding="16dp"
                     android:ems="10"
-
                     android:padding="16dp"
                     android:singleLine="true" />
 

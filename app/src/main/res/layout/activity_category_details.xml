@@ -25,7 +25,6 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/download"
                 android:id="@+id/ReataurateImage"
                 android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
@@ -64,12 +63,12 @@
 
 
                 android:layout_height="wrap_content"
-                android:layout_marginTop="29dp"
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/ic_stars"
                 android:textColor="@color/design_default_color_primary"
+                app:layout_constraintBottom_toBottomOf="@+id/textView8"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/placeRating" />
+                app:layout_constraintTop_toTopOf="@+id/textView8" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -82,7 +81,7 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/textView12"
-                app:layout_constraintTop_toBottomOf="@+id/placeRating" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_placedescription" />
 
 
             <RatingBar
@@ -136,17 +135,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/rcy_menuslider" />
 
 
-            <ProgressBar
-                android:id="@+id/progressBar6"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.454"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <ImageButton
                 android:id="@+id/favorite_categories"
                 android:layout_width="@dimen/_25sdp"
@@ -166,6 +154,33 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/map" />
+
+            <TextView
+                android:textDirection="rtl"
+                android:id="@+id/txt_placedescription"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="24dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#1B1919"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/placeRating" />
+
+            <ProgressBar
+                android:id="@+id/prog_detailsPlace"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="112dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/map"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.473"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

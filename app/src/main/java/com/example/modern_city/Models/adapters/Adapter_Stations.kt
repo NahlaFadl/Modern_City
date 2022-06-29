@@ -32,6 +32,7 @@ class Adapter_Stations(var listOfStation:List<StationsTypesResponces>):
 
             var intent= Intent(context, Station_Routs::class.java)
             intent.putExtra("bus_route_id",ItemsViewModel.bus_routes_name[position].bus_route_id)
+            intent.putExtra("bus_route_name",ItemsViewModel.bus_routes_name[position].bus_route_name)
 
             context.startActivity(intent)
         }

@@ -13,6 +13,7 @@ import com.example.modern_city.API_SERVIECS.UserRegister
 import com.example.modern_city.Fragment.HomeFagment
 import com.example.modern_city.R
 import com.example.modern_city.ui.HomeActivity
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_regester.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -68,6 +69,7 @@ class RegisterActivity : AppCompatActivity() {
                          call: Call<UserRegister>?,
                          response: Response<UserRegister>?)
                      {
+                         Toast.makeText(this@RegisterActivity,"تم التسجيل",Toast.LENGTH_LONG).show()
                         if (response!=null){
                          masege=response?.body()?.msg.toString()
 
@@ -79,6 +81,7 @@ class RegisterActivity : AppCompatActivity() {
                              putString("token",response?.body()?.data?.token)
                              putString("phone",response?.body()?.data?.phone.toString())
                              putString("adress",response?.body()?.data?.address)
+                             putString("Password",edt_register_password.text.toString())
                              response?.body()?.data?.user_id?.let { it1 -> putInt("city_id", it1) }
                              response?.body()?.data?.user_id?.let { it1 -> putInt("user_id", it1) }
                              response?.body()?.data?.user_group_id?.let { it1 -> putInt("user_group__id", it1) }
@@ -87,6 +90,7 @@ class RegisterActivity : AppCompatActivity() {
                          startActivity(intenthome)
                             prog_register.visibility = View.INVISIBLE
                             consRegister.visibility = View.VISIBLE
+                            finish()
 
                      }else{
                             Toast.makeText(this@RegisterActivity,masege,Toast.LENGTH_LONG).show()
@@ -96,7 +100,7 @@ class RegisterActivity : AppCompatActivity() {
                      }
 
                      override fun onFailure(call: Call<UserRegister>?, t: Throwable?) {
-                         Toast.makeText(this@RegisterActivity,"Failer",Toast.LENGTH_LONG).show()
+                         Toast.makeText(this@RegisterActivity,"فشل في الاتصال",Toast.LENGTH_LONG).show()
 
 
                      }

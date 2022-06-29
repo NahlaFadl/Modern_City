@@ -101,16 +101,16 @@
                 <EditText
                     android:id="@+id/edt_login_crafsname"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/_45sdp"
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:background="@null"
                     android:drawableRight="@drawable/profil_circle_24"
-                    android:hint="ادخل الايميل"
-                    android:singleLine="true"
                     android:drawablePadding="16dp"
                     android:ems="10"
+                    android:hint="ادخل الايميل"
                     android:inputType="textEmailAddress"
                     android:padding="16dp"
+                    android:singleLine="true"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
             </androidx.cardview.widget.CardView>
@@ -134,14 +134,14 @@
 
                     android:id="@+id/edt_login_crafsPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/_45sdp"
                     android:layout_marginLeft="@dimen/_15sdp"
                     android:background="@null"
                     android:drawableRight="@drawable/ic_lock"
-                    android:hint="ادخل الباسورد"
                     android:drawablePadding="16dp"
                     android:ems="10"
-
+                    android:hint="ادخل الباسورد"
+                    android:inputType="textPassword"
                     android:padding="16dp"
                     android:singleLine="true" />
 

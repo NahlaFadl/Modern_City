@@ -43,6 +43,7 @@ class ProfileActivity : AppCompatActivity() {
         // click to call logout function and log out from application
         user_LogoutImage.setOnClickListener {
             userLogout(token.toString())
+            finish()
         }
     }
 
