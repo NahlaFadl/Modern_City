@@ -28,7 +28,7 @@ class Adapter_nearstPlace(var nearPlaceLisr:List<NearestPlaceResponce>)
         val ItemsViewModel = nearPlaceLisr[position]
         var name:String=ItemsViewModel.nearest_place[position].place_name
           holder.texname.text=name
-       holder.txt_placeDistance.text=ItemsViewModel.nearest_place[position].distance.toString()
+       //holder.txt_placeDistance.text=ItemsViewModel.nearest_place[position].distance.toString()+"متر"
         holder.texname.setOnClickListener {
 
             val context=holder.texname.context

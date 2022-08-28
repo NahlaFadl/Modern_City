@@ -51,7 +51,7 @@ class SearchActivity : AppCompatActivity() {
         /////////////////
 
 
-        var arr= arrayOf("مطاعم","مصالح حكومية","بنوك","مستشفيات")
+        var arr= arrayOf("فنادق","مصالح حكومية","مطاعم","مستشفيات","صيدليات","بنوك")
 
         edt_SearchText.setAdapter(
             ArrayAdapter<String>(
@@ -66,17 +66,27 @@ class SearchActivity : AppCompatActivity() {
 
             prog_nearplace.visibility = View.VISIBLE
             var x:String =edt_SearchText.text.toString()
-            if(x.equals("مطاعم")){
+            if(x.equals("فنادق")){
                 count=1
 
             } else if (x.equals("مصالح حكومية"))
             {
-                count=2
+                count=7
             }
             else if (x.equals("بنوك"))
             {
+                count=6
+            }else if (x.equals("مطاعم"))
+            {
                 count=3
             }
+            else if (x.equals("مستشفيات"))
+            {
+                count=4
+            }
+
+
+
             Log.v("count",count.toString())
             val sharedPreferences = this.getSharedPreferences("userInfo_login", Context.MODE_PRIVATE)
             var token=sharedPreferences.getString("token",null).toString()
@@ -121,10 +131,10 @@ class SearchActivity : AppCompatActivity() {
                              1,
                              StaggeredGridLayoutManager.VERTICAL
                          )
-                         rcy_crafstype.setLayoutManager(layoutManager)
-                         rcy_crafstype.setItemAnimator(DefaultItemAnimator())
+                         rcy_nearstPlace.setLayoutManager(layoutManager)
+                         rcy_nearstPlace.setItemAnimator(DefaultItemAnimator())
                          val adapter = Adapter_nearstPlace(placearr!!)
-                         rcy_crafstype.adapter = adapter
+                         rcy_nearstPlace.adapter = adapter
                          prog_nearplace.visibility = View.INVISIBLE
 
                      }
